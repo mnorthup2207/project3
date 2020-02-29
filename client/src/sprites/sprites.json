@@ -1,0 +1,8 @@
+{
+    "main": {
+        "image": "./src/sheets/players/main/idle.png",
+        "widthFrame": 469,
+        "heightFrame": 620,
+        "frames": 18
+    }
+}
