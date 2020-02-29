@@ -7,13 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="play">Play</button>
+    <button id="draw">Draw</button>
     <div class="container">
-        <div class="card" data-type="r" data-value="2"><p>2</p></div>
-        <div class="card" data-type="r" data-value="3"><p>3</p></div>
-        <div class="card" data-type="r" data-value="2"><p>2</p></div>
-        <div class="card" data-type="r" data-value="2"><p>2</p></div>
-        <div class="card" data-type="r" data-value="2"><p>2</p></div>
+        <div class="character"></div>
+        <div class="spell"></div>
+        <div class="character"></div>
+    </div>
+    <div class="container">
+        <div class="handWrapper">
 
+        </div>
+        <div class="cardsWrapper">
+            <div class="cards" name="drawDeck"><p></p></div>
+            <div class="cards" name="discardDeck"><p></p></div>
+        </div>
     </div>
 
     <script src="character.js"></script>
