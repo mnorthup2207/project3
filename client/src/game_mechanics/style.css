@@ -1,6 +1,6 @@
 .container {
     box-sizing: border-box;
-    height: 50%;
+    height: 45%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -61,7 +61,7 @@
 
 /* Window I'm working in */
 body {
-    height: 330px;
-    width: 550px;
+    /* height: 330px;
+    width: 550px; */
     margin: 0;
 }
