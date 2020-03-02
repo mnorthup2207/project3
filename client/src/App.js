@@ -1,16 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './components/Nav';
+// import logo from './logo.svg';
+// import './App.css';
+import Sprite from "./sprites/components/Sprite"
+import sprites from "./sprites/sprites.json"
+
 function App() {
+ 
   return (
-    <Router>
-        <Nav />
-        <Switch>
-            <Route exact path={['/', '/home']}>
-                
-            </Route>
-        </Switch>
-    </Router>
+    <div>
+      <Sprite 
+        props={sprites.main}
+      />
+    </div>
   );
 }
 
