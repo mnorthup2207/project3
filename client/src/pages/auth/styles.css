@@ -1,0 +1,11 @@
+form {
+    width: 100%;
+}
+/* .form-element {
+    margin: 1rem;
+} */
+
+.MuiFormControl-root {
+    margin: 1rem;
+    width: 75%;
+}

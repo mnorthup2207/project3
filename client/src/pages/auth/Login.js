@@ -5,9 +5,13 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
-// Material Imports
-import TextField from '@material-ui/core/TextField';
+////Material UI////
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
+import "./styles.css";
 
 class Login extends Component {
     constructor() {
@@ -57,7 +61,7 @@ class Login extends Component {
         const { errors } = this.state;
 
         return (
-            <div className="container">
+            <Container maxWidth="sm">
                 <div style={{ marginTop: "4rem" }} className="row">
                     <div className="col s8 offset-s2">
                         <div className="col s12" style={{ paddingLeft: "11.250px" }}>
@@ -74,25 +78,27 @@ class Login extends Component {
                             </p>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>
-                            {/* ADD ERROR HANDLING */}
-                            <TextField 
-                                onChange={this.onChange}
-                                value={this.state.email}
-                                error={errors.email}
-                                id="email"
-                                type="email"
-                                // className={classnames("", {
-                                //     invalid: errors.email || errors.emailnotfound
-                                // })}
-                                label="Email"
-                                variant="outlined"
-                            />
-                            {/* <span className="red-text">
-                                {errors.email}
-                                {errors.emailnotfound}
-                                </span> */}
-                            <div className="input-field col s12">
-                                <input
+                            <div>
+                                {/* ADD ERROR HANDLING */}
+                                <TextField 
+                                    onChange={this.onChange}
+                                    value={this.state.email}
+                                    error={errors.email}
+                                    id="email"
+                                    type="email"
+                                    // className={classnames("", {
+                                    //     invalid: errors.email || errors.emailnotfound
+                                    // })}
+                                    label="Email"
+                                    variant="outlined"
+                                />
+                                {/* <span className="red-text">
+                                    {errors.email}
+                                    {errors.emailnotfound}
+                                    </span> */}
+                            </div>
+                            <div>
+                                <TextField
                                     onChange={this.onChange}
                                     value={this.state.password}
                                     error={errors.password}
@@ -101,12 +107,14 @@ class Login extends Component {
                                     className={classnames("", {
                                         invalid: errors.password || errors.passwordincorrect
                                     })}
+                                    label="Password"
+                                    variant="outlined"
+
                                 />
-                                <label htmlFor="password">Password</label>
-                                <span className="red-text">
+                                {/* <span className="red-text">
                                     {errors.password}
                                     {errors.passwordincorrect}
-                                </span>
+                                </span> */}
                             </div>
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                                 <Button 
@@ -121,7 +129,7 @@ class Login extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
+            </Container>
         );
     }
 }

@@ -5,6 +5,15 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 
+////Material UI////
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
+import "./styles.css";
+
+
 class Register extends Component {
     constructor() {
         super();
@@ -53,20 +62,28 @@ class Register extends Component {
         const { errors } = this.state;
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col s8 offset-s2">
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                            <h4>
-                                <b>Register</b> below
-                            </h4>
-                            <p className="grey-text text-darken-1">
-                                Already have an account? <Link to="/">Log in</Link>
-                            </p>
-                        </div>
-                        <form noValidate onSubmit={this.onSubmit}>
-                            <div className="input-field col s12">
-                                <input
+            <Container maxWidth="sm">
+                <Grid container justify="center" alignItems="center">
+                    <div>
+                        <h4>
+                            <b>Register</b> below
+                        </h4>
+                        <p className="grey-text text-darken-1">
+                            Already have an account? 
+                            <Link to="/">
+                                <Button color="secondary">
+                                    Log In
+                                </Button>
+                            </Link>
+                        </p>
+                    </div>
+                </Grid>
+                <Grid container s={8} justify="center" alignItems="center">
+                    <form noValidate onSubmit={this.onSubmit}>
+                        <div>
+
+                            <div className="form-element">
+                                <TextField
                                     onChange={this.onChange}
                                     value={this.state.name}
                                     error={errors.name}
@@ -75,12 +92,14 @@ class Register extends Component {
                                     className={classnames("", {
                                         invalid: errors.name
                                     })}
+                                    label="Name"
+                                    variant="outlined"
                                 />
-                                <label htmlFor="name">Name</label>
-                                <span className="red-text">{errors.name}</span>
+                                {/* <label htmlFor="name">Name</label> */}
+                                {/* <span className="red-text">{errors.name}</span> */}
                             </div>
-                            <div className="input-field col s12">
-                                <input
+                            <div className="form-element">
+                                <TextField
                                     onChange={this.onChange}
                                     value={this.state.email}
                                     error={errors.email}
@@ -89,12 +108,13 @@ class Register extends Component {
                                     className={classnames("", {
                                         invalid: errors.email
                                     })}
+                                    label="Email"
+                                    variant="outlined"
                                 />
-                                <label htmlFor="email">Email</label>
-                                <span className="red-text">{errors.email}</span>
+                                {/* <span className="red-text">{errors.email}</span> */}
                             </div>
-                            <div className="input-field col s12">
-                                <input
+                            <div className="form-element">
+                                <TextField
                                     onChange={this.onChange}
                                     value={this.state.password}
                                     error={errors.password}
@@ -103,12 +123,13 @@ class Register extends Component {
                                     className={classnames("", {
                                         invalid: errors.password
                                     })}
+                                    label="Password"
+                                    variant="outlined"
                                 />
-                                <label htmlFor="password">Password</label>
-                                <span className="red-text">{errors.password}</span>
+                                {/* <span className="red-text">{errors.password}</span> */}
                             </div>
-                            <div className="input-field col s12">
-                                <input
+                            <div className="form-element">
+                                <TextField
                                     onChange={this.onChange}
                                     value={this.state.password2}
                                     error={errors.password2}
@@ -117,28 +138,23 @@ class Register extends Component {
                                     className={classnames("", {
                                         invalid: errors.password2
                                     })}
+                                    label="Confirm Password"
+                                    variant="outlined"
                                 />
-                                <label htmlFor="password2">Confirm Password</label>
-                                <span className="red-text">{errors.password2}</span>
+                                {/* <span className="red-text">{errors.password2}</span> */}
                             </div>
-                            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <button
-                                    style={{
-                                        width: "150px",
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }}
-                                    type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                                >
-                                    Sign up
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        </div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            size="large"
+                        >
+                            Sign Up
+                        </Button>
+                    </form>
+                </Grid>
+            </Container>
         );
     }
 }
