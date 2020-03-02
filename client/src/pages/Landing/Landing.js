@@ -1,40 +1,53 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-
+////Material UI////
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
 
-class Landing extends Component {
-    onLogoutClick = e => {
+const Landing = (props) => {
+    const onLogoutClick = e => {
         e.preventDefault();
-        this.props.logoutUser();
+        props.logoutUser();
     };
-
-    render() {
-        const { user } = this.props.auth;
-
-        return (
-            <div style={{ height: "75vh" }} className="container valign-wrapper">
-                <div className="row">
-                    <div className="landing-copy col s12 center-align">
+    const classes = useStyles();
+    const { user } = props.auth;
+    return (
+        <Container maxWidth="lg">
+            <div className={classes.root}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
                         <h4>
-                            <b>Welcome,</b> {user.name.split(" ")[0]}
+                            <b>Welcome Back,</b> {user.name.split(" ")[0]}
                         </h4>
-                        <Button 
+                        <Button
                             variant="contained"
-                            color="primary"
-                            onClick={this.onLogoutClick}
+                            onClick={onLogoutClick}
                         >
                             Logout
-                        </Button>
-                    </div>
-                </div>
+                    </Button>
+                    </Grid>
+                </Grid>
             </div>
-        );
-    }
-}
+        </Container>
+    );
+};
+
+
 
 Landing.propTypes = {
     logoutUser: PropTypes.func.isRequired,

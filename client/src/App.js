@@ -14,16 +14,6 @@ import Landing from "./pages/Landing/Landing";
 // import logo from './logo.svg';
 // import './App.css';
 
-<<<<<<< HEAD
-function App() {
-  return (
-    <div>
-      <Sprite 
-        props={sprites.main}
-      />
-    </div>
-  );
-=======
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -68,7 +58,6 @@ class App extends Component {
             // </div>
         );
     }
->>>>>>> 74ed319b328e5aefe2331d5afab3a1aead31477f
 }
 
 export default App;
