@@ -12,76 +12,56 @@ const discardDeck = document.querySelector("[name = discardDeck]").firstElementC
 const spell = document.querySelector(".spell");
 const player1 = document.getElementById("player1");
 const monster1 = document.getElementById("monster1");
+const monsterIntention = document.getElementById("monster1Intention")
 // Global Variables
 var round = 1;
 
 // Play btn state
-playBtn.addEventListener("click", playHand);
+playBtn.addEventListener("click", playerAction);
 // Draw btn state
-drawBtn.addEventListener("click", drawHand);
+drawBtn.addEventListener("click", playerDrawHand);
 // Spell event listener
-spell.addEventListener("click", playHand);
+spell.addEventListener("click", playerAction);
 // Draw deck event listener
-drawDeck.addEventListener("click", drawHand);
+drawDeck.addEventListener("click", playerDrawHand);
 
-// Determines the spell from the 3 selected cards
-function determineSpell() {
-    let spell = Choop.selectedCards.map(card => card[0]).sort().join("");
-    console.log(`Spell ${spell}`);
-    switch (spell) {
-        case "ppp":
-            return "heal"
-        case "ppr":
-            return "harden"
-        case "pps":
-            return "sharpen"
-        case "prs":
-            return "jackpot"
-        case "prr":
-            return "toughen"
-        case "pss":
-            return "cut"
-        case "rrr":
-            return "tank"
-        case "rrs":
-            return "retaliate"
-        case "rss":
-            return "desolate"
-        case "sss":
-            return "slice"
-        default:
-            return "noSpell"
-    }
-}
-// Shows the spell when Choops selected cards are length 3
+// Environment: Turn this into the connector between the two characters
+// Shows the spell when Choop's selected cards are length 3
 function showAttackSpell() {
     // If the number of selected cards is 3 then we show the spell
     if ( Choop.selectedCards.length === 3 ) {
         spell.style.display = "block"
-        spell.innerText = determineSpell()
+        spell.innerText = Choop.determineSpell()
     } else {
         spell.style.display = "none"
     }
 }
 // When the user presses the spell or play button. We run Choop.play()
-function playHand() {
+// Choop environment controller
+function playerAction() {
     // Does nothing if no cards in hand
     if ( Choop.hand.length === 0 ) {
         return 
     }
     // Calls the Choop.play method against Doop
-    Choop.play(Doop);
+    let choopAttack = Choop.play();
+    console.log(choopAttack)
+    Doop.defend(choopAttack)
+    // Update the health and armor of both
+    healthArmorUpdate(player1, Choop);
+    healthArmorUpdate(monster1, Doop);
     // Clears the cards, updates the deck numbers, hides the spell
     handWrapper.innerHTML = ""
     drawDeck.firstElementChild.innerText = Choop.drawDeck.length;
     discardDeck.innerText = Choop.discardDeck.length;
     spell.style.display = "none";
-    // Updates the global variable for the round
-    round ++;
+    // Add a set interval throughout this part
+    monsterAction()
 }
-// When the user presses the draw or green deck. We run Choop.drawHand()
+// When the user presses the draw or green deck. We run Choop.playerDrawHand()
 // Then we render the cards and add event listeners
-function drawHand() {
+// Choop playerDrawHand environment controller
+function playerDrawHand() {
     if ( Choop.hand.length > 0 ) {
         return
     }
@@ -118,6 +98,34 @@ function drawHand() {
     // Updates the card number on the draw and discard deck
     drawDeck.firstElementChild.innerText = Choop.drawDeck.length;
     discardDeck.innerText = Choop.discardDeck.length;
+}
+// Monster environment controller
+function monsterAction() {
+    console.log("Monster's turn")
+    console.log(Doop.sequence[round])
+    console.log(Doop[Doop.sequence[round]]());
+
+    let doopAttack = Doop[Doop.sequence[round]]();
+    Choop.defend(doopAttack);
+    // Update the health and armor of both
+    healthArmorUpdate(player1, Choop);
+    healthArmorUpdate(monster1, Doop);
+    // Clears the cards, updates the deck numbers, hides the spell
+    handWrapper.innerHTML = ""
+    drawDeck.firstElementChild.innerText = Choop.drawDeck.length;
+    discardDeck.innerText = Choop.discardDeck.length;
+    spell.style.display = "none";
+    newRound()
+}
+
+// After the round is over
+function newRound() {
+    
+    // Updates the global variable for the round
+    round ++;
+
+    // Update the intention of the monster
+    monsterIntention.setAttribute = Doop.sequence[round]
 }
 
 // ===============================================================
@@ -199,21 +207,42 @@ class Character {
 }
 
 class Monster extends Character {
-    constructor(name, health=75, armor=30, totalHealth=75, totalArmor=30, damage=10,
-        attacking, defending, idle) {
+    constructor(name, health=15, armor=20, totalHealth=75, totalArmor=30, damage=10,
+        sequence=["attack", "attack"], attacking, defending, idle) {
         super(name, health, armor, totalHealth, totalArmor,
             attacking, defending, idle)
         this.damage = damage;
+        this.sequence = sequence;
     }
     attack(opponent) {
-        opponent.health = opponent.health - this.damage;
+        // the damage is regular damage
+        return [this.damage, []]
+    }
+    defend([damage, type]) {
+        console.log("defending");
+        if ( type.length !== 0 ) {
+            // Replace this with ef elses late when an attack can have multiple attack types
+            switch (type[0]) {
+                case "desolate":
+                    return this.armor -= Math.max(damage, 0);
+                case "cut":
+                    return this.health -= damage;
+                default:
+                    break;
+            }
+        }
+        if ( damage <= this.armor) {
+            return this.armor -= damage;
+        }
+        this.armor = 0;
+        return this.health -= ( damage - this.armor )
     }
     spell(type, opponent) {
         switch (type) {
-            case "attack":
-                return console.log("Attack magic")
-            case "defend":
-                return console.log("Defend magic")
+            case "armor":
+                return console.log("Defend magic armor")
+            case "charmor":
+                return console.log("Defend magic charmor")
             default:
                 return console.log("default")
         }
@@ -240,61 +269,89 @@ class Player extends Character {
         this.status = status;
 
     }
-    attack(opponent, modifyAttack, powerUps) {
+    //! Need to refactor 
+    attack(type, powerUps) {
         // gonna have to change this for powerups
         let attackArr = this.selectedCards.map(card => parseInt(card[1]));
-        let result = attackArr.reduce((a, b) => a + b);
-        console.log("Damage without modifiers " + result)
-        switch (modifyAttack) {
+        let resultDamage = attackArr.reduce((a, b) => a + b);
+        // Made resultType an array so later on we could have multiple effects
+        let resultType = [];
+        let result = [];
+        switch (type) {
             case "desolate":
-                result *= 2;
-                return opponent.armor -= Math.max(result, 0);
+                resultDamage *= 2;
+                resultType.push("desolate");
+                break;
             case "cut":
-                return opponent.health -= result;
+                resultType.push("cut")
+                break;
             case "slice":
-                result *= 2;
+                resultDamage *= 2;
                 break;
             case "tank" :
-                this.armor = Math.min(this.totalArmor, result * 2)
+                this.armor = Math.min(this.totalArmor, resultDamage * 2)
                 break;
             case "jackpot":
-                result += 5 * round;
+                resultDamage += 5 * round;
                 break;
             default:
                 break;
         }
-        console.log("Damage with modifiers " + result);
-        if ( result <= opponent.armor) {
-            return opponent.armor -= result;
+
+        
+        result = [resultDamage, resultType];
+        console.log("Result of attack")
+        console.log([result]);
+        return result
         }
-        opponent.armor = 0;
-        return opponent.health -= ( result - opponent.armor )
-    }
     castSpell() {
+        return this.spells[this.determineSpell()]();
+    }
+    defend(damage, type) {
+        console.log("defending");
+        if ( type.length !== 0 ) {
+            // Replace this with ef elses late when an attack can have multiple attack types
+            switch (type[0]) {
+                case "desolate":
+                    return this.armor -= Math.max(damage, 0);
+                case "cut":
+                    return this.health -= damage;
+            }
+        }
+        if ( damage <= this.armor) {
+            return this.armor -= damage;
+        }
+        this.armor = 0;
+        return this.health -= ( damage - this.armor )
+    
+    }
+    // Determines the spell from the 3 selected cards
+    determineSpell() {
         let spell = this.selectedCards.map(card => card[0]).sort().join("");
+        console.log(`Spell ${spell}`);
         switch (spell) {
             case "ppp":
-                return this.spells["heal"]();
+                return "heal"
             case "ppr":
-                return this.spells["harden"]();
+                return "harden"
             case "pps":
-                return this.spells["sharpen"]();
+                return "sharpen"
             case "prs":
-                return this.spells["jackpot"]();
+                return "jackpot"
             case "prr":
-                return this.spells["toughen"]();
+                return "toughen"
             case "pss":
-                return this.spells["cut"]();
+                return "cut"
             case "rrr":
-                return this.spells["tank"]();
+                return "tank"
             case "rrs":
-                return this.spells["retaliate"]();
+                return "retaliate"
             case "rss":
-                return this.spells["desolate"]();
+                return "desolate"
             case "sss":
-                return this.spells["slice"]();
+                return "slice"
             default:
-                return this.spells["noSpell"]();
+                return "noSpell"
         }
     }
     drawHand() {
@@ -315,18 +372,20 @@ class Player extends Character {
         console.log("Remaining drawDeck")
         console.log(this.drawDeck)
     }
-    play(opponent) {
+    play() {
         console.log("Playing hand")
         console.log(this.selectedCards);
-        let modifyAttack = this.castSpell();
-        this.attack(opponent, modifyAttack);
+        let type = this.castSpell();
+        // opponent
+        let attack = this.attack(type);
         // Need to add damage method and spell method
-        healthArmorUpdate(monster1, Doop);
+        //! MOVE THIS
 
         this.discardDeck = [...this.hand.splice(0, this.hand.length), ...this.discardDeck];
         this.selectedCards = [];
         console.log("Discarding hand")
         console.log(this.discardDeck)
+        return attack
     }
     // STATE
     selectCard(e, action) {
