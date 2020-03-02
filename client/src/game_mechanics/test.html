@@ -10,9 +10,13 @@
     <button id="play">Play</button>
     <button id="draw">Draw</button>
     <div class="container">
-        <div class="character"></div>
-        <div class="spell"></div>
-        <div class="character"></div>
+        <div class="character" id="player1"></div>
+        <div class="spell">
+            <p id="selected1"></p>
+            <p id="selected2"></p>
+            <p id="selected3"></p>
+        </div>
+        <div class="character" id="monster1"></div>
     </div>
     <div class="container">
         <div class="handWrapper">
@@ -24,6 +28,7 @@
         </div>
     </div>
 
+    <script src="Classes/Character.js"></script>
     <script src="character.js"></script>
 </body>
 </html>
