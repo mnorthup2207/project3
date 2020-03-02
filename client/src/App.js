@@ -5,7 +5,6 @@ import Sprite from "./sprites/components/Sprite"
 import sprites from "./sprites/sprites.json"
 
 function App() {
- 
   return (
     <div>
       <Sprite 
