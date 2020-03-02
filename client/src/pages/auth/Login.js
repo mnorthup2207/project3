@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
+// Material Imports
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 class Login extends Component {
     constructor() {
         super();
@@ -18,13 +22,13 @@ class Login extends Component {
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            this.props.history.push("/home");
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            this.props.history.push("/home");
         }
 
         if (nextProps.errors) {
@@ -61,27 +65,32 @@ class Login extends Component {
                                 <b>Login</b> below
                             </h4>
                             <p className="grey-text text-darken-1">
-                                Don't have an account? <Link to="/register">Register</Link>
+                                Don't have an account? 
+                                <Link to="/register">
+                                    <Button color="secondary">
+                                        Register
+                                    </Button>
+                                </Link>
                             </p>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>
-                            <div className="input-field col s12">
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.email}
-                                    error={errors.email}
-                                    id="email"
-                                    type="email"
-                                    className={classnames("", {
-                                        invalid: errors.email || errors.emailnotfound
-                                    })}
-                                />
-                                <label htmlFor="email">Email</label>
-                                <span className="red-text">
-                                    {errors.email}
-                                    {errors.emailnotfound}
-                                </span>
-                            </div>
+                            {/* ADD ERROR HANDLING */}
+                            <TextField 
+                                onChange={this.onChange}
+                                value={this.state.email}
+                                error={errors.email}
+                                id="email"
+                                type="email"
+                                // className={classnames("", {
+                                //     invalid: errors.email || errors.emailnotfound
+                                // })}
+                                label="Email"
+                                variant="outlined"
+                            />
+                            {/* <span className="red-text">
+                                {errors.email}
+                                {errors.emailnotfound}
+                                </span> */}
                             <div className="input-field col s12">
                                 <input
                                     onChange={this.onChange}
@@ -100,18 +109,14 @@ class Login extends Component {
                                 </span>
                             </div>
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <button
-                                    style={{
-                                        width: "150px",
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }}
+                                <Button 
+                                    variant="contained"
+                                    color="primary"
                                     type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                    size="large"
                                 >
                                     Login
-                                </button>
+                                </Button>
                             </div>
                         </form>
                     </div>

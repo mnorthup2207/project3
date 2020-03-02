@@ -7,14 +7,12 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import Landing from "./pages/Landing/Landing";
 // import logo from './logo.svg';
 // import './App.css';
-import Sprite from "./sprites/components/Sprite"
-import sprites from "./sprites/sprites.json"
 
 import "./App.css";
 
@@ -34,7 +32,7 @@ if (localStorage.jwtToken) {
         store.dispatch(logoutUser());
 
         // Redirect to login
-        window.location.href = "./login";
+        window.location.href = "./";
     }
 }
 
@@ -48,7 +46,7 @@ class App extends Component {
                         <Route exact path="/" component={Login} />
                         <Route exact path="/register" component={Register} />
                         <Switch>
-                            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                            <PrivateRoute exact path="/home" component={Landing} />
                         </Switch>
                     </div>
                 </Router>
