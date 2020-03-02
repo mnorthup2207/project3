@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "- Dan Brown | [GitHub Link](https://github.com/13uilding)\r - Login Moody | [GitHub Link](https://github.com/lbmoody)\r - Matt Jeffords | [GitHub Link](https://github.com/Choop-A-Loop)\r - McCabe Northup | [GitHub Link](https://github.com/mnorthup2207)",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-router-dom": "^5.1.2"
+  },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
