@@ -23,23 +23,29 @@ const creators = [
     {
         name: "Dan Brown",
         GitHub: "https://github.com/13uilding",
-        FavoriteSpell: "Put your Spell Here",
+        FavoriteSpell: "Desolate",
         img: "https://via.placeholder.com/150"
     },
     {
         name: "Logan Moody",
-        GitHub: "https://github.com/13uilding",
-        FavoriteSpell: "Put your Spell Here",
+        GitHub: "https://github.com/lbmoody",
+        FavoriteSpell: "Slice",
         img: "https://via.placeholder.com/150"
     },
     {
         name: "Matt Jeffords",
-        GitHub: "https://github.com/13uilding",
-        FavoriteSpell: "Put your Spell Here",
+        GitHub: "https://github.com/Choop-A-Loop",
+        FavoriteSpell: "Jackpot",
         img: "https://via.placeholder.com/150"
     },
+    {
+        name: "McCabe Northup",
+        GitHub: "https://github.com/mnorthup2207",
+        FavoriteSpell: "Tank",
+        img: "https://via.placeholder.com/150"
+    }
 ]
-const DungeonFight = (props) => {
+const AboutCreators = () => {
     const classes = useStyles();
     return (
         <>
@@ -50,20 +56,21 @@ const DungeonFight = (props) => {
                         <Link to="/home"><h2>Home</h2></Link>
                     </Grid>
                 </Grid>
-                <Grid id="shift" container spacing={3} className={classes.root}>
-                    <Grid item xs>
-                        <CreatorCard/>
-                    </Grid>
-                    <Grid item xs>
-                        <CreatorCard/>
-                    </Grid>
-                    <Grid item xs>
-                        <CreatorCard/>
-                    </Grid>
+                <Grid id="creatorCardContainer" container justify="space-evenly" spacing={4} className={classes.root}>
+                    {creators.map(creator => (
+                        <Grid key={creator.name} item xs={5}>
+                        <CreatorCard 
+                            name={creator.name}
+                            GitHub={creator.GitHub}
+                            FavoriteSpell={creator.FavoriteSpell}
+                            creatorImg={creator.img}    
+                        />
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </>
     );
 };
 
-export default DungeonFight;
+export default AboutCreators;

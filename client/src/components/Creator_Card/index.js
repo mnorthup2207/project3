@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles({
@@ -20,13 +21,23 @@ const useStyles = makeStyles({
     },
 });
 
-const CreatorCard = () => {
+const CreatorCard = (props) => {
     const classes = useStyles();
-
+    console.log(props);
+    const { name, GitHub, FavoriteSpell, creatorImg } = props
     return (
         <Card className={classes.root}>
             <CardContent>
-                <h1>Little Animation of Character here</h1>
+                <Grid container spacing={3}>
+                    <Grid item xs>
+                        <h4>{name}</h4>
+                        <h4><a href={GitHub} target="_blank">GitHub Account: {GitHub}</a></h4>
+                        <h4>Favorite Spell: {FavoriteSpell}</h4>
+                    </Grid>
+                    <Grid item xs>
+                        <img src={creatorImg} alt="Sprite Image" />
+                    </Grid>
+                </Grid>
             </CardContent>
         </Card>
     );
