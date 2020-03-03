@@ -1,8 +1,22 @@
 {
     "main": {
-        "image": "./src/sheets/players/main/idle.png",
-        "widthFrame": 469,
-        "heightFrame": 620,
-        "frames": 18
+        "idle": {
+            "image": "./sheets/players/main/idle.png",
+            "widthFrame": 900,
+            "heightFrame": 900,
+            "frames": 18
+        },
+        "walk": {
+            "image": "./sheets/players/main/walking.png",
+            "widthFrame": 900,
+            "heightFrame": 900,
+            "frames": 24
+        },
+        "throw": {
+            "image": "./sheets/players/main/throw.png",
+            "widthFrame": 900,
+            "heightFrame": 900,
+            "frames": 12
+        }
     }
 }

@@ -1,7 +1,10 @@
-import React from "react"
+import React, {useState} from "react"
 import Spritesheet from 'react-responsive-spritesheet';
+import sprites from "../sprites.json"
+
 
 const Sprite = ({props}) => {
+
   return <Spritesheet
     image={props.image}
     widthFrame={props.widthFrame}
