@@ -8,8 +8,8 @@ var statusObj = {
 }
 
 class Character {
-    constructor(name, health, armor, totalHealth, totalArmor, status=statusObj
-        attacking=false, defending=false, idle=true, alive=true) {
+    constructor(name, health, armor, totalHealth, totalArmor, status=statusObj, 
+        round=1, attacking=false, defending=false, idle=true, alive=true) {
         this.health = health;
         this.armor = armor;
         this.totalHealth = totalHealth;
@@ -21,6 +21,7 @@ class Character {
         this.idle = idle;
         this.alive = true;
         this.status = status;
+        this.round = round;
     }
 }
 Character.prototype.defend = function([damage, type]) {

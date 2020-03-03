@@ -60,9 +60,9 @@ class Player extends Character {
     // These are the initial values that a player starts with
     constructor(name, health=50, armor=20, totalHealth=50, totalArmor=50, spells=spellsObj, status,
         cards=playerCards, discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[],
-        attacking, defending, idle, alive) {
+        attacking, defending, idle, alive, round) {
         super(name, health, armor, totalHealth, totalArmor, status,
-            attacking, defending, idle, alive)
+            attacking, defending, idle, alive, round)
         // Current cards the player has
         this.cards = cards;
         this.discardDeck = discardDeck;
@@ -98,7 +98,7 @@ class Player extends Character {
                 this.armor = Math.min(this.totalArmor, resultDamage * 2)
                 break;
             case "jackpot":
-                resultDamage += 5 * round;
+                resultDamage += 5 * this.round;
                 break;
             default:
                 break;
@@ -177,9 +177,9 @@ class Player extends Character {
     // STATE
     selectCard(e, action) {
         if ( action === "select" ) {
-            Choop.selectedCards.push(e.target.textContent)
+            this.selectedCards.push(e.target.textContent)
         } else if ( action === "deselect" ) {
-            Choop.selectedCards.splice(Choop.selectedCards.indexOf(e.target.textContent), 1);
+            this.selectedCards.splice(this.selectedCards.indexOf(e.target.textContent), 1);
         }
         // event.target.value
         // console.log("Selecting a hand")

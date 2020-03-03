@@ -7,16 +7,23 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
     },
-})
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
 
-const AnimatedCard = () => {
+export default function AnimatedCard() {
     const classes = useStyles();
+
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <h1>Little Animation of Character here</h1>
-            </CardContent>
-        </Card>
+        <h1>AnimatedCard</h1>
     );
 }
-export default AnimatedCard;
