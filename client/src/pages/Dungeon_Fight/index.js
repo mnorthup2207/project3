@@ -1,7 +1,79 @@
-import React from "react";
+// // Environment: Turn this into the connector between the two characters
+import { Link } from "react-router-dom";
+////Material UI////
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import B1 from "../../images/bg-paper.png";
+import B2 from "../../images/bg-rock.png";
+import B3 from "../../images/bg-scissors.png";
+import "./style.css"
 import scripts from "./scripts";
+
+// Destructuring the scripts export
 const { Monster, Player, healthArmorUpdate, showAttackSpell, playerAction, playerDrawHand, 
     determineMonsterAction, monsterAction, newRound } = scripts;
+
+const BGArray = [B1, B2, B3];
+const AltArray = ["Paper Background", "Rock Background", "Scissor Background"];
+
+//! Git rid of this
+const getRandomInt = () => Math.floor(Math.random() * Math.floor(3));
+const picChange = getRandomInt();
+
+// Functions
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
+const init = () => {
+    var round = 1;
+    // Pointers
+    // Add this into an init function
+    const Choop = new Player("Choop");
+    const Doop = new Monster("Doop");
+    healthArmorUpdate(player1, Choop);
+    healthArmorUpdate(monster1, Doop);
+
+    // drawDeck.firstElementChild.innerText = Choop.cards.length;
+    // discardDeck.innerText = 0;
+}
+
+const DungeonFight = (props) => {
+    const classes = useStyles();
+
+    // componentDidMount(init())
+    init()
+    return (
+        <>
+        <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]}/>
+        <Container id="fightContainer" maxWidth="lg">
+            <Grid container spacing={3} className={classes.root}>
+                <Grid item xs>
+                    <Link to="/home"><h2>Home</h2></Link>
+                </Grid>
+                <Grid item xs>
+                    <Link to="/map"><h2>Map</h2></Link>
+                </Grid>
+            </Grid> 
+            <Grid id="shift" container spacing={3} className={classes.root}>
+                <Grid item xs>
+                    <h1>Fight Goes Here</h1>
+                </Grid>
+            </Grid>
+        </Container>
+    </>
+    );
+};
+
+export default DungeonFight;
+
 
 function Dungeon_Fight(props) {
     // Buttons and corresponding events
@@ -27,46 +99,6 @@ function Dungeon_Fight(props) {
     const monster1 = document.getElementById("monster1");
     const monsterIntention = document.getElementById("monster1Intention")
     // Initialize the game board
-    function init() {
-        var round = 1;
-        // Pointers
-        // Add this into an init function
-        const Choop = new Player("Choop");
-        const Doop = new Monster("Doop");
-        healthArmorUpdate(player1, Choop);
-        healthArmorUpdate(monster1, Doop);
 
-        drawDeck.firstElementChild.innerText = Choop.cards.length;
-        discardDeck.innerText = 0;
-    }
-    // componentDidMount(init())
-    init()
     return <h1>Dungeon_Fight</h1>
 }
-//! Dead code used only for inspiration
-// // ===========================================================
-// // HTML FUNCTIONALITY
-// // Pointers
-// const container = document.querySelector(".container");
-// const handWrapper = document.querySelector(".handWrapper");
-// const playBtn = document.getElementById("play");
-// const drawBtn = document.getElementById("draw");
-// const drawDeck = document.querySelector("[name = drawDeck]");
-// const discardDeck = document.querySelector("[name = discardDeck]").firstElementChild;
-// const spell = document.querySelector(".spell");
-// const player1 = document.getElementById("player1");
-// const monster1 = document.getElementById("monster1");
-// const monsterIntention = document.getElementById("monster1Intention")
-// // Global Variables
-// var round = 1;
-
-// // Play btn state
-// playBtn.addEventListener("click", playerAction);
-// // Draw btn state
-// drawBtn.addEventListener("click", playerDrawHand);
-// // Spell event listener
-// spell.addEventListener("click", playerAction);
-// // Draw deck event listener
-// drawDeck.addEventListener("click", playerDrawHand);
-
-// // Environment: Turn this into the connector between the two characters
