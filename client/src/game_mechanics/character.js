@@ -56,7 +56,11 @@ function playerAction() {
     discardDeck.innerText = Choop.discardDeck.length;
     spell.style.display = "none";
     // Add a set interval throughout this part
-    monsterAction()
+    if ( Doop.alive ) {
+        monsterAction();
+    } else {
+        alert("You have slain the monster!")
+    }
 }
 // When the user presses the draw or green deck. We run Choop.playerDrawHand()
 // Then we render the cards and add event listeners
@@ -100,12 +104,19 @@ function playerDrawHand() {
     discardDeck.innerText = Choop.discardDeck.length;
 }
 // Monster environment controller
+function determineMonsterAction () {
+    let round0 = round - 1; // Round starting at 0
+    if ( Doop.sequence.length > round0 ) {
+        return Doop.sequence[round0];
+    }
+    return Doop.sequence[round0 % Doop.sequence.length]
+}
 function monsterAction() {
     console.log("Monster's turn")
-    console.log(Doop.sequence[round])
-    console.log(Doop[Doop.sequence[round]]());
-
-    let doopAttack = Doop[Doop.sequence[round]]();
+    let action = determineMonsterAction()
+    console.log(action);
+    let doopAttack = Doop[action]();
+    console.log(doopAttack);
     Choop.defend(doopAttack);
     // Update the health and armor of both
     healthArmorUpdate(player1, Choop);
@@ -115,7 +126,11 @@ function monsterAction() {
     drawDeck.firstElementChild.innerText = Choop.drawDeck.length;
     discardDeck.innerText = Choop.discardDeck.length;
     spell.style.display = "none";
-    newRound()
+    if ( Choop.alive ) {
+        newRound()
+    } else {
+        alert("You have been slain!")
+    }
 }
 
 // After the round is over
@@ -123,9 +138,10 @@ function newRound() {
     
     // Updates the global variable for the round
     round ++;
+    console.log(round);
 
     // Update the intention of the monster
-    monsterIntention.setAttribute = Doop.sequence[round]
+    // monsterIntention.setAttribute = Doop.sequence[round]
 }
 
 // ===============================================================
@@ -193,7 +209,7 @@ const spellsObj = {
 // 
 class Character {
     constructor(name, health, armor, totalHealth, totalArmor,
-        attacking=false, defending=false, idle=true) {
+        attacking=false, defending=false, idle=true, alive=true) {
         this.health = health;
         this.armor = armor;
         this.totalHealth = totalHealth;
@@ -203,41 +219,55 @@ class Character {
         this.attacking = attacking;
         this.defending = defending;
         this.idle = idle;
+        this.alive = true;
+    }
+}
+Character.prototype.defend = function([damage, type]) {
+    console.log("defending");
+    let resultHealth;
+    if ( type.length !== 0 ) {
+        // Replace this with ef elses late when an attack can have multiple attack types
+        switch (type[0]) {
+            case "desolate":
+                return this.armor = Math.max(this.armor - damage, 0);
+            case "cut":
+                resultHealth = this.health - damage;
+                this.isAlive(resultHealth);
+                return this.health = resultHealth;
+            default:
+                break;
+        }
+    }
+    if ( damage <= this.armor) {
+        return this.armor -= damage;
+    }
+    resultHealth = this.health - ( damage - this.armor )
+    this.armor = 0;
+    this.isAlive(resultHealth);
+    return this.health = resultHealth
+}
+Character.prototype.isAlive = function(resultHealth) {
+    if (resultHealth <= 0) {
+        console.log("Is dead")
+        this.alive = false
+    } else {
+        console.log("Is alive")
     }
 }
 
 class Monster extends Character {
     constructor(name, health=15, armor=20, totalHealth=75, totalArmor=30, damage=10,
-        sequence=["attack", "attack"], attacking, defending, idle) {
+        sequence=["attack", "attack"], attacking, defending, idle, alive) {
         super(name, health, armor, totalHealth, totalArmor,
-            attacking, defending, idle)
+            attacking, defending, idle, alive)
         this.damage = damage;
         this.sequence = sequence;
     }
-    attack(opponent) {
+    attack() {
         // the damage is regular damage
         return [this.damage, []]
     }
-    defend([damage, type]) {
-        console.log("defending");
-        if ( type.length !== 0 ) {
-            // Replace this with ef elses late when an attack can have multiple attack types
-            switch (type[0]) {
-                case "desolate":
-                    return this.armor -= Math.max(damage, 0);
-                case "cut":
-                    return this.health -= damage;
-                default:
-                    break;
-            }
-        }
-        if ( damage <= this.armor) {
-            return this.armor -= damage;
-        }
-        this.armor = 0;
-        return this.health -= ( damage - this.armor )
-    }
-    spell(type, opponent) {
+    spell(type) {
         switch (type) {
             case "armor":
                 return console.log("Defend magic armor")
@@ -253,9 +283,9 @@ class Player extends Character {
     // These are the initial values that a player starts with
     constructor(name, health=50, armor=20, totalHealth=50, totalArmor=50, spells=spellsObj, status=statusObj,
         cards=playerCards, discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[],
-        attacking, defending, idle) {
+        attacking, defending, idle, alive) {
         super(name, health, armor, totalHealth, totalArmor,
-            attacking, defending, idle)
+            attacking, defending, idle, alive)
         // Current cards the player has
         this.cards = cards;
         this.discardDeck = discardDeck;
@@ -269,7 +299,6 @@ class Player extends Character {
         this.status = status;
 
     }
-    //! Need to refactor 
     attack(type, powerUps) {
         // gonna have to change this for powerups
         let attackArr = this.selectedCards.map(card => parseInt(card[1]));
@@ -307,25 +336,6 @@ class Player extends Character {
     castSpell() {
         return this.spells[this.determineSpell()]();
     }
-    defend(damage, type) {
-        console.log("defending");
-        if ( type.length !== 0 ) {
-            // Replace this with ef elses late when an attack can have multiple attack types
-            switch (type[0]) {
-                case "desolate":
-                    return this.armor -= Math.max(damage, 0);
-                case "cut":
-                    return this.health -= damage;
-            }
-        }
-        if ( damage <= this.armor) {
-            return this.armor -= damage;
-        }
-        this.armor = 0;
-        return this.health -= ( damage - this.armor )
-    
-    }
-    // Determines the spell from the 3 selected cards
     determineSpell() {
         let spell = this.selectedCards.map(card => card[0]).sort().join("");
         console.log(`Spell ${spell}`);
