@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+
+////Sprites////
+import Sprite from "../../sprites/getSprite";
+import sprites from "../../sprites/sprites.json";
+
 ////Material UI////
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+
 ///pages/components///
-import AnimationCard from "../../components/Animation_Card"
 import "./style.css"
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,28 +38,65 @@ const Landing = (props) => {
         <div className="landing">
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
-                    <Grid item xs>
+                    <Grid container direction="row" justify="space-between" alignItems="center">
                         <h4>
                             <b>Welcome Back,</b> {user.name.split(" ")[0]}
                         </h4>
                         <Button
                             variant="contained"
                             onClick={onLogoutClick}
+                            variant="outlined" 
+                            color="secondary"
                         >
-                            Logout
-                            </Button>
-                    </Grid>
-                    <Grid item xs>
-                    <Link to="/map"><h2>Map</h2></Link>
+                           Logout <i className="fas fa-sign-out-alt" style={{marginLeft: 10}}></i>
+                        </Button>
                     </Grid>
                 </Grid>
-                <Grid id="shift" container spacing={3} className={classes.root}>
-                    <Grid item xs>
-                        <Link to="/fight"><h2>Fight</h2></Link>
-                        <Link to="/creators"><h2>Meet the Creators</h2></Link>
+                <Grid id="shift" container direction="row" spacing={2} className={classes.root}>
+                    <Grid 
+                        container
+                        item
+                        xs={3}
+                        direction="column"
+                        justify="flex-start"
+                        alignItems="flex-start">
+                        <Link to="/map">
+                            <Button
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Map</h1>
+                                <i class="material-icons" style={{ marginLeft: 10 }}>my_location</i>
+                            </Button>
+                        </Link>
+                        <Link to="/fight">
+                            <Button 
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Fight</h1>
+                                <i class="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
+                            </Button>
+                        </Link>
+                        <Link to="/creators">
+                            <Button
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Creators</h1>
+                                <i class="material-icons" style={{ marginLeft: 10 }}>people</i>
+                            </Button>
+                        </Link>
                     </Grid>
-                    <Grid item xs>
-                        <AnimationCard />
+                    <Grid 
+                        container
+                        item
+                        xs={6}
+                        direction="column"
+                        justify="flex-start"
+                        alignItems="flex-start">
+                        <Sprite charcter={sprites.player.main} />
+
                     </Grid>
                 </Grid>
             </Container>
