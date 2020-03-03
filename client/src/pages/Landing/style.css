@@ -23,3 +23,11 @@
 #shift{
     margin-top: 5%;
 }
+
+.landing {
+    height: 100vh;
+    background-image: url("../../images/bg-auth.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}

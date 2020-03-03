@@ -19,8 +19,25 @@ import GameOver from "./pages/Game_Over"
 import LeaderBoard from "./pages/Leader_Board"
 import Loot from "./pages/Loot"
 import MapPage from "./pages/Map"
+
+////Material UI////
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { amber, deepOrange } from '@material-ui/core/colors';
+
+
 // import logo from './logo.svg';
 import "./App.css";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: amber[500]
+        },
+        secondary: {
+            main: deepOrange[700],
+        },
+    },
+});
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -48,18 +65,20 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <div className="App">
-                        <Route exact path="/" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/test" component={Test} />
-                        <Switch>
-                            <PrivateRoute exact path="/home" component={Landing} />
-                            <PrivateRoute exact path="/creators" component={AboutCreators} />
-                            <PrivateRoute exact path="/gameover" component={GameOver} />
-                            <PrivateRoute exact path="/fight" component={DungeonFight} />
-                            <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
-                            <PrivateRoute exact path="/loot" component={Loot} />
-                            <PrivateRoute exact path="/map" component={MapPage} />
-                        </Switch>
+                        <ThemeProvider theme={theme}>
+                            <Route exact path="/" component={Login} />
+                            <Route exact path="/register" component={Register} />
+                            <Route exact path="/test" component={Test} />
+                            <Switch>
+                                <PrivateRoute exact path="/home" component={Landing} />
+                                <PrivateRoute exact path="/creators" component={AboutCreators} />
+                                <PrivateRoute exact path="/gameover" component={GameOver} />
+                                <PrivateRoute exact path="/fight" component={DungeonFight} />
+                                <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
+                                <PrivateRoute exact path="/loot" component={Loot} />
+                                <PrivateRoute exact path="/map" component={MapPage} />
+                            </Switch>
+                        </ThemeProvider>
                     </div>
                 </Router>
             </Provider>
