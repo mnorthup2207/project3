@@ -11,9 +11,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Landing from "./pages/Landing/Landing";
-<<<<<<< HEAD
 import Test from "./pages/Test"
-=======
 ////Pages/Components////
 import AboutCreators from "./pages/About_the_creators"
 import DungeonFight from "./pages/Dungeon_Fight"
@@ -21,7 +19,6 @@ import GameOver from "./pages/Game_Over"
 import LeaderBoard from "./pages/Leader_Board"
 import Loot from "./pages/Loot"
 import MapPage from "./pages/Map"
->>>>>>> 1f1f8a5560971922417d6a58a371aaf70fdb6000
 // import logo from './logo.svg';
 import "./App.css";
 
