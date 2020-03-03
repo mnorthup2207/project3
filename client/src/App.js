@@ -11,6 +11,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Landing from "./pages/Landing/Landing";
+import Test from "./pages/Test"
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -39,12 +40,12 @@ if (localStorage.jwtToken) {
 class App extends Component {
     render() {
         return (
-    
             <Provider store={store}>
                 <Router>
                     <div className="App">
                         <Route exact path="/" component={Login} />
                         <Route exact path="/register" component={Register} />
+                        <Route exact path="/test" component={Test} />
                         <Switch>
                             <PrivateRoute exact path="/home" component={Landing} />
                         </Switch>
