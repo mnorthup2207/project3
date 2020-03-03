@@ -1,0 +1,67 @@
+.container {
+    box-sizing: border-box;
+    height: 45%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Characters */
+.character {
+    box-sizing: border-box;
+    height: 45vh;
+    width: 25vw;
+    background-color: lightpink;
+    z-index: 10;
+    margin: 10% 10% 0;
+}
+.spell {
+    padding: 8vh 6vw;
+    border: black solid 1rem;
+    border-radius: 50%;
+    display: none;
+}
+
+/* Hand */
+.handWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.card {
+    padding: 15vh 7vw;
+}
+
+[data-selected = true] {
+    z-index: 20;
+    padding: 17vh 7.5vw;
+
+}
+
+[data-type = r] {
+    background-color: brown;
+}
+[data-type = p] {
+    background-color: wheat;
+}
+[data-type = s] {
+    background-color: grey;
+}
+
+/* Deck */
+
+.cards {
+    padding: 6vh 4vw;
+    background-color: green;
+}
+[name = discardDeck] {
+    background-color: lightgray;
+}
+
+/* Window I'm working in */
+body {
+    /* height: 330px;
+    width: 550px; */
+    margin: 0;
+}

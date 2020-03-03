@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <button id="play">Play</button>
+    <button id="draw">Draw</button>
+    <div class="container">
+        <div class="character" id="player1"></div>
+        <div class="spell">
+            <p id="selected1"></p>
+            <p id="selected2"></p>
+            <p id="selected3"></p>
+        </div>
+        <div class="character" id="monster1"></div>
+    </div>
+    <div class="container">
+        <div class="handWrapper">
+
+        </div>
+        <div class="cardsWrapper">
+            <div class="cards" name="drawDeck"><p></p></div>
+            <div class="cards" name="discardDeck"><p></p></div>
+        </div>
+    </div>
+
+    <script src="Classes/Character.js"></script>
+    <script src="character.js"></script>
+</body>
+</html>
