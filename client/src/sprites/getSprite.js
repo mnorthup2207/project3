@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { Component } from "react"
 import Spritesheet from 'react-responsive-spritesheet';
-import sprites from "./sprites.json"
 
-
-function Sprite() {
-    // const [data, setData] = useState({
-    //     name: 'React',
-    //     type: 'walk',
-    // })
-    constructer
-
+class Sprite extends Component {
+    constructor() {
+        super();
+        this.state = {
+            name: 'React',
+            type: 'idle'
+        };
+    }
 
     myFunctionPlay() {
         this.spritesheeInstance.play();
@@ -19,53 +18,78 @@ function Sprite() {
         this.spritesheeInstance.pause();
     }
 
-    myFunctionGetFrame() {
-        alert(this.spritesheeInstance.getInfo('frame'));
+    changeAnimation(action, p = this.props.charcter) {
+
+        // console.log(p[action])
+        this.spritesheeInstance.setStartAt(0)
+        this.spritesheeInstance.setEndAt(p[action].frames)
+        console.log("State is now", action)
+
+        this.setState({ ...this.state, type: action })
+
+
+        // this.loopPromise().then(
+        //     console.log(p[action]),
+        //     this.spritesheeInstance.setStartAt(0),
+        //     this.spritesheeInstance.setEndAt(p[action].frames),
+        //     console.log("State is now", action),
+    
+        //     this.setState({ ...this.state, type: action })
+        // )
     }
 
     allTypes(p = this.props.charcter) {
-        console.log(p)
         const types = []
         for (const action in p) {
-            console.log(action)
             types.push(
-                <button value={action} onClick={() => {this.setState({ ...this.state, type: { action }.action })}}>{action}</button>
+                <button value={action} onClick={() => this.changeAnimation({ action }.action)}>{action}</button>
             )
         };
         return types
     }
 
+    // loopPromise(action) {
+    //     return new Promise((resolve, reject) => {
+    //         this.loopDone(action, (err, script) => {
+    //             if (err) reject(err)
+    //             else resolve(script);
+    //         });
+    //     })
+    // }
+
+
     action(p = this.props.charcter, type = this.state.type) {
-        console.log(type)
         return p[type]
     }
 
     render() {
         return (
-            <div className="rrs-container">
-                <div >
-                    {this.state.type ? (
-                        <Spritesheet
-                            className={`sprite`}
-                            image={this.action().image}
-                            widthFrame={this.action().widthFrame}
-                            heightFrame={this.action().heightFrame}
-                            steps={this.action().frames}
-                            fps={12}
-                            // startAt={0}
-                            // endAt={this.action.frames}
-                            autoplay={true}
-                            loop={false}
-                            getInstance={spritesheet => {
-                                this.spritesheeInstance = spritesheet;
-                            }}
-                        />
-                    ) : null}
+            <div className="rrs-container" >
+                <div className='sprite'>
+                    <Spritesheet
+                        image={this.action().image}
+                        widthFrame={this.action().widthFrame}
+                        heightFrame={this.action().heightFrame}
+                        steps={50}
+                        fps={12}
+                        autoplay={true}
+                        loop={true}
+                        getInstance={spritesheet => {
+                            // this.loopDone = spritesheet.onLoopComplete
+                            this.spritesheeInstance = spritesheet;
+                        }}
+                        onInit={() => {
+                            this.spritesheeInstance.setEndAt(this.action().frames)
+                        }
+                        }
+                        // onLoopComplete={spritesheet => {
+                        //     this.loopDone = spritesheet
+                        // }}
+                    />
                 </div>
                 <div>
                     <button onClick={this.myFunctionPlay.bind(this)}>play</button>
                     <button onClick={this.myFunctionPause.bind(this)}>pause</button>
-                    <button onClick={this.myFunctionGetFrame.bind(this)}>alert current frame</button>
                     {this.allTypes()}
                 </div>
             </div>
