@@ -1,0 +1,28 @@
+form {
+    width: 75%;
+    /* padding: 0 15% 0; */
+}
+.form-element {
+    margin: 1rem;
+}
+
+.MuiFormControl-root {
+    width: 100%;
+    margin: 1rem;
+}
+
+.auth-controls {
+    padding-top: 5vh;
+}
+
+.auth-page {
+    height: 100vh;
+    background-image: url("../../images/bg-auth.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center;  */
+}
+
+.sprite {
+    transform: scale(.3);
+}
