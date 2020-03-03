@@ -1,0 +1,25 @@
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -10;
+}
+#masterContainer {
+    z-index: 100;
+    color: white;
+}
+#masterContainer a {
+    z-index: 100;
+    color: white;
+    text-decoration: none;
+}
+#masterContainer Link {
+    z-index: 100;
+    color: white;
+    text-decoration: none;
+}
+#shift{
+    margin-top: 5%;
+}

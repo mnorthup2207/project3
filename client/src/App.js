@@ -11,9 +11,14 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Landing from "./pages/Landing/Landing";
+////Pages/Components////
+import AboutCreators from "./pages/About_the_creators"
+import DungeonFight from "./pages/Dungeon_Fight"
+import GameOver from "./pages/Game_Over"
+import LeaderBoard from "./pages/Leader_Board"
+import Loot from "./pages/Loot"
+import MapPage from "./pages/Map"
 // import logo from './logo.svg';
-// import './App.css';
-
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -47,6 +52,12 @@ class App extends Component {
                         <Route exact path="/register" component={Register} />
                         <Switch>
                             <PrivateRoute exact path="/home" component={Landing} />
+                            <PrivateRoute exact path="/creators" component={AboutCreators} />
+                            <PrivateRoute exact path="/gameover" component={GameOver} />
+                            <PrivateRoute exact path="/fight" component={DungeonFight} />
+                            <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
+                            <PrivateRoute exact path="/loot" component={Loot} />
+                            <PrivateRoute exact path="/map" component={MapPage} />
                         </Switch>
                     </div>
                 </Router>
@@ -59,5 +70,4 @@ class App extends Component {
         );
     }
 }
-
 export default App;
