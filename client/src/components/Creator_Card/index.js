@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     },
 });
 
-const AnimatedCard = () => {
+const CreatorCard = () => {
     const classes = useStyles();
 
     return (
@@ -32,4 +32,4 @@ const AnimatedCard = () => {
     );
 }
 
-export default AnimatedCard;
+export default CreatorCard;

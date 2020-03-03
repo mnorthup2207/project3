@@ -1,0 +1,17 @@
+#bgBoss {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: -10;
+}
+#creatorContainer {
+    color: white;
+}
+#creatorContainer a {
+    color: white;
+    text-decoration: none;
+}
