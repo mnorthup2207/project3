@@ -1,22 +1,342 @@
 {
-    "main": {
-        "idle": {
-            "image": "./sheets/players/main/idle.png",
-            "widthFrame": 900,
-            "heightFrame": 900,
-            "frames": 18
+    "player": {
+        "main": {
+            "idle": {
+                "image": "./sheets/players/main/idle.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18
+            },
+            "throw": {
+                "image": "./sheets/players/main/throw.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            }
+        }
+    },
+    "rock": {
+        "one": {
+            "idle": {
+                "image": "./sheets/rock/1/idle.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/rock/1/attack.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/rock/1/jump.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            }
         },
-        "walk": {
-            "image": "./sheets/players/main/walking.png",
-            "widthFrame": 900,
-            "heightFrame": 900,
-            "frames": 24
+        "two": {
+            "idle": {
+                "image": "./sheets/rock/2/idle.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/rock/2/attack.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/rock/2/jump.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            }
         },
-        "throw": {
-            "image": "./sheets/players/main/throw.png",
-            "widthFrame": 900,
-            "heightFrame": 900,
-            "frames": 12
+        "three": {
+            "idle": {
+                "image": "./sheets/rock/3/idle.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/rock/3/attack.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/rock/3/jump.png",
+                "widthFrame": 800,
+                "heightFrame": 450,
+                "frames": 10
+            }
+        }
+    },
+    "paper": {
+        "one": {
+            "idle": {
+                "image": "./sheets/paper/1/idle.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/paper/1/attack.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/paper/1/jump.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            }
+        },
+        "two": {
+            "idle": {
+                "image": "./sheets/paper/2/idle.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/paper/2/attack.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "jump": {
+                "image": "./sheets/paper/2/jump.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10,
+                "oneLoop": true
+            }
+        },
+        "three": {
+            "idle": {
+                "image": "./sheets/paper/3/idle.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/paper/3/attack.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/paper/3/jump.png",
+                "widthFrame": 2100,
+                "heightFrame": 900,
+                "frames": 10
+            }
+        }
+    },
+    "scissor": {
+        "one": {
+            "idle": {
+                "image": "./sheets/scissor/1/idle.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/scissor/1/attack.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/scissor/1/jump.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            }
+        },
+        "two": {
+            "idle": {
+                "image": "./sheets/scissor/2/idle.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/scissor/2/attack.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/scissor/2/jump.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            }
+        },
+        "three": {
+            "idle": {
+                "image": "./sheets/scissor/3/idle.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/scissor/3/attack.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/scissor/3/jump.png",
+                "widthFrame": 1400,
+                "heightFrame": 750,
+                "frames": 10
+            }
+        }
+    },
+    "boss": {
+        "one": {
+            "idle": {
+                "image": "./sheets/boss/1/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/1/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/1/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "death": {
+                "image": "./sheets/boss/1/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/1/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/1/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/1/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            }
+        },
+        "two": {
+            "idle": {
+                "image": "./sheets/boss/2/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/2/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/2/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "death": {
+                "image": "./sheets/boss/2/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/2/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/2/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/2/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            }
+        },
+        "three": {
+            "idle": {
+                "image": "./sheets/boss/3/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/3/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/3/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/boss/3/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/3/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/3/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/3/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            }
         }
     }
 }

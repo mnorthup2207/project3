@@ -1,66 +1,66 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";
+import Title from "../../components/title/title1x";
 
-// Material Imports
-import TextField from '@material-ui/core/TextField';
+////Sprites////
+import Sprite from "../../sprites/getSprite";
+import sprites from "../../sprites/sprites.json";
+
+////Formik////
+import { Formik } from 'formik';
+
+////Material UI////
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
-class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-            errors: {}
-        };
-    }
+import "./styles.css";
 
-    componentDidMount() {
-        // If logged in and user navigates to Login page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/home");
+import amber from '@material-ui/core/colors/amber';
+// import amber from '@material-ui/core/colors/purple';
+
+
+const Login = (props) => {
+
+    const [userState, setUserState] = useState({
+        email: "",
+        password: ""
+    })
+
+
+    useEffect(() => {
+        if (props.auth.isAuthenticated) {
+            props.history.push("/home");
         }
-    }
+    })
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/home");
-        }
-
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
-
-    onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+    const onChange = e => {
+        setUserState({...userState, [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
 
         const userData = {
-            email: this.state.email,
-            password: this.state.password
+            email: userState.email,
+            password: userState.password
         };
 
-        this.props.loginUser(userData);
+        props.loginUser(userData);
     };
 
-    render() {
-        const { errors } = this.state;
 
-        return (
-            <div className="container">
-                <div style={{ marginTop: "4rem" }} className="row">
-                    <div className="col s8 offset-s2">
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+    return (
+        <div className="auth-page">
+            <Container maxWidth="sm">
+                <Title />
+                <div className="auth-controls">
+                    <Grid container justify="center" alignItems="center">
+                        <div>
                             <h4>
                                 <b>Login</b> below
                             </h4>
@@ -73,57 +73,75 @@ class Login extends Component {
                                 </Link>
                             </p>
                         </div>
-                        <form noValidate onSubmit={this.onSubmit}>
-                            {/* ADD ERROR HANDLING */}
-                            <TextField 
-                                onChange={this.onChange}
-                                value={this.state.email}
-                                error={errors.email}
-                                id="email"
-                                type="email"
-                                // className={classnames("", {
-                                //     invalid: errors.email || errors.emailnotfound
-                                // })}
-                                label="Email"
-                                variant="outlined"
-                            />
-                            {/* <span className="red-text">
-                                {errors.email}
-                                {errors.emailnotfound}
-                                </span> */}
-                            <div className="input-field col s12">
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.password}
-                                    error={errors.password}
-                                    id="password"
-                                    type="password"
-                                    className={classnames("", {
-                                        invalid: errors.password || errors.passwordincorrect
-                                    })}
-                                />
-                                <label htmlFor="password">Password</label>
-                                <span className="red-text">
-                                    {errors.password}
-                                    {errors.passwordincorrect}
-                                </span>
-                            </div>
-                            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <Button 
-                                    variant="contained"
-                                    color="primary"
-                                    type="submit"
-                                    size="large"
-                                >
-                                    Login
-                                </Button>
-                            </div>
-                        </form>
-                    </div>
+                    </Grid>
+                    <Grid container s={12} justify="center" alignItems="center">
+                        <Formik
+                            initialValues={{userState}}
+                            validate={values => {
+                                const errors = {};
+                                if (!values.userState.email) {
+                                    errors.email = 'Required';
+                                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.userState.email)) {
+                                    errors.email = 'Invalid email address';
+                                }
+                                return errors;
+                            }}
+                        >
+                            <form noValidate onSubmit={onSubmit}>
+                                <div>
+                                    <div className="form-element">
+                                        {/* ADD ERROR HANDLING */}
+                                        <TextField 
+                                            onChange={onChange}
+                                            value={userState.email}
+                                            id="email"
+                                            type="email"
+                                            helperText={(props.errors.email) && props.errors.email}
+                                            error={(props.errors.email) && props.errors.email}
+                                            label="Email"
+                                        />
+                                        {/* <span className="red-text">
+                                            {errors.email}
+                                            {errors.emailnotfound}
+                                            </span> */}
+                                    </div>
+                                    <div className="form-element">
+                                        <TextField
+                                            onChange={onChange}
+                                            value={userState.password}
+                                            // error={errors.password}
+                                            id="password"
+                                            type="password"
+                                            // className={classnames("", {
+                                            //     invalid: errors.password || errors.passwordincorrect
+                                            // })}
+                                            label="Password"
+                                        />
+                                        {/* <span className="red-text">
+                                            {errors.password}
+                                            {errors.passwordincorrect}
+                                        </span> */}
+                                    </div>
+                                </div>
+                                <Grid container alignItems="center" justify="center">
+                                    <Button
+                                        style={{marginTop: 25}}
+                                        variant="contained"
+                                        color="primary"
+                                        type="submit"
+                                        size="large"
+                                    >
+                                        Login
+                                    </Button>
+                                </Grid>
+                            </form>
+                        </Formik>
+                        <Sprite charcter={sprites.player.main} />
+                    </Grid>
                 </div>
-            </div>
-        );
-    }
+            </Container>
+        </div>
+    );
 }
 
 Login.propTypes = {
@@ -132,9 +150,9 @@ Login.propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-    errors: state.errors
+const mapStateToProps = userState => ({
+    auth: userState.auth,
+    errors: userState.errors
 });
 
 export default connect(
