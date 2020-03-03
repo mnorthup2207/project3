@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
@@ -8,13 +8,10 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-////Pages////
-import AboutCreators from "../About_the_creators"
-import DungeonFight from "../Dungeon_Fight"
-import GameOver from "../Game_Over"
-import LeaderBoard from "../Leader_Board"
-import Loot from "../Loot"
-import Map from "../Map"
+///pages/components///
+import AnimationCard from "../../components/Animation_Card"
+import GameAnimation from "../../images/gameanimation.mp4";
+import "./style.css"
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -34,29 +31,40 @@ const Landing = (props) => {
     const classes = useStyles();
     const { user } = props.auth;
     return (
-        <Router>
-            <Container maxWidth="lg">
-                <div className={classes.root}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <h4>
-                                <b>Welcome Back,</b> {user.name.split(" ")[0]}
-                            </h4>
-                            <Button
-                                variant="contained"
-                                onClick={onLogoutClick}
-                            >
-                                Logout
-                    </Button>
-                        </Grid>
+        <>
+            <video autoPlay muted loop id="myVideo">
+                <source src={GameAnimation} type="video/mp4" />
+            </video>
+            <Container id="masterContainer" maxWidth="lg">
+                <Grid container spacing={3} className={classes.root}>
+                    <Grid item xs>
+                        <h4>
+                            <b>Welcome Back,</b> {user.name.split(" ")[0]}
+                        </h4>
+                        <Button
+                            variant="contained"
+                            onClick={onLogoutClick}
+                        >
+                            Logout
+                            </Button>
                     </Grid>
-                </div>
+                    <Grid item xs>
+                    <Link to="/map"><h2>Map</h2></Link>
+                    </Grid>
+                </Grid>
+                <Grid id="shift" container spacing={3} className={classes.root}>
+                    <Grid item xs>
+                        <Link to="/fight"><h2>Fight</h2></Link>
+                        <Link to="/creators"><h2>Meet the Creators</h2></Link>
+                    </Grid>
+                    <Grid item xs>
+                        <AnimationCard />
+                    </Grid>
+                </Grid>
             </Container>
-        </Router>
+        </>
     );
 };
-
-
 
 Landing.propTypes = {
     logoutUser: PropTypes.func.isRequired,
