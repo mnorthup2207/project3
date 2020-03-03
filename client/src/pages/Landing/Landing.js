@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 ///pages/components///
 import AnimationCard from "../../components/Animation_Card"
-import GameAnimation from "../../images/gameanimation.mp4";
 import "./style.css"
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,10 +30,7 @@ const Landing = (props) => {
     const classes = useStyles();
     const { user } = props.auth;
     return (
-        <>
-            <video autoPlay muted loop id="myVideo">
-                <source src={GameAnimation} type="video/mp4" />
-            </video>
+        <div className="landing">
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
@@ -62,7 +58,7 @@ const Landing = (props) => {
                     </Grid>
                 </Grid>
             </Container>
-        </>
+        </div>
     );
 };
 

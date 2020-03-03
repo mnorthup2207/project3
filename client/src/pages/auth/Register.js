@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
+import Title from "../../components/title/title1x";
+
+////Sprites////
+import Sprite from "../../sprites/getSprite";
+import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
 import Button from '@material-ui/core/Button';
@@ -14,149 +18,125 @@ import TextField from '@material-ui/core/TextField';
 import "./styles.css";
 
 
-class Register extends Component {
-    constructor() {
-        super();
-        this.state = {
-            name: "",
-            email: "",
-            password: "",
-            password2: "",
-            errors: {}
-        };
-    }
+const Register = (props) => {
 
-    componentDidMount() {
-        // If logged in and user navigates to Register page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/home");
+    const [registerState, setRegisterState] = useState({
+        name: "",
+        email: "",
+        password: "",
+        password2: "",
+        errors: {}
+    }) 
+
+    useEffect(() => {
+        if (props.auth.isAuthenticated) {
+            props.history.push("/home");
         }
-    }
+    })
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
-
-    onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+    const onChange = e => {
+       setRegisterState({...registerState, [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
 
         const newUser = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            password2: this.state.password2
+            name: registerState.name,
+            email: registerState.email,
+            password: registerState.password,
+            password2: registerState.password2
         };
 
-        this.props.registerUser(newUser, this.props.history);
+        props.registerUser(newUser, props.history);
     };
 
-    render() {
-        const { errors } = this.state;
 
-        return (
+    return (
+        <div className="auth-page">
             <Container maxWidth="sm">
-                <Grid container justify="center" alignItems="center">
-                    <div>
-                        <h4>
-                            <b>Register</b> below
-                        </h4>
-                        <p className="grey-text text-darken-1">
-                            Already have an account? 
-                            <Link to="/">
-                                <Button color="secondary">
-                                    Log In
-                                </Button>
-                            </Link>
-                        </p>
-                    </div>
-                </Grid>
-                <Grid container s={8} justify="center" alignItems="center">
-                    <form noValidate onSubmit={this.onSubmit}>
+                <Title />
+                <div className="auth-controls">
+                    <Grid container justify="center" alignItems="center">
                         <div>
-
+                            <h4>
+                                <b>Register</b> below
+                            </h4>
+                            <p className="grey-text text-darken-1">
+                                Already have an account? 
+                                <Link to="/">
+                                    <Button color="secondary">
+                                        Log In
+                                    </Button>
+                                </Link>
+                            </p>
+                        </div>
+                    </Grid>
+                    <Grid container s={12} justify="center" alignItems="center">
+                        <form noValidate onSubmit={onSubmit}>
                             <div className="form-element">
                                 <TextField
-                                    onChange={this.onChange}
-                                    value={this.state.name}
-                                    error={errors.name}
+                                    fullWidth
+                                    onChange={onChange}
+                                    value={registerState.name}
+                                    // error={errors.name}
                                     id="name"
                                     type="text"
-                                    className={classnames("", {
-                                        invalid: errors.name
-                                    })}
                                     label="Name"
-                                    variant="outlined"
                                 />
-                                {/* <label htmlFor="name">Name</label> */}
-                                {/* <span className="red-text">{errors.name}</span> */}
                             </div>
                             <div className="form-element">
                                 <TextField
-                                    onChange={this.onChange}
-                                    value={this.state.email}
-                                    error={errors.email}
+                                    fullWidth
+                                    onChange={onChange}
+                                    value={registerState.email}
+                                    // error={errors.email}
                                     id="email"
                                     type="email"
-                                    className={classnames("", {
-                                        invalid: errors.email
-                                    })}
                                     label="Email"
-                                    variant="outlined"
                                 />
-                                {/* <span className="red-text">{errors.email}</span> */}
                             </div>
                             <div className="form-element">
                                 <TextField
-                                    onChange={this.onChange}
-                                    value={this.state.password}
-                                    error={errors.password}
+                                    fullWidth
+                                    onChange={onChange}
+                                    value={registerState.password}
+                                    // error={errors.password}
                                     id="password"
                                     type="password"
-                                    className={classnames("", {
-                                        invalid: errors.password
-                                    })}
                                     label="Password"
-                                    variant="outlined"
                                 />
-                                {/* <span className="red-text">{errors.password}</span> */}
                             </div>
                             <div className="form-element">
                                 <TextField
-                                    onChange={this.onChange}
-                                    value={this.state.password2}
-                                    error={errors.password2}
+                                    fullWidth
+                                    onChange={onChange}
+                                    value={registerState.password2}
+                                    // error={errors.password2}
                                     id="password2"
                                     type="password"
-                                    className={classnames("", {
-                                        invalid: errors.password2
-                                    })}
                                     label="Confirm Password"
-                                    variant="outlined"
                                 />
-                                {/* <span className="red-text">{errors.password2}</span> */}
                             </div>
-                        </div>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            type="submit"
-                            size="large"
-                        >
-                            Sign Up
-                        </Button>
-                    </form>
-                </Grid>
+                            <Grid container alignItems="center" justify="center">
+                                <Button
+                                    style={{ marginTop: 25 }}
+                                    variant="contained"
+                                    color="primary"
+                                    type="submit"
+                                    size="large"
+                                >
+                                    Sign Up
+                                </Button>
+                            </Grid>
+                        </form>
+                        <Sprite charcter={sprites.player.main} />
+                    </Grid>
+                </div>
             </Container>
-        );
-    }
+        </div>
+    );
+
 }
 
 Register.propTypes = {
@@ -165,9 +145,9 @@ Register.propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-    errors: state.errors
+const mapStateToProps = registerState => ({
+    auth: registerState.auth,
+    errors: registerState.errors
 });
 
 export default connect(
