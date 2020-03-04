@@ -26,7 +26,7 @@ const {
 } = scripts;
 
 const BGArray = [B1, B2, B3];
-const AltArray = ["Paper Background", "Rock Background", "Scissor Background"];
+const AltArray = ["paper background", "rock background", "scissor background"];
 
 //! Git rid of this
 const getRandomInt = () => Math.floor(Math.random() * Math.floor(3));
@@ -57,9 +57,9 @@ const DungeonFight = props => {
 	var round = 1;
   // Pointers
   // Add this into an init function
+  // Creat this if it doesn't exist or load if it does
   const Choop = new Player("Choop");
   const Doop = new Monster("Doop");
-
   // componentDidMount(init())
   return (
 		<>
@@ -77,24 +77,25 @@ const DungeonFight = props => {
             </Link>
           </Grid>
         </Grid>
+        {/* Row 1 */}
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
           <Grid item xs={4}>
-						<h1>{Choop.name} </h1>
-						<CharacterCard></CharacterCard>
+						<CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
           </Grid>
           <Grid item xs={2}>
-						<h1>Spell</h1>
+            <h1>{Choop.determineSpell}</h1>
 					</Grid>
         	<Grid item xs={4}>
-						<h1>{Doop.name} </h1>
+            <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
 					</Grid>
         </Grid>
+        {/* Row 2 */}
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
 					<Grid item xs={2}>
 						<h1>Discard Deck</h1>
 					</Grid>
           <Grid item xs={8}>
-						<h1>Cards map</h1>
+						<h1>Hand</h1>
           </Grid>
         	<Grid item xs={2}>
 						<h1>Draw Deck</h1>
