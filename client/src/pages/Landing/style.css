@@ -1,5 +1,7 @@
 .sprite{
-    transform: scale(.7);
+    display: block;
+    transform: scale(.3);
+    z-index: 10;
 }
 
 #myVideo {
@@ -13,6 +15,7 @@
 #masterContainer {
     z-index: 100;
     color: white;
+    height: 100vh;
 }
 #masterContainer a {
     z-index: 100;
@@ -28,10 +31,13 @@
     margin-top: 5%;
 }
 
-.landing {
-    height: 100vh;
-    background-image: url("../../images/bg-auth.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
-}
+#landingImage {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-width: 100vw;
+    max-height: 100vh;
+    max-height: 100vh;
+    z-index: -1;
+  }
