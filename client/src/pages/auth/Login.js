@@ -7,7 +7,6 @@ import Title from "../../components/title/title1x";
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite";
-import sprites from "../../sprites/sprites.json";
 
 ////Formik////
 import { Formik } from 'formik';
@@ -136,7 +135,10 @@ const Login = (props) => {
                                 </Grid>
                             </form>
                         </Formik>
-                        <Sprite character={sprites.player.main} />
+                        {/* <Sprite
+                            character="display"
+                            type="main"
+                        /> */}
                     </Grid>
                 </div>
             </Container>
