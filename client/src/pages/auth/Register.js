@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import Title from "../../components/title/title1x";
 
-////Sprites////
-import Sprite from "../../sprites/getSprite";
-import sprites from "../../sprites/sprites.json";
-
 ////Material UI////
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -130,10 +126,6 @@ const Register = (props) => {
                                 </Button>
                             </Grid>
                         </form>
-                        {/* <Sprite
-                            character="display"
-                            type="main"
-                        /> */}
                     </Grid>
                 </div>
             </Container>

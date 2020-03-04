@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import landingImage from "../../images/bg-auth.png"
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
-import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
 import Button from '@material-ui/core/Button';
@@ -35,7 +35,8 @@ const Landing = (props) => {
     const classes = useStyles();
     const { user } = props.auth;
     return (
-        <div className="landing">
+        <>
+            <img id="landingImage" src={landingImage} alt="landing image" /> 
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid container direction="row" justify="space-between" alignItems="center">
@@ -48,7 +49,7 @@ const Landing = (props) => {
                             variant="outlined" 
                             color="secondary"
                         >
-                           Logout <i className="fas fa-sign-out-alt" style={{marginLeft: 10}}></i>
+                            Logout
                         </Button>
                     </Grid>
                 </Grid>
@@ -64,6 +65,7 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
+                                style={{margin: 20}}
                             >
                                 <h1>Map</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>my_location</i>
@@ -73,6 +75,7 @@ const Landing = (props) => {
                             <Button 
                                 color="primary"
                                 size="large"
+                                style={{margin: 20}}
                             >
                                 <h1>Fight</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
@@ -82,6 +85,7 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
+                                style={{margin: 20}}
                             >
                                 <h1>Creators</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>people</i>
@@ -91,7 +95,7 @@ const Landing = (props) => {
                     <Grid 
                         container
                         item
-                        xs={6}
+                        xs={9}
                         direction="column"
                         justify="flex-start"
                         alignItems="flex-start">
@@ -103,7 +107,7 @@ const Landing = (props) => {
                         {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
             </Container>
-        </div>
+        </>
     );
 };
 
