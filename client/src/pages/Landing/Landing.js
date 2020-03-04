@@ -66,7 +66,7 @@ const Landing = (props) => {
                                 size="large"
                             >
                                 <h1>Map</h1>
-                                <i class="material-icons" style={{ marginLeft: 10 }}>my_location</i>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>my_location</i>
                             </Button>
                         </Link>
                         <Link to="/fight">
@@ -75,7 +75,7 @@ const Landing = (props) => {
                                 size="large"
                             >
                                 <h1>Fight</h1>
-                                <i class="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
                             </Button>
                         </Link>
                         <Link to="/creators">
@@ -84,7 +84,7 @@ const Landing = (props) => {
                                 size="large"
                             >
                                 <h1>Creators</h1>
-                                <i class="material-icons" style={{ marginLeft: 10 }}>people</i>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>people</i>
                             </Button>
                         </Link>
                     </Grid>
@@ -95,9 +95,8 @@ const Landing = (props) => {
                         direction="column"
                         justify="flex-start"
                         alignItems="flex-start">
-                        <Sprite charcter={sprites.player.main} />
-
                     </Grid>
+                        <Sprite character={sprites.player.main} />
                 </Grid>
             </Container>
         </div>

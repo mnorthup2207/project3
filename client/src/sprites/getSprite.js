@@ -68,14 +68,14 @@ class Sprite extends Component {
     render() {
         return <div className='sprite'>
             <Spritesheet
-                key={this.state.type}
+                // key={this.state.type}
                 image={this.action().image}
                 widthFrame={this.action().widthFrame}
                 heightFrame={this.action().heightFrame}
                 steps={50}
                 fps={10}
                 autoplay={true}
-                loop={this.action().oneLoop ? false : true}
+                loop={true}
                 getInstance={spritesheet => {
                     this.spritesheeInstance = spritesheet;
                     // this.loopDone = this.spritesheeInstance.onLoopComplete
@@ -84,26 +84,36 @@ class Sprite extends Component {
                     this.spritesheeInstance.setEndAt(this.action().frames)
                 }}
                 onClick={() => { this.changeAnimation("jump") }}
-                onEnterFrame={[
-                    {
-                        frame: this.action().frames - 1,
-                        callback: (() => {
-                            if (this.action().oneLoop) {
-                                this.setState({ ...this.state, nextAction: 'idle' })
-                            }
-                            if (this.state.nextAction) {
-                                console.log("changing to", this.state.nextAction)
-                                this.setState({ ...this.state, type: this.state.nextAction })
-                                this.setState({ ...this.state, nextAction: '' })
-                            }
-                        })
-                    }
-                ]}
+                // onEnterFrame={[
+                //     {
+                //         frame: this.action().frames - 1,
+                //         callback: (() => {
+                //             // if (this.action().oneLoop) {
+                //             //     console.log("yay")
+                //             //     this.changeAnimation("idle")
+                //             // }
+                //             if (this.state.nextAction) {
+                //                 console.log("changing to", this.state.nextAction)
+                //                 this.setState({ type: this.state.nextAction, nextAction: '' })
+                //             }
+                //             if (this.action().oneLoop) {
+                //                 console.log("yay")
+                //                 this.changeAnimation("idle")
+                //             }
+                //         })
+                //     }
+                // ]}
 
-            // onLoopComplete={this.action().oneLoop  ?() => {
-            //     // this.spritesheeInstance.
-            //     this.changeAnimation("idle")
-            // } :null}
+                onLoopComplete={() => {
+                    if (this.state.nextAction) {
+                        console.log("changing to", this.state.nextAction)
+                        this.setState({ type: this.state.nextAction, nextAction: '' })
+                    }
+                    if (this.action().oneLoop) {
+                        console.log("yay")
+                        this.changeAnimation("idle")
+                    }
+                }}
             />
         </div>
         // <div>

@@ -13,6 +13,34 @@
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/players/main/hurt.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "blink": {
+                "image": "./sheets/players/main/blink.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18,
+                "oneLoop": true
+            },
+            "kick": {
+                "image": "./sheets/players/main/kick.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/players/main/death.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 15,
+                "death": true
             }
         }
     },
@@ -90,13 +118,17 @@
                 "image": "./sheets/paper/1/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/paper/1/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         },
         "two": {
@@ -132,13 +164,17 @@
                 "image": "./sheets/paper/3/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/paper/3/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         }
     },
@@ -154,13 +190,17 @@
                 "image": "./sheets/scissor/1/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/scissor/1/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         },
         "two": {
@@ -174,13 +214,17 @@
                 "image": "./sheets/scissor/2/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/scissor/2/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         },
         "three": {
@@ -194,13 +238,17 @@
                 "image": "./sheets/scissor/3/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/scissor/3/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         }
     },
@@ -216,31 +264,40 @@
                 "image": "./sheets/boss/1/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/boss/1/jump.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "death": {
                 "image": "./sheets/boss/1/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "death": true
             },
             "fly": {
                 "image": "./sheets/boss/1/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "hurt": {
                 "image": "./sheets/boss/1/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "walk": {
                 "image": "./sheets/boss/1/walk.png",
@@ -260,31 +317,36 @@
                 "image": "./sheets/boss/2/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "jump": {
                 "image": "./sheets/boss/2/jump.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "death": {
                 "image": "./sheets/boss/2/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "death": true
             },
             "fly": {
                 "image": "./sheets/boss/2/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "hurt": {
                 "image": "./sheets/boss/2/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "walk": {
                 "image": "./sheets/boss/2/walk.png",
@@ -304,7 +366,8 @@
                 "image": "./sheets/boss/3/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "jump": {
                 "image": "./sheets/boss/3/jump.png",
@@ -317,25 +380,29 @@
                 "image": "./sheets/boss/3/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "death": true
             },
             "fly": {
                 "image": "./sheets/boss/3/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "hurt": {
                 "image": "./sheets/boss/3/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "walk": {
                 "image": "./sheets/boss/3/walk.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             }
         }
     }
