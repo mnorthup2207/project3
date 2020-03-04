@@ -14,7 +14,8 @@ const store = createStore(
         (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
             window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) ||
         compose
-    )
+    ),
+
 );
 
 export default store;
