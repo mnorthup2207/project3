@@ -95,7 +95,10 @@ const Landing = (props) => {
                         direction="column"
                         justify="flex-start"
                         alignItems="flex-start">
-                        <Sprite character={sprites.player.main} />
+                        <Sprite 
+                            character="display"
+                            type="main"
+                        />
                     </Grid>
                         {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>

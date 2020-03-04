@@ -21,8 +21,8 @@ const makeSprite = () => {
             <div>
                 <Sprite
                     // character={character}
-                    character="display"
-                    type="main"
+                    character="boss"
+                    type="two"
                 />
             </div>
             {/* {allTypes()} */}

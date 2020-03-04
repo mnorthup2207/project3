@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import CharacterCard from "../../components/Character_Card";
+import Deck from "../../components/Deck";
 import B1 from "../../images/bg-paper.png";
 import B2 from "../../images/bg-rock.png";
 import B3 from "../../images/bg-scissors.png";
