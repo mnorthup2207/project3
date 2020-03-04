@@ -53,7 +53,7 @@ const Landing = (props) => {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid id="shift" container direction="row" spacing={2} className={classes.root}>
+                <Grid container direction="row" spacing={2} className={classes.root}>
                     <Grid 
                         container
                         item
