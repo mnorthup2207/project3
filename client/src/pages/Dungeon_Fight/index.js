@@ -91,7 +91,7 @@ const DungeonFight = props => {
                     </Grid>
                 </Grid>
                 {/* Row 2 */}
-
+                <Deck />
             </Container>
         </>
     );
