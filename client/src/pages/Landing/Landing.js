@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 ////Sprites////
-import Sprite from "../../sprites/getSprite";
+import Sprite from "../../sprites/getSprite.js";
 import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
@@ -96,8 +96,8 @@ const Landing = (props) => {
                         justify="flex-start"
                         alignItems="flex-start">
                         <Sprite character={sprites.player.main} />
-
                     </Grid>
+                        {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
             </Container>
         </div>
