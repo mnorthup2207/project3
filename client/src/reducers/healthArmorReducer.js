@@ -1,23 +1,33 @@
-import { SET_CHARACTER_ARMOR, SET_CHARACTER_HEALTH } from "../actions/types";
+import { SET_CHARACTER_HEALTH, SET_CHARACTER_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR } from "../actions/types";
 
 const initialState = {
     health: 50,
-    currentHealth: {},
-    loading: false
+    totalHealth: 50,
+    armor: 50,
+    totalArmor: 50
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case SET_CURRENT_USER:
+        case SET_CHARACTER_ARMOR:
             return {
                 ...state,
-                isAuthenticated: !isEmpty(action.payload),
-                user: action.payload
+                armor: action.value.armor
             };
-        case USER_LOADING:
+        case SET_CHARACTER_HEALTH:
             return {
                 ...state,
-                loading: true
+                health: action.value.health
+            };
+        case SET_CHARACTER_TOTAL_ARMOR:
+            return {
+                ...state,
+                totalArmor: action.value.totalArmor
+            };
+        case SET_CHARACTER_TOTAL_HEALTH:
+            return {
+                ...state,
+                totalHealth: action.value.totalHealth
             };
         default:
             return state;

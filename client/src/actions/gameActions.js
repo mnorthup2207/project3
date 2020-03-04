@@ -1,10 +1,23 @@
 import axios from "axios";
 
-import { SET_CHARACTER_HEALTH, SET_CHARACTER_ARMOR } from "./types";
+import { SET_CHARACTER_HEALTH, SET_CHARACTER_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR  } from "./types";
 
-export const setHealth =  (health, history) => dispatch => {
-    
-}
+export const setHealth = (character, healthArmorObj) => dispatch => {
+    // Character should be the name of the class, value should be the updated health object
+    dispatch({type: SET_CHARACTER_HEALTH, value: healthArmorObj, character: character});
+};
+export const setArmor = (character, healthArmorObj) => dispatch => {
+    // Character should be the name of the class, value should be the updated health object
+    dispatch({type: SET_CHARACTER_ARMOR, value: healthArmorObj, character: character});
+};
+export const setTotalHealth = (character, healthArmorObj) => dispatch => {
+    // Character should be the name of the class, value should be the updated health object
+    dispatch({type: SET_CHARACTER_TOTAL_HEALTH, value: healthArmorObj, character: character});
+};
+export const setTotalArmor = (character, healthArmorObj) => dispatch => {
+    // Character should be the name of the class, value should be the updated health object
+    dispatch({type: SET_CHARACTER_TOTAL_ARMOR, value: healthArmorObj, character: character});
+};
 
 
 

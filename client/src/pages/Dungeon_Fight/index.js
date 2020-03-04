@@ -1,5 +1,5 @@
 // // Environment: Turn this into the connector between the two characters
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 ////Material UI////
 import Container from "@material-ui/core/Container";
@@ -53,6 +53,29 @@ const useStyles = makeStyles(theme => ({
 // };
 
 const DungeonFight = props => {
+  // Health and armor state player
+  const [playerHealthArmor, setPlayerHealthArmor] = useState({
+      health: 50,
+      totalHealth: 50,
+      armor: 50,
+      totalArmor: 50
+  }) 
+  // Health and armor state monster
+  const [monsterHealthArmor, setMonsterHealthArmor] = useState({
+      health: 50,
+      totalHealth: 50,
+      armor: 50,
+      totalArmor: 50
+  }) 
+
+  // console.log(props)
+  // useEffect((() => {
+    
+  // }), [])
+
+  
+
+
   const classes = useStyles();
 	var round = 1;
   // Pointers
@@ -93,6 +116,8 @@ const DungeonFight = props => {
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
 					<Grid item xs={2}>
 						<h1>Discard Deck</h1>
+            <button onClick={() => console.log(props)}>Hurt player</button>
+            {/* <button onClick={() => }>Hurt monster</button> */}
 					</Grid>
           <Grid item xs={8}>
 						<h1>Hand</h1>
