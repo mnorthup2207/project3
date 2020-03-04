@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import Title from "../../components/title/title1x";
 
-////Sprites////
-import Sprite from "../../sprites/getSprite";
-import sprites from "../../sprites/sprites.json";
-
 ////Material UI////
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -26,7 +22,7 @@ const Register = (props) => {
         password: "",
         password2: "",
         errors: {}
-    }) 
+    })
 
     useEffect(() => {
         if (props.auth.isAuthenticated) {
@@ -35,7 +31,7 @@ const Register = (props) => {
     })
 
     const onChange = e => {
-       setRegisterState({...registerState, [e.target.id]: e.target.value });
+        setRegisterState({ ...registerState, [e.target.id]: e.target.value });
     };
 
     const onSubmit = e => {
@@ -63,7 +59,7 @@ const Register = (props) => {
                                 <b>Register</b> below
                             </h4>
                             <p className="grey-text text-darken-1">
-                                Already have an account? 
+                                Already have an account?
                                 <Link to="/">
                                     <Button color="secondary">
                                         Log In

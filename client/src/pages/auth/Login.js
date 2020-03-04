@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import Title from "../../components/title/title1x";
 
-////Sprites////
-import Sprite from "../../sprites/getSprite";
-import sprites from "../../sprites/sprites.json";
-
 ////Formik////
 import { Formik } from 'formik';
 

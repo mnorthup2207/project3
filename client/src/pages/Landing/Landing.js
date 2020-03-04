@@ -7,7 +7,6 @@ import landingImage from "../../images/bg-auth.png"
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
-import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
 import Button from '@material-ui/core/Button';
@@ -98,11 +97,12 @@ const Landing = (props) => {
                         item
                         xs={9}
                         direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
-                        <h1>Current Character</h1>
-                        <Sprite character="display" type="main" />
+                        justify="flex-start"
+                        alignItems="flex-start">
+                        <Sprite 
+                            character="display"
+                            type="main"
+                        />
                     </Grid>
                         {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
