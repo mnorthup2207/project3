@@ -26,7 +26,7 @@ const Register = (props) => {
         password: "",
         password2: "",
         errors: {}
-    }) 
+    })
 
     useEffect(() => {
         if (props.auth.isAuthenticated) {
@@ -35,7 +35,7 @@ const Register = (props) => {
     })
 
     const onChange = e => {
-       setRegisterState({...registerState, [e.target.id]: e.target.value });
+        setRegisterState({ ...registerState, [e.target.id]: e.target.value });
     };
 
     const onSubmit = e => {
@@ -63,7 +63,7 @@ const Register = (props) => {
                                 <b>Register</b> below
                             </h4>
                             <p className="grey-text text-darken-1">
-                                Already have an account? 
+                                Already have an account?
                                 <Link to="/">
                                     <Button color="secondary">
                                         Log In
@@ -130,7 +130,10 @@ const Register = (props) => {
                                 </Button>
                             </Grid>
                         </form>
-                        <Sprite character={sprites.player.main} />
+                        {/* <Sprite
+                            character="display"
+                            type="main"
+                        /> */}
                     </Grid>
                 </div>
             </Container>
