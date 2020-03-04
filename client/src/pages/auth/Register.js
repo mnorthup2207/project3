@@ -130,7 +130,7 @@ const Register = (props) => {
                                 </Button>
                             </Grid>
                         </form>
-                        <Sprite charcter={sprites.player.main} />
+                        <Sprite character={sprites.player.main} />
                     </Grid>
                 </div>
             </Container>
