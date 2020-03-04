@@ -2,7 +2,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 ////Material UI////
+import Button from '@material-ui/core/Button';
 import Container from "@material-ui/core/Container";
+import Drawer from '@material-ui/core/Drawer';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import CharacterCard from "../../components/Character_Card";
@@ -12,6 +14,7 @@ import B2 from "../../images/bg-rock.png";
 import B3 from "../../images/bg-scissors.png";
 import "./style.css";
 import scripts from "./scripts";
+
 
 // Destructuring the scripts export
 const {
@@ -54,6 +57,18 @@ const useStyles = makeStyles(theme => ({
 // };
 
 const DungeonFight = props => {
+    const [state, setState] = React.useState({
+        bottom: false
+    });
+
+    const toggleDrawer = (side, open) => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [side]: open });
+    };
+
     const classes = useStyles();
     var round = 1;
     // Pointers
@@ -79,7 +94,7 @@ const DungeonFight = props => {
                     </Grid>
                 </Grid>
                 {/* Row 1 */}
-                <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
+                <Grid container direction="row" justify="space-between" alignItems="center" className={classes.root}>
                     <Grid item xs={4}>
                         <CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
                     </Grid>
@@ -91,7 +106,10 @@ const DungeonFight = props => {
                     </Grid>
                 </Grid>
                 {/* Row 2 */}
-                <Deck />
+                <Button className="toggle-drawer" onClick={toggleDrawer('bottom', true)}>Open Bottom</Button>
+                <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                    <Deck />
+                </Drawer>
             </Container>
         </>
     );

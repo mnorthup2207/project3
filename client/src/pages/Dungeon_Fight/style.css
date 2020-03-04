@@ -20,3 +20,8 @@
     max-height: 100vh;
     z-index: -1;
   }
+
+.toggle-drawer {
+    position:absolute;
+    bottom:0;
+}
