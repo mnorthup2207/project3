@@ -102,7 +102,7 @@ const Landing = (props) => {
                         alignItems="center"
                     >
                         <h1>Current Character</h1>
-                        <Sprite character={sprites.player.main} />
+                        <Sprite character="display" type="main" />
                     </Grid>
                         {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
