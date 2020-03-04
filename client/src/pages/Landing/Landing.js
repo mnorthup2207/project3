@@ -6,7 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
 
 ////Sprites////
-import Sprite from "../../sprites/getSprite";
+import Sprite from "../../sprites/getSprite.js";
 import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
@@ -103,8 +103,8 @@ const Landing = (props) => {
                     >
                         <h1>Current Character</h1>
                         <Sprite character={sprites.player.main} />
-
                     </Grid>
+                        {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
             </Container>
         </>
