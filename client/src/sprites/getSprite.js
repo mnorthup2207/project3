@@ -68,7 +68,6 @@ class Sprite extends Component {
     render() {
         return <div className='sprite'>
             <Spritesheet
-                key={this.state.type}
                 image={this.action().image}
                 widthFrame={this.action().widthFrame}
                 heightFrame={this.action().heightFrame}
