@@ -9,7 +9,7 @@ const makeSprite = () => {
         <Container maxWidth="lg">
             <div>
                 <Sprite
-                    charcter={sprites.scissor.three}
+                    character={sprites.paper.two}
                 />
             </div>
         </Container>

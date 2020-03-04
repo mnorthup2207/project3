@@ -1,7 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+
+////Sprites////
+import Sprite from "../../sprites/getSprite";
+import sprites from "../../sprites/sprites.json";
+
+import "./style.css";
 
 const useStyles = makeStyles({
     root: {
@@ -20,15 +24,10 @@ const useStyles = makeStyles({
     },
 });
 
-const AnimatedCard = () => {
-    const classes = useStyles();
+export default function OutlinedCard() {
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <h1>Little Animation of Character here</h1>
-            </CardContent>
-        </Card>
+        <Sprite charcter={sprites.player.main} />
     );
 }
 

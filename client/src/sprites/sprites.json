@@ -7,12 +7,6 @@
                 "heightFrame": 900,
                 "frames": 18
             },
-            "walk": {
-                "image": "./sheets/players/main/walking.png",
-                "widthFrame": 900,
-                "heightFrame": 900,
-                "frames": 24
-            },
             "throw": {
                 "image": "./sheets/players/main/throw.png",
                 "widthFrame": 900,
@@ -116,13 +110,15 @@
                 "image": "./sheets/paper/2/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             },
             "jump": {
                 "image": "./sheets/paper/2/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
             }
         },
         "three": {
@@ -204,6 +200,141 @@
                 "image": "./sheets/scissor/3/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
+                "frames": 10
+            }
+        }
+    },
+    "boss": {
+        "one": {
+            "idle": {
+                "image": "./sheets/boss/1/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/1/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/1/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "death": {
+                "image": "./sheets/boss/1/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/1/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/1/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/1/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            }
+        },
+        "two": {
+            "idle": {
+                "image": "./sheets/boss/2/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/2/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/2/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "death": {
+                "image": "./sheets/boss/2/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/2/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/2/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/2/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            }
+        },
+        "three": {
+            "idle": {
+                "image": "./sheets/boss/3/idle.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/boss/3/attack.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "jump": {
+                "image": "./sheets/boss/3/jump.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/boss/3/death.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "fly": {
+                "image": "./sheets/boss/3/fly.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "hurt": {
+                "image": "./sheets/boss/3/hurt.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "walk": {
+                "image": "./sheets/boss/3/walk.png",
+                "widthFrame": 2400,
+                "heightFrame": 1000,
                 "frames": 10
             }
         }

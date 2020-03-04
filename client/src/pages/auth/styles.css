@@ -20,9 +20,9 @@ form {
     background-image: url("../../images/bg-auth.png");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center;  */
+    background-position: fixed; 
 }
 
 .sprite {
-    transform: scale(.3);
+    transform: scale(.1);
 }
