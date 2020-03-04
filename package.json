@@ -27,6 +27,7 @@
         "eslint-plugin-react-hooks": "^1.7.0"
     },
     "scripts": {
+        "install": "cd client && npm install",
         "client-install": "npm install --prefix client",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
