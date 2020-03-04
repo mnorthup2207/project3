@@ -20,9 +20,8 @@ const makeSprite = () => {
         <Container maxWidth="lg">
             <div>
                 <Sprite
-                    // character={character}
-                    character="boss"
-                    type="two"
+                    character="display"
+                    type="pirate"
                 />
             </div>
             {/* {allTypes()} */}

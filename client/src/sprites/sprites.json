@@ -42,6 +42,92 @@
                 "frames": 15,
                 "death": true
             }
+        },
+        "king": {
+            "idle": {
+                "image": "./sheets/players/king/idle.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18
+            },
+            "throw": {
+                "image": "./sheets/players/king/throw.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/players/king/hurt.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "blink": {
+                "image": "./sheets/players/king/blink.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18,
+                "oneLoop": true
+            },
+            "kick": {
+                "image": "./sheets/players/king/kick.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/players/king/death.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 15,
+                "death": true
+            }
+        },
+        "pirate": {
+            "idle": {
+                "image": "./sheets/players/pirate/idle.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18
+            },
+            "throw": {
+                "image": "./sheets/players/pirate/throw.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/players/pirate/hurt.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "blink": {
+                "image": "./sheets/players/pirate/blink.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 18,
+                "oneLoop": true
+            },
+            "kick": {
+                "image": "./sheets/players/pirate/kick.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 12,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/players/pirate/death.png",
+                "widthFrame": 900,
+                "heightFrame": 900,
+                "frames": 15,
+                "death": true
+            }
         }
     },
     "rock": {
@@ -437,6 +523,78 @@
             },
             "jump": {
                 "image": "./sheets/enemy/1/jump.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            }
+        },
+        "two": {
+            "idle": {
+                "image": "./sheets/enemy/2/idle.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/enemy/2/attack.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/enemy/2/hurt.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/enemy/2/death.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "death": true
+            },
+            "jump": {
+                "image": "./sheets/enemy/2/jump.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            }
+        },
+        "three": {
+            "idle": {
+                "image": "./sheets/enemy/3/idle.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/enemy/3/attack.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/enemy/3/hurt.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/enemy/3/death.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "death": true
+            },
+            "jump": {
+                "image": "./sheets/enemy/3/jump.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
