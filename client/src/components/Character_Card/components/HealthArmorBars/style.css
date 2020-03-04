@@ -1,0 +1,20 @@
+.barTotal {
+    min-height: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.barCurrent {
+    min-height: 1rem;
+    width: 80%;
+    border-radius: 2%;
+    border: 0.2rem solid black;
+}
+
+.health {
+    background-color: red
+}
+
+.armor {
+    background-color: blue;
+}
+

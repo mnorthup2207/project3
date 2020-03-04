@@ -136,7 +136,7 @@ const Login = (props) => {
                                 </Grid>
                             </form>
                         </Formik>
-                        <Sprite charcter={sprites.player.main} />
+                        <Sprite character={sprites.player.main} />
                     </Grid>
                 </div>
             </Container>
