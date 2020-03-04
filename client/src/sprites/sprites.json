@@ -405,5 +405,43 @@
                 "oneLoop": true
             }
         }
+    },
+    "enemy": {
+        "one": {
+            "idle": {
+                "image": "./sheets/enemy/1/idle.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10
+            },
+            "attack": {
+                "image": "./sheets/enemy/1/attack.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "hurt": {
+                "image": "./sheets/enemy/1/hurt.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            },
+            "death": {
+                "image": "./sheets/enemy/1/death.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "death": true
+            },
+            "jump": {
+                "image": "./sheets/enemy/1/jump.png",
+                "widthFrame": 1800,
+                "heightFrame": 1000,
+                "frames": 10,
+                "oneLoop": true
+            }
+        }
     }
 }
