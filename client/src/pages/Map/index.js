@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary,
     },
 }));
-const currentMapBoss = [sprites.boss.one, sprites.boss.one, sprites.boss.one];
+const currentMapBoss = ["one", "two", "three"];
 
 const MapPage = (props) => {
     const classes = useStyles();
@@ -51,7 +51,7 @@ const MapPage = (props) => {
                     alignItems="center" 
                     className={classes.root}>
                     <Grid item xs={6}>
-                        <Sprite character={currentMapBoss[0]} />
+                        <Sprite character='boss' type={currentMapBoss[0]} />
                     </Grid>
                     <Grid item xs={4}>
                         <Link to={"/fight"}>
