@@ -1,4 +1,4 @@
 .App {
     overflow-y: hidden !important;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
