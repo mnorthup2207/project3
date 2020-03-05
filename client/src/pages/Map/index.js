@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite";
-import sprites from "../../sprites/sprites.json";
 
 ////Material UI////
 import Container from '@material-ui/core/Container';
@@ -29,7 +28,7 @@ const MapPage = (props) => {
     const classes = useStyles();
     return (
         <>
-            <img id="mapPic" src={mapPic1} alt="map image" />
+            <img id="mapPic" src={mapPic1} alt="map" />
             <div className="helpfulDiv"></div>
             <Container id="fightContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
