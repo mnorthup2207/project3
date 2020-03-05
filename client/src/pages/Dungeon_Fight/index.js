@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 ////Material UI////
+import Button from '@material-ui/core/Button';
 import Container from "@material-ui/core/Container";
+import Drawer from '@material-ui/core/Drawer';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 // Redux
@@ -19,6 +21,7 @@ import B3 from "../../images/bg-scissors.png";
 import "./style.css";
 import scripts from "./scripts";
 
+
 // Destructuring the scripts export
 const { Monster, Player } = scripts;
 
@@ -31,14 +34,14 @@ const picChange = getRandomInt();
 
 // Functions
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  }
+    root: {
+        flexGrow: 1
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: "center",
+        color: theme.palette.text.secondary
+    }
 }));
 
 
@@ -79,7 +82,17 @@ const DungeonFight = props => {
   //   monsterIntention: ""
   // });
 
+  const [state, setState] = React.useState({
+    bottom: false
+});
 
+const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+    }
+
+    setState({ ...state, [side]: open });
+};
   
 
 
@@ -91,51 +104,42 @@ const DungeonFight = props => {
   const Choop = new Player("Choop");
   const Doop = new Monster("Doop");
   // componentDidMount(init())
-  return (
-		<>
-      <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
-      <Container id="fightContainer" maxWidth="lg">
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item xs>
-            <Link to="/home">
-              <h2>Home</h2>
-            </Link>
-          </Grid>
-          <Grid item xs>
-            <Link to="/map">
-              <h2>Map</h2>
-            </Link>
-          </Grid>
-        </Grid>
-        {/* Row 1 */}
-        <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
-          <Grid item xs={4}>
-            
-          <button onClick={() => console.log(playerHealthArmor)}>Hurt player</button>
-						<CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
-          </Grid>
-          <Grid item xs={2}>
-            <h1>{Choop.determineSpell}</h1>
-					</Grid>
-        	<Grid item xs={4}>
-            <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
-					</Grid>
-        </Grid>
-        {/* Row 2 */}
-        <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
-					<Grid item xs={2}>
-						<h1>Discard Deck</h1>
-					</Grid>
-          <Grid item xs={8}>
-						<h1>Hand</h1>
-          </Grid>
-        	<Grid item xs={2}>
-						<h1>Draw Deck</h1>
-					</Grid>
-        </Grid>
-      </Container>
-    </>
-  );
+    return (
+        <>
+            <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
+            <Container id="fightContainer" maxWidth="lg">
+                <Grid container spacing={3} className={classes.root}>
+                    <Grid item xs>
+                        <Link to="/home">
+                            <h2>Home</h2>
+                        </Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to="/map">
+                            <h2>Map</h2>
+                        </Link>
+                    </Grid>
+                </Grid>
+                {/* Row 1 */}
+                <Grid container direction="row" justify="space-between" alignItems="center" className={classes.root}>
+                    <Grid item xs={4}>
+                        <CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <h1>{Choop.determineSpell}</h1>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                    </Grid>
+                </Grid>
+                {/* Row 2 */}
+                <Button className="toggle-drawer" onClick={toggleDrawer('bottom', true)}>Open Bottom</Button>
+                <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                    <Deck />
+                </Drawer>
+            </Container>
+        </>
+    );
 };
 
 export default DungeonFight;

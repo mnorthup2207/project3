@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import Title from "../../components/title/title1x";
 
-////Sprites////
-import Sprite from "../../sprites/getSprite";
-
 ////Formik////
 import { Formik } from 'formik';
 
@@ -135,10 +132,6 @@ const Login = (props) => {
                                 </Grid>
                             </form>
                         </Formik>
-                        {/* <Sprite
-                            character="display"
-                            type="main"
-                        /> */}
                     </Grid>
                 </div>
             </Container>
