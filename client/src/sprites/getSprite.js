@@ -4,21 +4,24 @@ import Enemy from './components/enemy'
 import Ally from './components/ally'
 import Hero from './components/hero'
 import Robot from './components/robot'
+import './sprites.css'
+
+
 
 const Sprite = ({ character, type }) => {
 
     switch (character) {
         case 'enemy':
         case 'boss':
-            return <Enemy character={sprites[character][type]}/>
+            return <div className='sprite'><Enemy className={character} character={sprites[character][type]}/></div>
         case 'player':
-            return <Hero character={sprites[character][type]}/>
+            return <div className='sprite'><Hero className={character} character={sprites[character][type]}/></div>
         case 'rock':
         case 'paper':
         case 'scissor':
-            return <Ally character={sprites[character][type]}/>
+            return <div className='sprite'><Ally className={character} character={sprites[character][type]}/></div>
         case 'display':
-            return <Robot character={sprites.player[type]} />
+            return <div className='sprite'><Robot className={character} character={sprites.player[type]} /></div>
         default:
             throw console.error("The Character Called is Not Valid!")
     }
