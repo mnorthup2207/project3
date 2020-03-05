@@ -1,3 +1,15 @@
+// User Authentication
 export const GET_ERRORS = "GET_ERRORS";
 export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+
+// Game Reducer
+// HealthArmor
+export const SET_CHARACTER_HEALTH_ARMOR = "SET_CHARACTER_HEALTH_ARMOR";
+export const SET_CHARACTER_TOTAL_ARMOR = "SET_CHARACTER_TOTAL_ARMOR";
+export const SET_CHARACTER_TOTAL_HEALTH = "SET_CHARACTER_TOTAL_HEALTH";
+// Alive
+export const SET_BATTLE_NUMBER = "SET_BATTLE_NUMBER";
+export const RESET_BATTLE_NUMBER = "RESET_BATTLE_NUMBER";
+// Cards
+export const SET_PLAYER_CARDS = "SET_PLAYER_CARDS";
