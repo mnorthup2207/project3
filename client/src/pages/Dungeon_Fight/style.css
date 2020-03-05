@@ -21,7 +21,7 @@
     z-index: -1;
   }
 
-.toggle-drawer {
+#deck-floor {
     position:absolute;
     bottom:0;
 }

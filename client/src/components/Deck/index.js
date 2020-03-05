@@ -4,6 +4,8 @@ import Discard from "../Discard/index";
 import PlayerHand from "../PlayerHand/index";
 import { Grid } from "@material-ui/core";
 
+import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
+
 export default function Deck() {
     return (
         <Grid 
@@ -13,7 +15,7 @@ export default function Deck() {
             alignItems="flex-end"
         >
             <PlayerHand />
-            <Draw />
+            <Draw player={Player}/>
             <Discard />
         </Grid>
     );
