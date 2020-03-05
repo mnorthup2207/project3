@@ -2,6 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 ////Material UI////
+// Redux
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+// States
+import { setHealth, setArmor, setTotalHealth, setTotalArmor} from "../../actions/gameActions"
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -104,6 +109,8 @@ const DungeonFight = props => {
         {/* Row 1 */}
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
           <Grid item xs={4}>
+            
+          <button onClick={() => console.log(props)}>Hurt player</button>
 						<CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
           </Grid>
           <Grid item xs={2}>
@@ -117,8 +124,6 @@ const DungeonFight = props => {
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
 					<Grid item xs={2}>
 						<h1>Discard Deck</h1>
-            <button onClick={() => console.log(props)}>Hurt player</button>
-            {/* <button onClick={() => }>Hurt monster</button> */}
 					</Grid>
           <Grid item xs={8}>
 						<h1>Hand</h1>
@@ -132,7 +137,44 @@ const DungeonFight = props => {
   );
 };
 
-export default DungeonFight;
+// export default DungeonFight;
+
+DungeonFight.propTypes = {
+  setHealth: PropTypes.func.isRequired,
+  setArmor: PropTypes.func.isRequired,
+  setTotalHealth: PropTypes.func.isRequired,
+  setTotalArmor: PropTypes.func.isRequired,
+}
+
+// // Use this when passing in health, armor, totalHealth, and totalArmor
+// const mapStateToProps = playerHealthArmor => ({
+//   health: playerHealthArmor.health,
+//   armor: playerHealthArmor.armor,
+//   totalHealth: playerHealthArmor.totalHealth,
+//   totalArmor: playerHealthArmor.totalArmor
+// });
+export default connect(
+  // mapStateToProps,
+  { setHealth, setArmor, setTotalHealth, setTotalArmor }
+)(DungeonFight);
+
+
+// Login.propTypes = {
+//   loginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
+
+// const mapStateToProps = userState => ({
+//   auth: userState.auth,
+//   errors: userState.errors
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
+
 
 // function Dungeon_Fight(props) {
 //   // Buttons and corresponding events
