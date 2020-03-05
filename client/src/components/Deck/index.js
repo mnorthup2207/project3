@@ -23,12 +23,17 @@ export default function Deck() {
             justify="space-around"
             alignItems="center"
         >
-            <PlayerHand />
+            <PlayerHand 
+                set={setPlayerState}
+                player={playerState}
+            />
             <Draw 
                 set={setPlayerState}
                 player={playerState}
             />
-            <Discard />
+            <Discard 
+                player={playerState}
+            />
         </Grid>
     );
 };
