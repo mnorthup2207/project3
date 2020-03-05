@@ -59,8 +59,8 @@ const spellsObj = {
 class Player extends Character {
     // These are the initial values that a player starts with
     // Turn this into an object
-    constructor(name="Choop", health=50, armor=25, totalHealth=50, totalArmor=25, cards=playerCards, spells=spellsObj, status, 
-        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[],
+    constructor(name="Choop", health=50, armor=25, totalHealth=50, totalArmor=25, status, 
+        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
         attacking, defending, idle, alive, round) {
         super(name, health, armor, totalHealth, totalArmor, status,
             attacking, defending, idle, alive, round)

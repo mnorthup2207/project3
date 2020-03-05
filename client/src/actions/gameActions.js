@@ -1,43 +1,73 @@
 import axios from "axios";
 
-import { SET_CHARACTER_HEALTH_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR,
-  SET_PLAYER_CARDS, SET_BATTLE_NUMBER} from "./types";
+import { SET_PLAYER_HEALTH_ARMOR, 
+    SET_PLAYER_TOTAL_HEALTH, 
+    SET_PLAYER_TOTAL_ARMOR,
+    SET_MONSTER_HEALTH_ARMOR, 
+    SET_CARDS, 
+    SET_BATTLE_NUMBER, 
+    RESET_BATTLE_NUMBER} from "./types";
 
-// HEALTH ARMOR ACTIONS
-export const setHealthArmor = (character, health, armor, alive) => {
-    // Character should be the name of the class, value should be the updated health object
+// HEALTH ARMOR ACTIONS PLAYER
+export const setHealthArmor = (health, armor, alive) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_HEALTH_ARMOR, 
-        payload: {health, armor, alive, character}
+        type: SET_PLAYER_HEALTH_ARMOR, 
+        payload: {health, armor, alive}
     }
 };
-export const setTotalHealth = (character, value) => {
-    // Character should be the name of the class, value should be the updated health object
+export const setTotalHealth = (value) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_TOTAL_HEALTH, 
-        payload: {value, character}
+        type: SET_PLAYER_TOTAL_HEALTH, 
+        payload: {value}
     }
 };
-export const setTotalArmor = (character, value) => {
-    // Character should be the name of the class, value should be the updated health object
+export const setTotalArmor = (value) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_TOTAL_ARMOR, 
-        payload: {value, character}
+        type: SET_PLAYER_TOTAL_ARMOR, 
+        payload: {value}
     }
 };
-// Cards
-export const setPlayerCards = (playerCards) => {
+// HEALTH ARMOR ACTIONS MONSTER
+export const setMonsterHealthArmor = (health, armor, alive) => {
+    // MONSTER should be the name of the class, value should be the updated health object
     return {
-        type: SET_PLAYER_CARDS, 
+        type: SET_MONSTER_HEALTH_ARMOR, 
+        payload: {health, armor, alive}
+    }
+};
+//! Use this action on the loot page
+export const setCards = (playerCards) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_CARDS, 
         payload: playerCards
     }
 } 
-//! Monsters Alive
-export const battleNumber = (monster) => {
+//! Hand, discard deck, draw deck, cards?
+export const drawHand = (player) => {
     return {
-        type: SET_BATTLE_NUMBER,
-        payload: monster
+        type: DRAW_HAND,
+        payload: 
     }
+}
+// discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
+// drawHand
+// play
+// selectCard
+// shuffleCards
+
+
+// Battle number determines which monster to fight and how many are dead
+//! Use this action on the loot page
+export const setBattleNumber = () => {
+    return { type: SET_BATTLE_NUMBER }
+}
+//! Use this action on the game over page
+export const resetBattleNumber = () => {
+    return { type: RESET_BATTLE_NUMBER }
 }
 
 
