@@ -142,13 +142,17 @@
                 "image": "./sheets/rock/1/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/rock/1/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         },
         "two": {
@@ -162,13 +166,17 @@
                 "image": "./sheets/rock/2/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/rock/2/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         },
         "three": {
@@ -176,19 +184,25 @@
                 "image": "./sheets/rock/3/idle.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "attack": {
                 "image": "./sheets/rock/3/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             },
             "jump": {
                 "image": "./sheets/rock/3/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
-                "frames": 10
+                "frames": 10,
+                "oneLoop": true
+
             }
         }
     },

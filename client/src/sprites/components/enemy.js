@@ -19,34 +19,33 @@ class Enemy extends Component {
     }
 
     render() {
-        return <div className='sprite-enemy'>
-            <Spritesheet
-                image={this.action().image}
-                widthFrame={this.action().widthFrame}
-                heightFrame={this.action().heightFrame}
-                steps={this.action().frames}
-                fps={10}
-                autoplay={true}
-                loop={true}
-                getInstance={spritesheet => {
-                    this.spritesheeInstance = spritesheet;
-                }}
-                onInit={() => {
-                    this.spritesheeInstance.setEndAt(this.action().frames)
-                }}
-                onClick={() => { this.changeAnimation("attack") }}
-                onLoopComplete={() => {
-                    if (this.state.nextAction) {
-                        console.log("changing to", this.state.nextAction)
-                        this.setState({ type: this.state.nextAction, nextAction: '' })
-                    }
-                    if (this.action().oneLoop) {
-                        console.log("yay")
-                        this.changeAnimation("idle")
-                    }
-                }}
-            />
-        </div>
+        return <Spritesheet
+            className={this.props.className}
+            image={this.action().image}
+            widthFrame={this.action().widthFrame}
+            heightFrame={this.action().heightFrame}
+            steps={this.action().frames}
+            fps={10}
+            autoplay={true}
+            loop={true}
+            getInstance={spritesheet => {
+                this.spritesheeInstance = spritesheet;
+            }}
+            onInit={() => {
+                this.spritesheeInstance.setEndAt(this.action().frames)
+            }}
+            onClick={() => { this.changeAnimation("attack") }}
+            onLoopComplete={() => {
+                if (this.state.nextAction) {
+                    console.log("changing to", this.state.nextAction)
+                    this.setState({ type: this.state.nextAction, nextAction: '' })
+                }
+                if (this.action().oneLoop) {
+                    console.log("yay")
+                    this.changeAnimation("idle")
+                }
+            }}
+        />
     }
 }
 

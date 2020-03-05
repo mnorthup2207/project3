@@ -36,7 +36,7 @@ const Landing = (props) => {
     const { user } = props.auth;
     return (
         <>
-            <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" /> 
+            <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" />
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid container direction="row" justify="space-between" alignItems="center">
@@ -46,7 +46,7 @@ const Landing = (props) => {
                         <Button
                             variant="contained"
                             onClick={onLogoutClick}
-                            variant="outlined" 
+                            variant="outlined"
                             color="secondary"
                         >
                             Logout
@@ -54,7 +54,7 @@ const Landing = (props) => {
                     </Grid>
                 </Grid>
                 <Grid container direction="row" spacing={2} className={classes.root}>
-                    <Grid 
+                    <Grid
                         container
                         item
                         xs={3}
@@ -65,17 +65,17 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
-                                style={{margin: 20}}
+                                style={{ margin: 20 }}
                             >
                                 <h1>Map</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>my_location</i>
                             </Button>
                         </Link>
                         <Link to="/fight">
-                            <Button 
+                            <Button
                                 color="primary"
                                 size="large"
-                                style={{margin: 20}}
+                                style={{ margin: 20 }}
                             >
                                 <h1>Fight</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
@@ -85,26 +85,27 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
-                                style={{margin: 20}}
+                                style={{ margin: 20 }}
                             >
                                 <h1>Creators</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>people</i>
                             </Button>
                         </Link>
                     </Grid>
-                    <Grid 
+                    <Grid
                         container
                         item
                         xs={9}
                         direction="column"
                         justify="flex-start"
                         alignItems="flex-start">
-                        <Sprite 
-                            character="display"
-                            type="main"
-                        />
+                        <div id="sprite-div">
+                            <Sprite
+                                character="display"
+                                type="main"
+                            />
+                        </div>
                     </Grid>
-                        {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
             </Container>
         </>

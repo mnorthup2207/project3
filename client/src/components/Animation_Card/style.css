@@ -1,3 +1,4 @@
-.sprite{
-    transform: scale(.4);
+#spriteDiv{
+    height: 100px;
+    width: 100px;
 }
