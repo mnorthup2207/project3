@@ -1,0 +1,54 @@
+.sprite{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.sprite .enemy {
+    width: 190% !important;
+    height: 100% !important;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    left: -35%;
+}
+.sprite .boss {
+    width: 250% !important;
+    height: 100% !important;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    left: -56%;
+}
+.sprite .player {
+
+}
+.sprite .rock {
+    width: 200% !important;
+    height: 100% !important;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    top: -10%;
+    left: -43%;
+}
+.sprite .paper {
+    width: 240% !important;
+    height: 100% !important;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    top: 0%;
+    left: -65%;
+}
+.sprite .scissor {
+    width: 150% !important;
+    height: 100% !important;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    top: 10%;
+    left: -30%;
+}
+.sprite .display {
+
+}

@@ -9,8 +9,9 @@ mongoose.connect(
     'mongodb://localhost/roshambo'
 );
 
-const monsterSeed = [{
-    fire: {
+const monsterSeed = [
+    {
+        name: "fire",
         health: 40,
         armor: 20,
         totalHealth: 40,
@@ -22,9 +23,10 @@ const monsterSeed = [{
         idle: true,
         alive: true,
         round: 1,
-        order: 2
+        order: 4
     },
-    ice: {
+    {
+        name: "ice",
         health: 80,
         armor: 30,
         totalHealth: 80,
@@ -36,9 +38,10 @@ const monsterSeed = [{
         idle: true,
         alive: true,
         round: 1,
-        order: 1
+        order: 3
     },
-    earth: {
+    {
+        name: "earth",
         health: 40,
         armor: 40,
         totalHealth: 40,
@@ -50,9 +53,10 @@ const monsterSeed = [{
         idle: true,
         alive: true,
         round: 1,
-        order: 3
+        order: 5
     },
-    minotaur_yellow: {
+    {
+        name: "minotaur_yellow",
         health: 35,
         armor: 10,
         totalHealth: 25,
@@ -66,7 +70,8 @@ const monsterSeed = [{
         round: 1,
         order: 0
     },
-    minotaur_purple: {
+    {
+        name: "minotaur_yellow", 
         health: 35,
         armor: 10,
         totalHealth: 35,
@@ -80,7 +85,8 @@ const monsterSeed = [{
         round: 1,
         order: 1
     },
-    minotaur_green: {
+    {
+        name: "minotaur_green",
         health: 45,
         armor: 15,
         totalHealth: 45,
@@ -94,7 +100,7 @@ const monsterSeed = [{
         round: 1,
         order: 2
     },
-}];
+];
 
 db.Monster
     .remove({})
