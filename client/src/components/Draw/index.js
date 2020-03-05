@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-export default function Draw({player}) {
-    console.log(player.prototype);
+export default function Draw({set, player}) {
+
+    console.log(player)
 
     const draw = () => {
-        console.log("yep")
-        player.prototype.shuffleCards();
+        player.Choop.drawHand()
+        set({ ...player});
     }
 
     return (
