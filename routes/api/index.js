@@ -8,6 +8,6 @@ router.use("/users", users);
 
 router.use("/monsters", monsters);
 
-router.use("/player", monsters);
+router.use("/player", player);
 
 module.exports = router;
