@@ -4,14 +4,13 @@ export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 // Game Reducer
-// PlayerHealthArmor
+// PlayerHealthArmor and BATTLE NUMBER
 export const SET_PLAYER_HEALTH_ARMOR = "SET_PLAYER_HEALTH_ARMOR";
 export const SET_PLAYER_TOTAL_ARMOR = "SET_PLAYER_TOTAL_ARMOR";
 export const SET_PLAYER_TOTAL_HEALTH = "SET_PLAYER_TOTAL_HEALTH";
-// MONSTERHealthArmor
-export const SET_MONSTER_HEALTH_ARMOR = "SET_MONSTER_HEALTH_ARMOR";
-// Alive
 export const SET_BATTLE_NUMBER = "SET_BATTLE_NUMBER";
 export const RESET_BATTLE_NUMBER = "RESET_BATTLE_NUMBER";
+// MONSTERHealthArmor
+export const SET_MONSTER = "SET_MONSTER";
 // Cards
 export const SET_PLAYER_CARDS = "SET_PLAYER_CARDS";

@@ -3,7 +3,7 @@ import axios from "axios";
 import { SET_PLAYER_HEALTH_ARMOR, 
     SET_PLAYER_TOTAL_HEALTH, 
     SET_PLAYER_TOTAL_ARMOR,
-    SET_MONSTER_HEALTH_ARMOR, 
+    SET_MONSTER, 
     SET_CARDS, 
     SET_BATTLE_NUMBER, 
     RESET_BATTLE_NUMBER} from "./types";
@@ -30,12 +30,21 @@ export const setTotalArmor = (value) => {
         payload: {value}
     }
 };
+// Battle number determines which monster to fight and how many are dead
+//! Use this action on the loot page
+export const setBattleNumber = () => {
+    return { type: SET_BATTLE_NUMBER }
+}
+//! Use this action on the game over page
+export const resetBattleNumber = () => {
+    return { type: RESET_BATTLE_NUMBER }
+}
 // HEALTH ARMOR ACTIONS MONSTER
-export const setMonsterHealthArmor = (health, armor, alive) => {
-    // MONSTER should be the name of the class, value should be the updated health object
+export const setMonster = (health, armor, alive, battleNumber) => {
+    // battleNumber should be the name of the class, value should be the updated health object
     return {
-        type: SET_MONSTER_HEALTH_ARMOR, 
-        payload: {health, armor, alive}
+        type: SET_MONSTER, 
+        payload: {health, armor, alive, battleNumber}
     }
 };
 //! Use this action on the loot page
@@ -46,29 +55,19 @@ export const setCards = (playerCards) => {
         payload: playerCards
     }
 } 
-//! Hand, discard deck, draw deck, cards?
-export const drawHand = (player) => {
-    return {
-        type: DRAW_HAND,
-        payload: 
-    }
-}
+// //! Hand, discard deck, draw deck, cards?
+// export const drawHand = (player) => {
+//     return {
+//         type: DRAW_HAND,
+//         payload: player
+//     }
+// }
 // discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
 // drawHand
 // play
 // selectCard
-// shuffleCards
 
 
-// Battle number determines which monster to fight and how many are dead
-//! Use this action on the loot page
-export const setBattleNumber = () => {
-    return { type: SET_BATTLE_NUMBER }
-}
-//! Use this action on the game over page
-export const resetBattleNumber = () => {
-    return { type: RESET_BATTLE_NUMBER }
-}
 
 
 
