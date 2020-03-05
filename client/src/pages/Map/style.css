@@ -1,0 +1,32 @@
+#fightContainer {
+    color: white;
+    z-index: 50;
+    position: fixed;
+}
+#fightContainer a{
+    color: white;
+}
+#mapPic {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-width: 100vw;
+    max-height: 100vh;
+    max-height: 100vh;
+    z-index: 1;
+}
+.sprite{
+    transform: scale(.9);
+}
+.helpfulDiv{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    box-sizing: border-box;
+    background-color: black;
+    opacity: 40%;
+}
