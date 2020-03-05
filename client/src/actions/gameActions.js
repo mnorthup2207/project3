@@ -1,31 +1,46 @@
 import axios from "axios";
 
 import { SET_CHARACTER_HEALTH_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR,
-  SET_PLAYER_CARDS, SET_CHARACTER_ALIVE} from "./types";
+  SET_PLAYER_CARDS, SET_BATTLE_NUMBER} from "./types";
 
 // HEALTH ARMOR ACTIONS
-export const setHealthArmor = (character, health, armor) => dispatch => {
+export const setHealthArmor = (character, health, armor, alive) => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_HEALTH_ARMOR, health, armor, character});
+    return {
+        type: SET_CHARACTER_HEALTH_ARMOR, 
+        payload: {health, armor, alive, character}
+    }
 };
-export const setTotalHealth = (character, value) => dispatch => {
+export const setTotalHealth = (character, value) => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_TOTAL_HEALTH, value, character});
+    return {
+        type: SET_CHARACTER_TOTAL_HEALTH, 
+        payload: {value, character}
+    }
 };
-export const setTotalArmor = (character, value) => dispatch => {
+export const setTotalArmor = (character, value) => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_TOTAL_ARMOR, value, character});
+    return {
+        type: SET_CHARACTER_TOTAL_ARMOR, 
+        payload: {value, character}
+    }
 };
-
 // Cards
-export const setPlayerCards = (playerCards) => dispatch => {
-    dispatch({type: SET_PLAYER_CARDS, playerCards})
+export const setPlayerCards = (playerCards) => {
+    return {
+        type: SET_PLAYER_CARDS, 
+        payload: playerCards
+    }
 } 
-
-// Alive
-export const setCharacterAlive = (alive, character) => dispatch => {
-    dispatch({type: SET_CHARACTER_ALIVE, alive, character})
+//! Monsters Alive
+export const battleNumber = (monster) => {
+    return {
+        type: SET_BATTLE_NUMBER,
+        payload: monster
+    }
 }
+
+
 
 
 // // Routes for put, post, and get

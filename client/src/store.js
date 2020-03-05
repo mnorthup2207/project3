@@ -6,6 +6,8 @@ const initialState = {};
 
 const middleware = [thunk];
 
+// Do we need to have any dispatch here?
+
 const store = createStore(
     rootReducer,
     initialState,

@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
-import healthArmorReducer from "./healthArmorReducer";
+import playerStatReducer from "./healthArmorReducer";
+import monstersReducer from "./monstersReducer"
 
 export default combineReducers({
     auth: authReducer,
     errors: errorReducer,
-    healthArmor: healthArmorReducer,
+    player: playerStatReducer,
+    monsters: monstersReducer,
 });

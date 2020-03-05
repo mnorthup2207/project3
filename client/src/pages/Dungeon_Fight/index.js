@@ -1,5 +1,6 @@
 // // Environment: Turn this into the connector between the two characters
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 ////Material UI////
 import Container from "@material-ui/core/Container";
@@ -43,32 +44,24 @@ const useStyles = makeStyles(theme => ({
 
 const DungeonFight = props => {
   // Health and armor state player GLOBAL STORE VALUE
-  const [playerHealthArmorState, setPlayerHealthArmorState] = useState({
-      health: 50,
-      armor: 50
-  }) 
-  const [playerAliveState, setPlayerAliveState] = useState({
-      alive: true
-  })
-  // Health and armor state monster
-  const [monsterHealthArmorState, setMonsterHealthArmorState] = useState({
-      health: 50,
-      armor: 50
-  }) 
-  const [monsterAliveState, setMonsterAliveState] = useState({
-      alive: true,
-      character: "monster, name"
-  })
-  // Selected cards, hand, draw deck, discard deck, and spell
-  // ONLY cards should be a GLOBAL STORE VALUE
-  const [cardState, setCardState] = useState({
-      cards: [],
-      discardDeck: [],
-      drawDeck: [],
-      hand: [],
-      selectedCards: [],
-      spell: ""
-  })
+  const playerHealthArmor = useSelector(state => state.healthArmor)
+  //! Health and armor state monster
+  // const monsterHealthArmor = useSelector(state => state.healthArmor)
+  //!
+  //! const [monsterAliveState, setMonsterAliveState] = useState({
+  //     alive: true,
+  //     character: "monster, name"
+  // })
+  //! Selected cards, hand, draw deck, discard deck, and spell
+  // // ONLY cards should be a GLOBAL STORE VALUE
+  //! const [cardState, setCardState] = useState({
+  //     cards: [],
+  //     discardDeck: [],
+  //     drawDeck: [],
+  //     hand: [],
+  //     selectedCards: [],
+  //     spell: ""
+  // })
   // Player Animations
   const [playerAnimationState, setPlayerAnimationState] = useState({
     type: "idle",
@@ -80,11 +73,11 @@ const DungeonFight = props => {
     character: "enemy"
   })
 
-  // Round effects damage that the spell jackpot does and what the monster intention will be
-  const [roundState, setRoundState] = useState({
-    round: 1,
-    monsterIntention: ""
-  });
+  //! Round effects damage that the spell jackpot does and what the monster intention will be
+  //! const [roundState, setRoundState] = useState({
+  //   round: 1,
+  //   monsterIntention: ""
+  // });
 
 
   
@@ -118,7 +111,7 @@ const DungeonFight = props => {
         <Grid id="shift" container direction="row" justify="space-between" alignItems="center" className={classes.root}>
           <Grid item xs={4}>
             
-          <button onClick={() => console.log(props)}>Hurt player</button>
+          <button onClick={() => console.log(playerHealthArmor)}>Hurt player</button>
 						<CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
           </Grid>
           <Grid item xs={2}>
@@ -145,33 +138,27 @@ const DungeonFight = props => {
   );
 };
 
-// export default DungeonFight;
+export default DungeonFight;
 
-DungeonFight.propTypes = {
-  setPlayerHealthArmorState: PropTypes.func.isRequired,
-  // setPlayerTotalHealth: PropTypes.func.isRequired,
-  // setPlayerTotalArmor: PropTypes.func.isRequired,
-  setPlayerAliveState: PropTypes.func.isRequired,
-  setPlayerCardsState: PropTypes.func.isRequired
-}
+//  
 
-// Use this when passing in health, armor, totalHealth, and totalArmor
-const mapStateToProps = (playerHealthArmorState, cardState, playerAliveState, monsterAliveState) => ({
-  health: playerHealthArmorState.health,
-  armor: playerHealthArmorState.armor,
-  // totalHealth: playerHealthArmor.totalHealth,
-  // totalArmor: playerHealthArmor.totalArmor
-  cards: cardState.cards,
-  playerAlive: playerAliveState.alive,
-  playerCharacter: playerAliveState.character,
-  monsterAlive: monsterAliveState.alive,
-  monsterCharacter: monsterAliveState.character
-});
-export default connect(
-  mapStateToProps,
-  { setHealthArmor, setPlayerCards, setCharacterAlive }
-)(DungeonFight);
-
+// // Use this when passing in health, armor, totalHealth, and totalArmor
+// const mapStateToProps = (playerHealthArmorState, cardState, playerAliveState, monsterAliveState) => ({
+//   health: playerHealthArmorState.health,
+//   armor: playerHealthArmorState.armor,
+//   // totalHealth: playerHealthArmor.totalHealth,
+//   // totalArmor: playerHealthArmor.totalArmor
+//   cards: cardState.cards,
+//   playerAlive: playerAliveState.alive,
+//   playerCharacter: playerAliveState.character,
+//   monsterAlive: monsterAliveState.alive,
+//   monsterCharacter: monsterAliveState.character
+// });
+// export default connect(
+//   // mapStateToProps,
+//   { setHealthArmor, setPlayerCards, setCharacterAlive }
+// )(DungeonFight);
+// export default DungeonFight
 
 // Login.propTypes = {
 //   loginUser: PropTypes.func.isRequired,
