@@ -6,6 +6,8 @@ const initialState = {};
 
 const middleware = [thunk];
 
+// Do we need to have any dispatch here?
+
 const store = createStore(
     rootReducer,
     initialState,
@@ -14,7 +16,8 @@ const store = createStore(
         (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
             window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) ||
         compose
-    )
+    ),
+
 );
 
 export default store;
