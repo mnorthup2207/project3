@@ -22,7 +22,3 @@ form {
     background-size: cover;
     background-position: fixed; 
 }
-
-.sprite {
-    transform: scale(.1);
-}

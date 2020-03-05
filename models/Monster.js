@@ -22,14 +22,14 @@ const MonsterSchema = new Schema({
         type: Number,
         required: true,
     },
-    damage: {
+    damage: [{
         type: Number,
         required: true,
-    },
-    sequence: {
+    }],
+    sequence: [{
         type: String,
         required: true,
-    },
+    }],
     attacking: {
         type: Boolean,
         required: true,

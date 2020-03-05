@@ -33,7 +33,7 @@ const MapPage = (props) => {
             <Container id="fightContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
-                    <Link to="/home">
+                        <Link to="/home">
                             <Button
                                 color="primary"
                                 size="large"
@@ -47,21 +47,23 @@ const MapPage = (props) => {
                 <Grid container
                     id="shift"
                     justify="flex-start"
-                    alignItems="center" 
+                    alignItems="center"
                     className={classes.root}>
                     <Grid item xs={6}>
-                        <Sprite character='boss' type={currentMapBoss[0]} />
+                        <div id="spriteDiv">
+                            <Sprite character='boss' type={currentMapBoss[0]} />
+                        </div>
                     </Grid>
                     <Grid item xs={4}>
                         <Link to={"/fight"}>
-                        <h3>Unidentified vessel travelling at sub warp speed, bearing 235.7. 
-                            Fluctuations in energy readings from it, Captain. All transporters off. 
-                            A strange set-up, but I’d say the graviton generator is depolarized. 
-                            The dark colourings of the scrapes are the leavings of natural rubber, 
-                            a type of non-conductive sole used by researchers experimenting with electricity. 
-                            The molecules must have been partly de-phased by the anyon beam.
+                            <h3>Unidentified vessel travelling at sub warp speed, bearing 235.7.
+                                Fluctuations in energy readings from it, Captain. All transporters off.
+                                A strange set-up, but I’d say the graviton generator is depolarized.
+                                The dark colourings of the scrapes are the leavings of natural rubber,
+                                a type of non-conductive sole used by researchers experimenting with electricity.
+                                The molecules must have been partly de-phased by the anyon beam.
                             </h3>
-                        </Link>    
+                        </Link>
                     </Grid>
                 </Grid>
             </Container>

@@ -4,7 +4,7 @@ const monsterController = require("../../controllers/monsterController");
 // Matches with "/api/monsters"
 router.route("/")
   .get(monsterController.findAll)
-// Matches with "/api/monster/:id"
+// Matches with "/api/monsters/:id"
 router
   .route("/:id")
   .get(monsterController.findById)
