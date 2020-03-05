@@ -15,7 +15,7 @@ import "./styles.css";
 
 
 const Register = (props) => {
-
+    // Use state
     const [registerState, setRegisterState] = useState({
         name: "",
         email: "",
@@ -23,17 +23,17 @@ const Register = (props) => {
         password2: "",
         errors: {}
     })
-
+    // If authenticated send to home
     useEffect(() => {
         if (props.auth.isAuthenticated) {
             props.history.push("/home");
         }
     })
-
+    // onChange on the form to set the state registerState when anything changes
     const onChange = e => {
         setRegisterState({ ...registerState, [e.target.id]: e.target.value });
     };
-
+    // onSubmit that takes in all the values from the form
     const onSubmit = e => {
         e.preventDefault();
 
@@ -43,7 +43,8 @@ const Register = (props) => {
             password: registerState.password,
             password2: registerState.password2
         };
-
+        // We run the registerUser action with our newUser and props.history
+        // This goes to our actions folder and performs a post with all our information
         props.registerUser(newUser, props.history);
     };
 

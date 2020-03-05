@@ -1,5 +1,6 @@
 // // Environment: Turn this into the connector between the two characters
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 ////Material UI////
 import Button from '@material-ui/core/Button';
@@ -7,6 +8,11 @@ import Container from "@material-ui/core/Container";
 import Drawer from '@material-ui/core/Drawer';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+// Redux
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { setHealthArmor, setPlayerCards, setCharacterAlive } from "../../actions/gameActions"
+// Our imports
 import CharacterCard from "../../components/Character_Card";
 import Deck from "../../components/Deck";
 import B1 from "../../images/bg-paper.png";
@@ -17,17 +23,7 @@ import scripts from "./scripts";
 
 
 // Destructuring the scripts export
-const {
-    Monster,
-    Player,
-    healthArmorUpdate,
-    showAttackSpell,
-    playerAction,
-    playerDrawHand,
-    determineMonsterAction,
-    monsterAction,
-    newRound
-} = scripts;
+const { Monster, Player } = scripts;
 
 const BGArray = [B1, B2, B3];
 const AltArray = ["paper background", "rock background", "scissor background"];
@@ -47,36 +43,67 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary
     }
 }));
-// const init = () => {
 
-//   // healthArmorUpdate(player1, Choop);
-//   // healthArmorUpdate(monster1, Doop);
-
-//   // drawDeck.firstElementChild.innerText = Choop.cards.length;
-//   // discardDeck.innerText = 0;
-// };
 
 const DungeonFight = props => {
-    const [state, setState] = React.useState({
-        bottom: false
-    });
+  // Health and armor state player GLOBAL STORE VALUE
+  const playerHealthArmor = useSelector(state => state.healthArmor)
+  //! Health and armor state monster
+  // const monsterHealthArmor = useSelector(state => state.healthArmor)
+  //!
+  //! const [monsterAliveState, setMonsterAliveState] = useState({
+  //     alive: true,
+  //     character: "monster, name"
+  // })
+  //! Selected cards, hand, draw deck, discard deck, and spell
+  // // ONLY cards should be a GLOBAL STORE VALUE
+  //! const [cardState, setCardState] = useState({
+  //     cards: [],
+  //     discardDeck: [],
+  //     drawDeck: [],
+  //     hand: [],
+  //     selectedCards: [],
+  //     spell: ""
+  // })
+  // Player Animations
+  const [playerAnimationState, setPlayerAnimationState] = useState({
+    type: "idle",
+    character: "player"
+  })
+  // Monster Animations
+  const [monsterAnimationState, setMonsterAnimationState] = useState({
+    type: "idle",
+    character: "enemy"
+  })
 
-    const toggleDrawer = (side, open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
+  //! Round effects damage that the spell jackpot does and what the monster intention will be
+  //! const [roundState, setRoundState] = useState({
+  //   round: 1,
+  //   monsterIntention: ""
+  // });
 
-        setState({ ...state, [side]: open });
-    };
+  const [state, setState] = React.useState({
+    bottom: false
+});
 
-    const classes = useStyles();
-    var round = 1;
-    // Pointers
-    // Add this into an init function
-    // Creat this if it doesn't exist or load if it does
-    const Choop = new Player("Choop");
-    const Doop = new Monster("Doop");
-    // componentDidMount(init())
+const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+    }
+
+    setState({ ...state, [side]: open });
+};
+  
+
+
+  const classes = useStyles();
+	var round = 1;
+  // Pointers
+  // Add this into an init function
+  // Creat this if it doesn't exist or load if it does
+  const Choop = new Player("Choop");
+  const Doop = new Monster("Doop");
+  // componentDidMount(init())
     return (
         <>
             <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
@@ -116,6 +143,43 @@ const DungeonFight = props => {
 };
 
 export default DungeonFight;
+
+//  
+
+// // Use this when passing in health, armor, totalHealth, and totalArmor
+// const mapStateToProps = (playerHealthArmorState, cardState, playerAliveState, monsterAliveState) => ({
+//   health: playerHealthArmorState.health,
+//   armor: playerHealthArmorState.armor,
+//   // totalHealth: playerHealthArmor.totalHealth,
+//   // totalArmor: playerHealthArmor.totalArmor
+//   cards: cardState.cards,
+//   playerAlive: playerAliveState.alive,
+//   playerCharacter: playerAliveState.character,
+//   monsterAlive: monsterAliveState.alive,
+//   monsterCharacter: monsterAliveState.character
+// });
+// export default connect(
+//   // mapStateToProps,
+//   { setHealthArmor, setPlayerCards, setCharacterAlive }
+// )(DungeonFight);
+// export default DungeonFight
+
+// Login.propTypes = {
+//   loginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
+
+// const mapStateToProps = userState => ({
+//   auth: userState.auth,
+//   errors: userState.errors
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
+
 
 // function Dungeon_Fight(props) {
 //   // Buttons and corresponding events
