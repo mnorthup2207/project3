@@ -16,9 +16,6 @@
     max-height: 100vh;
     z-index: 1;
 }
-.sprite{
-    transform: scale(.9);
-}
 .helpfulDiv{
     position: fixed;
     right: 0;
@@ -29,4 +26,9 @@
     box-sizing: border-box;
     background-color: black;
     opacity: 40%;
+}
+#spriteDiv{
+    height: 400px;
+    width: 400px;
+    margin: auto;
 }

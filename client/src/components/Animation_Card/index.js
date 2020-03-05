@@ -6,9 +6,11 @@ import sprites from "../../sprites/sprites.json";
 import "./style.css";
 import { PromiseProvider } from 'mongoose';
 
-const AnimatedCard = (props) => {  
+const AnimatedCard = (props) => {
     return (
-        <Sprite character={props[0]} />
+        <div id="spriteDiv">
+            <Sprite character={props[0]} />
+        </div>
     );
 }
 
