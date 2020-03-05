@@ -1,24 +1,51 @@
 import axios from "axios";
 
-import { SET_CHARACTER_HEALTH, SET_CHARACTER_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR  } from "./types";
+import { SET_CHARACTER_HEALTH_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR,
+  SET_PLAYER_CARDS, SET_CHARACTER_ALIVE} from "./types";
 
-export const setHealth = (character, value) => dispatch => {
+// HEALTH ARMOR ACTIONS
+export const setHealthArmor = (character, health, armor) => dispatch => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_HEALTH, value: value, character: character});
-};
-export const setArmor = (character, value) => dispatch => {
-    // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_ARMOR, value: value, character: character});
+    dispatch({type: SET_CHARACTER_HEALTH_ARMOR, health, armor, character});
 };
 export const setTotalHealth = (character, value) => dispatch => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_TOTAL_HEALTH, value: value, character: character});
+    dispatch({type: SET_CHARACTER_TOTAL_HEALTH, value, character});
 };
 export const setTotalArmor = (character, value) => dispatch => {
     // Character should be the name of the class, value should be the updated health object
-    dispatch({type: SET_CHARACTER_TOTAL_ARMOR, value: value, character: character});
+    dispatch({type: SET_CHARACTER_TOTAL_ARMOR, value, character});
 };
 
+// Cards
+export const setPlayerCards = (playerCards) => dispatch => {
+    dispatch({type: SET_PLAYER_CARDS, playerCards})
+} 
+
+// Alive
+export const setCharacterAlive = (alive, character) => dispatch => {
+    dispatch({type: SET_CHARACTER_ALIVE, alive, character})
+}
+
+
+// // Routes for put, post, and get
+//     // I think we first run a get
+//     // Then we update all the new information and pass all the previous information that isn't getting change into the put
+// export const postCharacter = (character) => dispatch => {
+//     // axios 
+//     //     .post("/api/character/:id/", )
+//     dispatch()
+// } 
+// export const getCharacter = (character) => dispatch => {
+//     // axios 
+//     //     .get("/api/character/:id/", )
+//     dispatch()
+// } 
+// export const putCharacter = (character) => dispatch => {
+//     // axios 
+//     //     .get("/api/character/:id/", )
+//     dispatch()
+// } 
 
 
 
@@ -29,6 +56,10 @@ export const setTotalArmor = (character, value) => dispatch => {
 
 
 
+
+
+// import { healthArmorUpdate, showAttackSpell, playerAction, playerDrawHand, 
+//     determineMonsterAction, monsterAction, newRound} from "./visual"
 
 
 // export const registerUser = (userData, history) => dispatch => {

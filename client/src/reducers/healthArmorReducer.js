@@ -1,4 +1,4 @@
-import { SET_CHARACTER_HEALTH, SET_CHARACTER_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR } from "../actions/types";
+import { SET_CHARACTER_HEALTH_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR } from "../actions/types";
 
 const initialState = {
     health: 50,
@@ -9,25 +9,21 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case SET_CHARACTER_ARMOR:
+        case SET_CHARACTER_HEALTH_ARMOR:
             return {
                 ...state,
-                armor: action.value.armor
-            };
-        case SET_CHARACTER_HEALTH:
-            return {
-                ...state,
-                health: action.value.health
+                health: action.health,
+                armor: action.armor
             };
         case SET_CHARACTER_TOTAL_ARMOR:
             return {
                 ...state,
-                totalArmor: action.value.totalArmor
+                totalArmor: action.value
             };
         case SET_CHARACTER_TOTAL_HEALTH:
             return {
                 ...state,
-                totalHealth: action.value.totalHealth
+                totalHealth: action.value
             };
         default:
             return state;
