@@ -107,63 +107,57 @@ const DungeonFight = props => {
   const Choop = new Player("Choop");
   const Doop = new Monster("Doop");
   // componentDidMount(init())
-  return (
-    <>
-      <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
-      <Container id="fightContainer" maxWidth="lg">
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item xs>
-            <Link to="/home">
-              <h2>Home</h2>
-            </Link>
-          </Grid>
-          <Grid item xs>
-            <Link to="/map">
-              <h2>Map</h2>
-            </Link>
-          </Grid>
-        </Grid>
-        {/* Row 1 */}
-        <Grid
-          container
-          direction="row"
-          justify="space-between"
-          alignItems="center"
-          className={classes.root}
-        >
-          <Grid item xs={4}>
-            <CharacterCard
-              character={Choop}
-              type={AltArray[picChange].split(" ")[0]}
-            ></CharacterCard>
-          </Grid>
-          <Grid item xs={2}>
-            <h1>{Choop.determineSpell}</h1>
-          </Grid>
-          <Grid item xs={4}>
-            <CharacterCard
-              character={Doop}
-              type={AltArray[picChange].split(" ")[0]}
-            ></CharacterCard>
-          </Grid>
-        </Grid>
-        {/* Row 2 */}
-        <Button
-          className="toggle-drawer"
-          onClick={toggleDrawer("bottom", true)}
-        >
-          Open Bottom
-        </Button>
-        <Drawer
-          anchor="bottom"
-          open={state.bottom}
-          onClose={toggleDrawer("bottom", false)}
-        >
-          <Deck />
-        </Drawer>
-      </Container>
-    </>
-  );
+    return (
+        <>
+            <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
+            <Container id="fightContainer" maxWidth="lg">
+                <Grid container spacing={3} className={classes.root}>
+                    <Grid item xs>
+                        <Link to="/home">
+                            <h2>Home</h2>
+                        </Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to="/map">
+                            <h2>Map</h2>
+                        </Link>
+                    </Grid>
+                </Grid>
+                {/* Row 1 */}
+                <Grid container direction="row" justify="space-between" alignItems="center" className={classes.root}>
+                    <Grid item xs={4}>
+                        <CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <h1>{Choop.determineSpell}</h1>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                    </Grid>
+                </Grid>
+                {/* Row 2 */}
+                <Grid 
+                    container 
+                    item 
+                    alignItems="flex-end" 
+                    id="deck-floor" 
+                    justify="center"
+                >
+                    <Button 
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        onClick={toggleDrawer('bottom', true)}
+                    >
+                        View Deck
+                    </Button>
+                    <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                        <Deck />
+                    </Drawer>
+                </Grid>
+            </Container>
+        </>
+    );
 };
 
 export default DungeonFight;

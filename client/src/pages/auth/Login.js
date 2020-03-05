@@ -16,10 +16,6 @@ import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 
-import amber from '@material-ui/core/colors/amber';
-// import amber from '@material-ui/core/colors/purple';
-
-
 const Login = (props) => {
 
     const [userState, setUserState] = useState({
