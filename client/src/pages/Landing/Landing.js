@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
+import API from "../../utils/API";
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
@@ -28,6 +29,33 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Landing = (props) => {
+    function loadMonsters() {
+        API.getMonsters()
+            .then(res =>
+                console.log("get monsters", res.data)
+            )
+            .catch(err => console.log(err));
+    };
+    function loadMonster(id) {
+        API.getMonster(id)
+            .then(res =>
+                console.log("get monster", res.data)
+            )
+            .catch(err => console.log(err));
+    };
+    function loadPlayer() {
+        API.getPlayer()
+            .then(res =>
+                console.log("player", res.data)
+            )
+            .catch(err => console.log(err));
+    };
+    useEffect(() => {
+        loadMonsters();
+        loadPlayer();
+        // loadMonster(fire);
+    }, [])
+
     const onLogoutClick = e => {
         e.preventDefault();
         props.logoutUser();
