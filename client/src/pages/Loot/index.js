@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./style.css"
-////Sprites////
-
+import treaseurePic from "../../images/bg-loot.png";
 
 ////Material UI////
 import Container from '@material-ui/core/Container';
@@ -33,13 +32,30 @@ const useStyles = makeStyles(theme => ({
 
 const Loot = () => {
     const classes = useStyles();
+    const [upgradeDefense, setUpgradeDefense] = useState({
+        totalHealth: 0,
+        totalArmor: 0,
+    });
+    const { totalHealth, totalArmor } = upgradeDefense;
     const [expanded, setExpanded] = React.useState(false);
-
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+    const healthHandleChange = () => {
+        setUpgradeDefense({...upgradeDefense, totalHealth: totalHealth + 1})
+        console.log("health", totalHealth);
+        
+    }
+    const armorHandleChange = () => {
+        setUpgradeDefense({...upgradeDefense, totalArmor: totalArmor + 1})
+        console.log("armor", totalArmor);
+    }
+    const handleReset = () => {
+        setUpgradeDefense({totalArmor: 0, totalHealth: 0})
+    }
     return (
         <>
+            <img id="treasureImage" src={treaseurePic} alt="map" />
             <div className="helpfulDiv"></div>
             <Container id="fightContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
@@ -55,7 +71,7 @@ const Loot = () => {
                         </Link>
                     </Grid>
                 </Grid>
-                <Grid container id="shift" alignItems="center" className={classes.root}>
+                <Grid container alignItems="center" className={classes.root}>
                     <Grid item xs>
                         <div className={classes.root}>
                             <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -64,14 +80,40 @@ const Loot = () => {
                                     aria-controls="panel1bh-content"
                                     id="panel1bh-header"
                                 >
-                                    <Typography className={classes.heading}>General settings</Typography>
-                                    <Typography className={classes.secondaryHeading}>I am an expansion panel</Typography>
+                                    <strong id="expansionContainer"><h2>Upgrade Cards</h2></strong>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                     <Typography>
                                         Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
                                         maximus est, id dignissim quam.
                                     </Typography>
+                                    <p>adfgsffgfsdfsfsd
+                                        sdfsfsdfsdfs
+                                        sdfsfsdfsdfssdfsdf
+                                        sdfsfsdfsdfssdfsdffsdf
+                                        sdfsfsdfsdfssdfsdffsdfsdf
+                                        sdfsfsdfsdfssdfsdffsdffsd
+                                        fsd
+
+                                    </p>
+                                    <p>adfgsffgfsdfsfsd
+                                        sdfsfsdfsdfs
+                                        sdfsfsdfsdfssdfsdf
+                                        sdfsfsdfsdfssdfsdffsdf
+                                        sdfsfsdfsdfssdfsdffsdfsdf
+                                        sdfsfsdfsdfssdfsdffsdffsd
+                                        fsd
+
+                                    </p>
+                                    <p>adfgsffgfsdfsfsd
+                                        sdfsfsdfsdfs
+                                        sdfsfsdfsdfssdfsdf
+                                        sdfsfsdfsdfssdfsdffsdf
+                                        sdfsfsdfsdfssdfsdffsdfsdf
+                                        sdfsfsdfsdfssdfsdffsdffsd
+                                        fsd
+
+                                    </p>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -80,49 +122,53 @@ const Loot = () => {
                                     aria-controls="panel2bh-content"
                                     id="panel2bh-header"
                                 >
-                                    <Typography className={classes.heading}>Users</Typography>
-                                    <Typography className={classes.secondaryHeading}>
-                                        You are currently not an owner
-                                    </Typography>
+                                    <h2 id="expansionContainer2"><strong>Upgrade Defense</strong></h2>
+                                    <h3 id="expansionContainer2"><strong>Health: {totalHealth}</strong></h3>
+                                    <h3 id="expansionContainer2"><strong>Armor: {totalArmor}</strong></h3>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    <Typography>
-                                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-                                        diam eros in elit. Pellentesque convallis laoreet laoreet.
-                                    </Typography>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                            <ExpansionPanel expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                                <ExpansionPanelSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel3bh-content"
-                                    id="panel3bh-header"
-                                >
-                                    <Typography className={classes.heading}>Advanced settings</Typography>
-                                    <Typography className={classes.secondaryHeading}>
-                                        Filtering has been entirely disabled for whole web server
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <Typography>
-                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-                                        vitae egestas augue. Duis vel est augue.
-                                    </Typography>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                            <ExpansionPanel expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                                <ExpansionPanelSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel4bh-content"
-                                    id="panel4bh-header"
-                                >
-                                    <Typography className={classes.heading}>Personal data</Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <Typography>
-                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-                                        vitae egestas augue. Duis vel est augue.
-                                    </Typography>
+                                    {totalHealth > 4 || totalArmor > 0 ? (<Button
+                                        onClick={() => healthHandleChange()}
+                                        color="primary"
+                                        size="large"
+                                        variant="contained"
+                                        disabled
+                                        id="expansionButton">
+                                        Upgrade Health
+                                    </Button>) : (
+                                        <Button
+                                        onClick={() => healthHandleChange()}
+                                        color="primary"
+                                        size="large"
+                                        variant="contained"
+                                        id="expansionButton">
+                                        Upgrade Health
+                                    </Button>
+                                    )}
+                                    <h2 id="expansionH2">-OR-</h2>
+                                    {totalArmor > 4 || totalHealth > 0 ? (<Button
+                                        onClick={() => armorHandleChange()}
+                                        color="primary"
+                                        size="large"
+                                        variant="contained"
+                                        disabled>
+                                        Upgrade Armor
+                                    </Button>) : (
+                                        <Button
+                                        onClick={() => armorHandleChange()}
+                                        color="primary"
+                                        size="large"
+                                        variant="contained">
+                                        Upgrade Armor
+                                    </Button>
+                                    )}
+                                    <Button 
+                                    onClick={() => handleReset()}
+                                    color="primary"
+                                    size="large"
+                                    variant="contained"
+                                    id="expansionButton2"
+                                    >Reset</Button>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </div>

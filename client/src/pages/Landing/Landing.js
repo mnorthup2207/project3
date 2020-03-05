@@ -36,7 +36,7 @@ const Landing = (props) => {
     const { user } = props.auth;
     return (
         <>
-            <img id="landingImage" src={landingImage} alt="landing image" /> 
+            <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" /> 
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid container direction="row" justify="space-between" alignItems="center">
