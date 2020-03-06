@@ -1,0 +1,8 @@
+{
+    "attack": {
+        "image": "./spells/swords.png"
+    },
+    "defend": {
+        "image": "./spells/shield.png"
+    }
+}
