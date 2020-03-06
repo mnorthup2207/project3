@@ -9,17 +9,17 @@ var playerCards = [...cards.slice(0, 5), ...cards.slice(10, 15), ...cards.slice(
 const spellsObj = {
     heal: () => {
         console.log("healing")
-        this.status["heal"] += 1;
+        // this.status["heal"] += 1;
         return ""
     },
     harden: () => {
         console.log("hardening")
-        this.status["harden"] += 1;
+        // this.status["harden"] += 1;
         return ""
     },
     sharpen: () => {
         console.log("sharpening")
-        this.status["sharpen"] += 1;
+        // this.status["sharpen"] += 1;
         return ""
     },
     jackpot: () => {
@@ -28,7 +28,7 @@ const spellsObj = {
     },
     toughen: () => {
         console.log("toughening")
-        this.status["toughen"] += 1;
+        // this.status["toughen"] += 1;
         return ""
     },
     cut: () => {
@@ -41,7 +41,7 @@ const spellsObj = {
     },
     retaliate: () => {
         console.log("hi")
-        this.status["retaliate"] += 1;
+        // this.status["retaliate"] += 1;
         return ""
     },
     desolate: () => {
