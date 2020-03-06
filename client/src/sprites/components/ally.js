@@ -37,11 +37,9 @@ class Ally extends Component {
             onClick={() => { this.changeAnimation("jump") }}
             onLoopComplete={() => {
                 if (this.state.nextAction) {
-                    console.log("changing to", this.state.nextAction)
                     this.setState({ type: this.state.nextAction, nextAction: '' })
                 }
                 if (this.action().oneLoop) {
-                    console.log("yay")
                     this.changeAnimation("idle")
                 }
             }}
