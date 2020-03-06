@@ -17,3 +17,8 @@
 #player-card:hover {
     box-shadow: 0 0 6px rgba(35, 173, 278, 1);
 }
+
+#card-sprite {
+    height: 150px;
+    width: 150px;
+}
