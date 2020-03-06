@@ -133,26 +133,16 @@ const toggleDrawer = (side, open) => event => {
                     </Grid>
                 </Grid>
                 {/* Row 2 */}
-                <Grid 
-                    container 
-                    item 
-                    alignItems="flex-end" 
-                    id="deck-floor" 
-                    justify="center"
-                >
-                    <Button 
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        onClick={toggleDrawer('bottom', true)}
-                    >
-                        View Deck
-                    </Button>
-                    <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                        <Deck />
-                    </Drawer>
-                </Grid>
             </Container>
+            <Grid 
+                container 
+                item 
+                alignItems="flex-end" 
+                id="deck-floor" 
+                justify="center"
+            >
+                <Deck />
+            </Grid>
         </>
     );
 };
