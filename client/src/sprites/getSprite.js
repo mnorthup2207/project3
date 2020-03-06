@@ -5,17 +5,26 @@ import Ally from './components/ally'
 import Hero from './components/hero'
 import Robot from './components/robot'
 import './sprites.css'
-
-
+import { useSelector } from 'react-redux'
 
 const Sprite = ({ character, type }) => {
+
+    const x = () => {
+        if (character === 'player') {
+            return character
+        } else if (character === 'boss' || character === 'enemy') {
+            return 'monster'
+        }
+    }
+
+    const animation = useSelector(state => state[x() + "Animation"])
 
     switch (character) {
         case 'enemy':
         case 'boss':
-            return <div className='sprite'><Enemy className={character} character={sprites[character][type]}/></div>
+            return <div className='sprite'><Enemy className={character} animation={animation} character={sprites[character][type]}/></div>
         case 'player':
-            return <div className='sprite'><Hero className={character} character={sprites[character][type]}/></div>
+            return <div className='sprite'><Hero className={character} animation={animation} character={sprites[character][type]}/></div>
         case 'rock':
         case 'paper':
         case 'scissor':
