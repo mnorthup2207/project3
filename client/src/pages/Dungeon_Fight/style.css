@@ -1,6 +1,6 @@
 #fightContainer {
     color: black;
-    height: 100vh;
+    /* height: 100vh; */
 }
 #fightContainer a {
     color: black;
@@ -13,11 +13,9 @@
 #picChange {
     position: fixed;
     right: 0;
-    bottom: 0;
+    top: 0;
     min-width: 100vw;
-    min-width: 100vw;
-    max-height: 100vh;
-    max-height: 100vh;
+    max-height: 60vh;
     z-index: -1;
   }
 

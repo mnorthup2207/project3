@@ -1,9 +1,24 @@
 import React from "react";
 
-export default function Discard() {
+////Material UI////
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
+export default function Discard({player}) {
     return (
         <>
-            <h1>Discard Deck</h1>
+            {player.Choop.discardDeck.map(card => {
+                return (
+                    <Card>
+                        <CardContent>
+                            <Typography color="textSecondary">
+                                {card}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                )
+            })}
         </>
     );
 };
