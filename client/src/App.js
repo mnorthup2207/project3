@@ -16,6 +16,7 @@ import Test from "./pages/Test"
 import AboutCreators from "./pages/About_the_creators"
 import DungeonFight from "./pages/Dungeon_Fight"
 import GameOver from "./pages/Game_Over"
+import GameWin from "./pages/Game_Win"
 import LeaderBoard from "./pages/Leader_Board"
 import Loot from "./pages/Loot"
 import MapPage from "./pages/Map"
@@ -73,6 +74,7 @@ class App extends Component {
                                 <PrivateRoute exact path="/home" component={Landing} />
                                 <PrivateRoute exact path="/creators" component={AboutCreators} />
                                 <PrivateRoute exact path="/gameover" component={GameOver} />
+                                <PrivateRoute exact path="/victory" component={GameWin} />
                                 <PrivateRoute exact path="/fight" component={DungeonFight} />
                                 <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
                                 <PrivateRoute exact path="/loot" component={Loot} />
