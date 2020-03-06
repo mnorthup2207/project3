@@ -9,6 +9,8 @@ import { Grid, Button } from "@material-ui/core";
 
 import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
 import background from "../../images/bg-leather.png";
+import spells from "./spell.json"
+// import '../../images/spells'
 
 export default function Deck() {
     const Choop = new Player("Choop");
@@ -33,9 +35,27 @@ export default function Deck() {
         // set the attack to a variable
         // empty selected cards and move to discard
         const playerAttact = playerState.Choop.play();
-        
+
         // remove spell from state
-        setPlayerState({...playerState, spell: ""})
+        setPlayerState({ ...playerState, spell: "" })
+    }
+
+    // const spellImg = {
+    //     height: "50px"
+    // }
+
+    const getSpellIMG = (theSpell) => {
+        const icon = spells[theSpell].image
+        console.log(icon)
+        return(
+            <Grid
+                container
+                item
+                direction="column"
+            >
+                <span><img src={icon} alt={theSpell} height={50} width={50}/></span>
+            </Grid>
+        ) 
     }
 
     var selectionStyle = {
@@ -59,30 +79,30 @@ export default function Deck() {
             direction="row"
             alignItems="flex-end"
         >
-            <div style={{padding: 25}}>
-                <PlayerHand 
+            <div style={{ padding: 25 }}>
+                <PlayerHand
                     set={setPlayerState}
                     player={playerState}
                 />
             </div>
-            <div style={{padding: 25}}>
-                {playerState.spell ? 
-                    <Button 
-                        id="action-button" 
-                        color="secondary"
+            <div style={{ padding: 25 }}>
+                {playerState.spell ?
+                    <Button
+                        id="action-button"
+                        color="primary"
                         variant="contained"
                         size="large"
                         style={spellStyle}
                         onClick={castAction}
                     >
-                        {playerState.spell}
+                        {getSpellIMG(playerState.spell)}
                     </Button> : null}
-                <Draw 
+                <Draw
                     set={setPlayerState}
                     player={playerState}
                 />
             </div>
-            <Discard 
+            <Discard
                 player={playerState}
             />
         </Grid>
