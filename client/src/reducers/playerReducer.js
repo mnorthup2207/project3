@@ -14,33 +14,34 @@ const initialState = {
 };
 
 export default function playerReducer(state = initialState, action) {
+    // console.log(action);
     switch (action.type) {
         case SET_PLAYER_HEALTH_ARMOR:
             return {
                 ...state,
-                health: action.health,
-                armor: action.armor,
-                alive: action.alive
+                health: action.payload.health,
+                armor: action.payload.armor,
+                alive: action.payload.alive
             };
         case SET_PLAYER_TOTAL_ARMOR:
             return {
                 ...state,
-                totalArmor: action.value
+                totalArmor: action.payload.value
             };
         case SET_PLAYER_TOTAL_HEALTH:
             return {
                 ...state,
-                totalHealth: action.value
+                totalHealth: action.payload.value
             };
         case SET_BATTLE_NUMBER:
             return {
                 ...state,
-                battleNumber = state.battleNumber + 1
+                battleNumber: action.payload.number
             };
         case RESET_BATTLE_NUMBER:
             return {
                 ...state,
-                battleNumber = 0
+                battleNumber: 0
             };
         default:
             return state;

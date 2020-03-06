@@ -13,8 +13,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   setHealthArmor,
-  setPlayerCards,
-  setCharacterAlive
 } from "../../actions/gameActions";
 // Our imports
 import CharacterCard from "../../components/Character_Card";
@@ -28,12 +26,9 @@ import scripts from "./scripts";
 // Destructuring the scripts export
 const { Monster, Player } = scripts;
 
+// Background
 const BGArray = [B1, B2, B3];
 const AltArray = ["paper background", "rock background", "scissor background"];
-
-//! Git rid of this
-const getRandomInt = () => Math.floor(Math.random() * Math.floor(3));
-const picChange = getRandomInt();
 
 // Functions
 const useStyles = makeStyles(theme => ({
@@ -49,16 +44,13 @@ const useStyles = makeStyles(theme => ({
 
 const DungeonFight = props => {
   // Health and armor state player GLOBAL STORE VALUE
-  const playerHealthArmor = useSelector(state => state.healthArmor);
-  //! Health and armor state monster
-  // const monsterHealthArmor = useSelector(state => state.healthArmor)
-  //!
-  //! const [monsterAliveState, setMonsterAliveState] = useState({
-  //     alive: true,
-  //     character: "monster, name"
-  // })
+  const playerState = useSelector(state => state.player);
+  const monsterState = useSelector(state => state.monster);
+  const cardsState = useSelector(state => state.cards);
+  const dispatch = useDispatch();
+  const monsterImageObj = monsterState.monster
+
   //! Selected cards, hand, draw deck, discard deck, and spell
-  // // ONLY cards should be a GLOBAL STORE VALUE
   //! const [cardState, setCardState] = useState({
   //     cards: [],
   //     discardDeck: [],
@@ -104,12 +96,12 @@ const DungeonFight = props => {
   // Pointers
   // Add this into an init function
   // Creat this if it doesn't exist or load if it does
-  const Choop = new Player("Choop");
-  const Doop = new Monster("Doop");
+  const Choop = new Player(playerState);
+  const Doop = new Monster(monsterState);
   // componentDidMount(init())
     return (
         <>
-            <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
+            <img id="picChange" src={BGArray[playerState.battleNumber]} alt={AltArray[playerState.battleNumber]} />
             <Container id="fightContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
@@ -126,13 +118,21 @@ const DungeonFight = props => {
                 {/* Row 1 */}
                 <Grid container direction="row" justify="space-between" alignItems="center" className={classes.root}>
                     <Grid item xs={4}>
-                        <CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                        <CharacterCard 
+                        character="player"
+                        // characterState={playerState} 
+                        animation={"idle"}>
+                        </CharacterCard>
                     </Grid>
                     <Grid item xs={2}>
                         <h1>{Choop.determineSpell}</h1>
                     </Grid>
                     <Grid item xs={4}>
-                        <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                        {/* Figure this out */}
+                        <CharacterCard 
+                        character="monster"
+                        intention={"ADD ME"}>
+                        </CharacterCard>
                     </Grid>
                 </Grid>
                 {/* Row 2 */}

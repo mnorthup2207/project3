@@ -3,7 +3,12 @@ import axios from "axios";
 import { SET_PLAYER_HEALTH_ARMOR, 
     SET_PLAYER_TOTAL_HEALTH, 
     SET_PLAYER_TOTAL_ARMOR,
-    SET_MONSTER, 
+    SET_PLAYER_ANIMATION,
+    SET_PLAYER_SPRITE,
+    SET_ALL_MONSTERS,
+    SET_MONSTER,
+    SET_MONSTER_ANIMATION,
+    SET_MONSTER_SPRITE,
     SET_CARDS, 
     SET_BATTLE_NUMBER, 
     RESET_BATTLE_NUMBER} from "./types";
@@ -32,29 +37,57 @@ export const setTotalArmor = (value) => {
 };
 // Battle number determines which monster to fight and how many are dead
 //! Use this action on the loot page
-export const setBattleNumber = () => {
-    return { type: SET_BATTLE_NUMBER }
+export const setBattleNumber = (number) => {
+    return { type: SET_BATTLE_NUMBER, payload: {number} }
 }
 //! Use this action on the game over page
 export const resetBattleNumber = () => {
     return { type: RESET_BATTLE_NUMBER }
 }
 // HEALTH ARMOR ACTIONS MONSTER
-export const setMonster = (health, armor, alive, battleNumber) => {
+export const setMonster = (health, armor, alive, battleNumber, totalHealth, totalArmor) => {
     // battleNumber should be the name of the class, value should be the updated health object
     return {
         type: SET_MONSTER, 
-        payload: {health, armor, alive, battleNumber}
+        payload: {health, armor, alive, battleNumber, totalHealth, totalArmor}
     }
 };
+// SET ALL MONSTERS
+export const setAllMonsters = (monsters) => {
+    return { type: SET_ALL_MONSTERS, monsters }
+}
 //! Use this action on the loot page
 export const setCards = (playerCards) => {
     return {
         //! This should do an axios update ran on the loot page
         type: SET_CARDS, 
-        payload: playerCards
+        payload: { playerCards }
     }
 } 
+export const setPlayerAnimation = (animation) => {
+    return {
+        type: SET_PLAYER_ANIMATION,
+        payload: { animation }
+    }
+}
+export const setMonsterAnimation = (animation) => {
+    return {
+        type: SET_MONSTER_ANIMATION,
+        payload: { animation }
+    }
+}
+export const setPlayerSprite = (character, type) => {
+    return {
+        type: SET_PLAYER_SPRITE,
+        payload: { character, type }
+    }
+}
+export const setMonsterSprite = (character, type) => {
+    return {
+        type: SET_MONSTER_SPRITE,
+        payload: { character, type }
+    }
+}
 // //! Hand, discard deck, draw deck, cards?
 // export const drawHand = (player) => {
 //     return {

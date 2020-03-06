@@ -1,15 +1,24 @@
 import { combineReducers } from "redux";
+import allMonstersReducer from "./allMonstersReducer";
 import authReducer from "./authReducer";
 import cardsReducer from "./cardsReducer";
 import errorReducer from "./errorReducer";
 import monsterReducer from "./monsterReducer";
+import monsterAnimationReducer from "./monsterAnimationReducer";
+import monsterSpriteReducer from "./monsterSpriteReducer";
 import playerReducer from "./playerReducer";
+import playerAnimationReducer from "./playerAnimationReducer";
+import playerSpriteReducer from "./playerSpriteReducer";
 
 export default combineReducers({
+    monsters: allMonstersReducer,
     auth: authReducer,
-    battleNumber: battleNumberReducer,
     cards: cardsReducer,
     errors: errorReducer,
     monster: monsterReducer,
-    player: playerReducer
+    monsterAnimation: monsterAnimationReducer,
+    monsterSprite: monsterSpriteReducer,
+    player: playerReducer,
+    playerAnimation: playerAnimationReducer,
+    playerSprite: playerSpriteReducer
 });
