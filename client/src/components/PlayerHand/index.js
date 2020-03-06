@@ -24,7 +24,8 @@ export default function PlayerHand({ set, player }) {
         backgroundImage: `url(${background})`,
         height: "200px",
         width: "145px",
-        margin: "15px"
+        marginLeft: "15px",
+        marginRight: "15px"
     }
 
     const select = e => {
