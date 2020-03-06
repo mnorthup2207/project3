@@ -92,7 +92,7 @@ const Landing = (props) => {
             <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" />
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
-                    <Grid container direction="row" justify="space-between" alignItems="center">
+                    <Grid container direction="row" justify="space-between" alignItems="flex-end">
                         <h4>
                             <b>Welcome Back,</b> {user.name.split(" ")[0]}
                         </h4>
@@ -151,7 +151,7 @@ const Landing = (props) => {
                         xs={9}
                         direction="column"
                         justify="flex-start"
-                        alignItems="flex-start">
+                        alignItems="flex-end">
                         <div id="sprite-div">
                             <Sprite
                                 character="display"
