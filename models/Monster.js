@@ -30,18 +30,6 @@ const MonsterSchema = new Schema({
         type: String,
         required: true,
     }],
-    attacking: {
-        type: Boolean,
-        required: true,
-    },
-    defending: {
-        type: Boolean,
-        required: true,
-    },
-    idle: {
-        type: Boolean,
-        required: true,
-    },
     alive: {
         type: Boolean,
         required: true,
