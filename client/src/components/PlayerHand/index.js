@@ -65,7 +65,9 @@ export default function PlayerHand({ set, player }) {
                     <Card id={card} onClick={select} style={cardStyle}>
                         <CardContent>
                             <Typography color="textSecondary">
-                                {/* <Sprite character="scissor" type="one" /> */}
+                                <div id="card-sprite">
+                                    {/* <Sprite character="scissor" type="one" /> */}
+                                </div>
                                 {card}
                             </Typography>
                         </CardContent>
