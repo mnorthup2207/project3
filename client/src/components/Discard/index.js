@@ -1,4 +1,5 @@
 import React from "react";
+import CardStack from "../../images/card-stack.png";
 
 ////Material UI////
 import Card from '@material-ui/core/Card';
@@ -8,17 +9,7 @@ import Typography from '@material-ui/core/Typography';
 export default function Discard({player}) {
     return (
         <>
-            {player.Choop.discardDeck.map(card => {
-                return (
-                    <Card>
-                        <CardContent>
-                            <Typography color="textSecondary">
-                                {card}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                )
-            })}
+            {player.Choop.discardDeck.length > 1 && <img src={CardStack} alt="stack of cards" style={{height: 250}} />}
         </>
     );
 };

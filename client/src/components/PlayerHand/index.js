@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import background from '../../images/bg-card.png'
 
 
 ////Sprite////
@@ -17,6 +18,14 @@ import './styles.css';
 
 
 export default function PlayerHand({ set, player }) {
+
+
+    var cardStyle = {
+        backgroundImage: `url(${background})`,
+        height: "200px",
+        width: "145px",
+        margin: "15px"
+    }
 
     const select = e => {
         const cardId = e.currentTarget.id
@@ -49,10 +58,11 @@ export default function PlayerHand({ set, player }) {
             container
             item
             justify="space-between"
+            style={{width: 875}}
         >
             {player.Choop.hand.map(card => {
                 return (
-                    <Card id={card} onClick={select} style={{margin: 25}}>
+                    <Card id={card} onClick={select} style={cardStyle}>
                         <CardContent>
                             <Typography color="textSecondary">
                                 {/* <Sprite character="scissor" type="one" /> */}

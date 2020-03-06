@@ -44,6 +44,11 @@ export default function Deck() {
         width: "100%"
     }
 
+    var spellStyle = {
+        padding: "25px",
+        marginBottom: "25px"
+    }
+
 
     return (
         <Grid
@@ -61,12 +66,22 @@ export default function Deck() {
                 />
             </div>
             <div style={{padding: 25}}>
+                {playerState.spell ? 
+                    <Button 
+                        id="action-button" 
+                        color="secondary"
+                        variant="contained"
+                        size="large"
+                        style={spellStyle}
+                        onClick={castAction}
+                    >
+                        {playerState.spell}
+                    </Button> : null}
                 <Draw 
                     set={setPlayerState}
                     player={playerState}
                 />
             </div>
-            {playerState.spell ? <Button id="action-button" onClick={castAction}>Action: {playerState.spell}</Button> : null}
             <Discard 
                 player={playerState}
             />
