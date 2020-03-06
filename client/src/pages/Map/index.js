@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 const currentMapBoss = ["one", "two", "three"];
 
 const MapPage = (props) => {
-    const { monster } = useSelector(state => state.monster);
+    const { character, type } = useSelector(state => state.monsterSprite);
 
     const classes = useStyles();
     return (
@@ -55,7 +55,7 @@ const MapPage = (props) => {
                     className={classes.root}>
                     <Grid item xs={6}>
                         <div id="spriteDiv">
-                            <Sprite character={monster.character} type={monster.type} />
+                            <Sprite character={character} type={type} />
                         </div>
                     </Grid>
                     <Grid item xs={4}>

@@ -106,7 +106,7 @@ const Landing = (props) => {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid container direction="row" spacing={2} className={classes.root}>
+                <Grid id="landingDiv" container direction="row" spacing={2} className={classes.root}>
                     <Grid
                         container
                         item
@@ -115,16 +115,6 @@ const Landing = (props) => {
                         justify="flex-start"
                         alignItems="flex-start">
                         <Link to="/map">
-                            <Button
-                                color="primary"
-                                size="large"
-                                style={{ margin: 20 }}
-                            >
-                                <h1>Map</h1>
-                                <i className="material-icons" style={{ marginLeft: 10 }}>my_location</i>
-                            </Button>
-                        </Link>
-                        <Link to="/fight">
                             <Button
                                 color="primary"
                                 size="large"

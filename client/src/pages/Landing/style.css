@@ -31,4 +31,10 @@
 #sprite-div {
     height: 400px;
     width: 400px;
+    margin-right: 35%;
+    margin-top: 4%;
+    
+}
+#landingDiv {
+    margin-top: 7%;
 }

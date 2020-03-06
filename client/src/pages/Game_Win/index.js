@@ -1,24 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./style.css";
-import overPic from "../../images/game-over.png";
+import victoryPic from "../../images/triumph.png";
 import Sprite from "../../sprites/getSprite.js";
 
 ////Material UI////
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { useSelector } from "react-redux";
 // import { makeStyles } from '@material-ui/core/styles';
 
 
-
 const GameOver = () => {
-    const { character, type } = useSelector(state => state.monsterSprite);
+    const { character, type } = useSelector(state => state.playerSprite);
     return (
         <>
-            <img id="overImage" src={overPic} alt="Game Over" />
+            <img id="victoryImage" src={victoryPic} alt="Victory" />
             <div className="helpfulDiv2"></div>
             <Container id="gameOverContainer" maxWidth="lg">
                 <Grid container spacing={3} >
@@ -36,10 +35,14 @@ const GameOver = () => {
                 </Grid>
                 <Grid container id="centerWrapper" justify="space-between" alignItems="center" >
                     <Grid item xs={2}>
-                        <h1 id="">You Died</h1>
+                        <h1 id="">Victory!</h1>
                     </Grid>
-                    <Grid container item xs>
-                        <div id="spriteDiv2">
+                    <Grid
+                        container
+                        item
+                        xs
+                        >
+                        <div id="sprite-div">
                             <Sprite character={character} type={type} />
                         </div>
                     </Grid>
