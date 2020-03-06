@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 ////Sprite////
-// import Sprite from "../../sprites/getSprite";
+import Sprite from "../../sprites/getSprite";
 
 import './styles.css';
 
@@ -55,6 +55,7 @@ export default function PlayerHand({ set, player }) {
                     <Card id={card} onClick={select} style={{margin: 25}}>
                         <CardContent>
                             <Typography color="textSecondary">
+                                {/* <Sprite character="scissor" type="one" /> */}
                                 {card}
                             </Typography>
                         </CardContent>

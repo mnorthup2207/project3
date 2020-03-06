@@ -18,13 +18,24 @@ export default function Deck() {
         spell: ""
     })
 
-    const check = () => {
+    const castAction = () => {
+        // clear disabled on draw button
+        const drawButton = document.getElementById("draw-button")
+        drawButton.classList.remove("Mui-disabled")
+
+        // clear highlight on selected cards
         playerState.Choop.selectedCards.forEach(item => {
             const card = document.getElementById(item)
             card.classList.remove("clicked")
 
-            setPlayerState({...playerState, spell: ""})
         })
+
+        // set the attack to a variable
+        // empty selected cards and move to discard
+        const playerAttact = playerState.Choop.play();
+        
+        // remove spell from state
+        setPlayerState({...playerState, spell: ""})
     }
 
     var selectionStyle = {
@@ -55,7 +66,7 @@ export default function Deck() {
                     player={playerState}
                 />
             </div>
-            {playerState.spell ? <Button id="action-button" onClick={check}>Action: {playerState.spell}</Button> : null}
+            {playerState.spell ? <Button id="action-button" onClick={castAction}>Action: {playerState.spell}</Button> : null}
             <Discard 
                 player={playerState}
             />

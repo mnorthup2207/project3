@@ -7,21 +7,24 @@ export default function Draw(props) {
     console.log(player)
 
     const draw = () => {
+        const drawButton = document.getElementById("draw-button")
         player.Choop.selectedCards = [];
         player.Choop.drawHand();
+        drawButton.classList.add("Mui-disabled")
         set({ ...player, spell: ""});
     }
 
     return (
         <Grid container item >
             <Button
+                id="draw-button"
                 variant="contained"
                 color="primary"
                 size="large"
                 style={{paddingLeft: 25}}
                 onClick={draw}    
             >
-                <h1>DRAW!</h1>
+                <h4>DRAW!</h4>
             </Button>
         </Grid>
     );
