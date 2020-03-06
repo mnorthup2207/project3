@@ -1,37 +1,14 @@
 import { SET_CARDS } from "../actions/types";
 
-// const initialState = {
-//     health: 50,
-//     totalHealth: 50,
-//     armor: 50,
-//     totalArmor: 50,
-//     alive: true,
-//     character: "Choop"
-// };
+const initialState = {
+    playerCards: ["r1", "r2", "r3", "r4", "r5", "p1", "p2", "p3", "p4", "p5", "s1", "s2", "s3", "s4", "s5"],
+};
 
-// export default function playerStatReducer(state = initialState, action) {
-//     switch (action.type) {
-//         case SET_CHARACTER_HEALTH_ARMOR:
-//             return {
-//                 ...state,
-//                 health: action.health,
-//                 armor: action.armor,
-//                 alive: action.alive,
-//                 character: action.character
-//             };
-//         case SET_CHARACTER_TOTAL_ARMOR:
-//             return {
-//                 ...state,
-//                 totalArmor: action.value,
-//                 character: action.character
-//             };
-//         case SET_CHARACTER_TOTAL_HEALTH:
-//             return {
-//                 ...state,
-//                 totalHealth: action.value,
-//                 character: action.character
-//             };
-//         default:
-//             return state;
-//     }
-// }
+export default function cardsReducer(state = initialState, action) {
+    switch (action.type) {
+        case SET_CARDS:
+            return action.cards;
+        default:
+            return state;
+    }
+}

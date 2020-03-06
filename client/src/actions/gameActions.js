@@ -1,44 +1,106 @@
 import axios from "axios";
 
-import { SET_CHARACTER_HEALTH_ARMOR, SET_CHARACTER_TOTAL_HEALTH, SET_CHARACTER_TOTAL_ARMOR,
-  SET_PLAYER_CARDS, SET_BATTLE_NUMBER} from "./types";
+import { SET_PLAYER_HEALTH_ARMOR, 
+    SET_PLAYER_TOTAL_HEALTH, 
+    SET_PLAYER_TOTAL_ARMOR,
+    SET_PLAYER_ANIMATION,
+    SET_PLAYER_SPRITE,
+    SET_ALL_MONSTERS,
+    SET_MONSTER,
+    SET_MONSTER_ANIMATION,
+    SET_MONSTER_SPRITE,
+    SET_CARDS, 
+    SET_BATTLE_NUMBER, 
+    RESET_BATTLE_NUMBER} from "./types";
 
-// HEALTH ARMOR ACTIONS
-export const setHealthArmor = (character, health, armor, alive) => {
-    // Character should be the name of the class, value should be the updated health object
+// HEALTH ARMOR ACTIONS PLAYER
+export const setHealthArmor = (health, armor, alive) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_HEALTH_ARMOR, 
-        payload: {health, armor, alive, character}
+        type: SET_PLAYER_HEALTH_ARMOR, 
+        payload: {health, armor, alive}
     }
 };
-export const setTotalHealth = (character, value) => {
-    // Character should be the name of the class, value should be the updated health object
+export const setTotalHealth = (value) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_TOTAL_HEALTH, 
-        payload: {value, character}
+        type: SET_PLAYER_TOTAL_HEALTH, 
+        payload: {value}
     }
 };
-export const setTotalArmor = (character, value) => {
-    // Character should be the name of the class, value should be the updated health object
+export const setTotalArmor = (value) => {
+    // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_CHARACTER_TOTAL_ARMOR, 
-        payload: {value, character}
+        type: SET_PLAYER_TOTAL_ARMOR, 
+        payload: {value}
     }
 };
-// Cards
-export const setPlayerCards = (playerCards) => {
+// Battle number determines which monster to fight and how many are dead
+//! Use this action on the loot page
+export const setBattleNumber = (number) => {
+    return { type: SET_BATTLE_NUMBER, payload: {number} }
+}
+//! Use this action on the game over page
+export const resetBattleNumber = () => {
+    return { type: RESET_BATTLE_NUMBER }
+}
+// HEALTH ARMOR ACTIONS MONSTER
+export const setMonster = (health, armor, alive, battleNumber, totalHealth, totalArmor) => {
+    // battleNumber should be the name of the class, value should be the updated health object
     return {
-        type: SET_PLAYER_CARDS, 
-        payload: playerCards
+        type: SET_MONSTER, 
+        payload: {health, armor, alive, battleNumber, totalHealth, totalArmor}
+    }
+};
+// SET ALL MONSTERS
+export const setAllMonsters = (monsters) => {
+    return { type: SET_ALL_MONSTERS, monsters }
+}
+//! Use this action on the loot page
+export const setCards = (playerCards) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_CARDS, 
+        payload: { playerCards }
     }
 } 
-//! Monsters Alive
-export const battleNumber = (monster) => {
+export const setPlayerAnimation = (animation) => {
     return {
-        type: SET_BATTLE_NUMBER,
-        payload: monster
+        type: SET_PLAYER_ANIMATION,
+        payload: { animation }
     }
 }
+export const setMonsterAnimation = (animation) => {
+    return {
+        type: SET_MONSTER_ANIMATION,
+        payload: { animation }
+    }
+}
+export const setPlayerSprite = (character, type) => {
+    return {
+        type: SET_PLAYER_SPRITE,
+        payload: { character, type }
+    }
+}
+export const setMonsterSprite = (character, type) => {
+    return {
+        type: SET_MONSTER_SPRITE,
+        payload: { character, type }
+    }
+}
+// //! Hand, discard deck, draw deck, cards?
+// export const drawHand = (player) => {
+//     return {
+//         type: DRAW_HAND,
+//         payload: player
+//     }
+// }
+// discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
+// drawHand
+// play
+// selectCard
+
+
 
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import Intention from "./components/Intention";
 import HealthArmorBars from "./components/HealthArmorBars";
@@ -28,21 +29,20 @@ const useStyles = makeStyles({
 
 export default function CharacterCard(props) {
     const classes = useStyles();
-    const display = (props.character.name === "Choop") ?
-        ({ name: "Choop", sprite: "player", spriteType: "main", health: 45, totalHealth: 50, armor: 25, totalArmor: 50 }) :
-        ({ name: "Monster", sprite: props.type, spriteType: "one", health: 55, totalHealth: 100, armor: 50, totalArmor: 150 })
+    const { character, type } = useSelector(state => state[props.character + "Sprite"])
+    // const display = (props.character === "player") ?: 100, armor: 50, totalArmor: 150 })
     return (
         <div className={classes.root} >
             {/* Pass in the intention for the monster, and maybe the name in the font that logan is working on */}
-            <Intention intention={display.name} />
+            <Intention intention={props.intention} />
             <div id='divSprite'>
                 <Sprite
-                    character={display.sprite}
-                    type={display.spriteType}
+                    character={character}
+                    type={type}
                 />
             </div>
             {/* Use the state in place of the player.armor */}
-            <HealthArmorBars health={display.health} totalHealth={display.totalHealth} armor={display.armor} totalArmor={display.totalArmor} />
+            <HealthArmorBars character={props.character} />
         </div>
     );
 }
