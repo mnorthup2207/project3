@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite";
+import { useSelector } from "react-redux";
+
 
 ////Material UI////
 import Container from '@material-ui/core/Container';
@@ -25,6 +27,8 @@ const useStyles = makeStyles(theme => ({
 const currentMapBoss = ["one", "two", "three"];
 
 const MapPage = (props) => {
+    const { monster } = useSelector(state => state.monster);
+
     const classes = useStyles();
     return (
         <>
@@ -51,7 +55,7 @@ const MapPage = (props) => {
                     className={classes.root}>
                     <Grid item xs={6}>
                         <div id="spriteDiv">
-                            <Sprite character='boss' type={currentMapBoss[0]} />
+                            <Sprite character={monster.character} type={monster.type} />
                         </div>
                     </Grid>
                     <Grid item xs={4}>

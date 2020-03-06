@@ -1,11 +1,20 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
 import API from "../../utils/API";
 
+// REDUX
+import { useSelector, useDispatch, connect } from "react-redux";
+import {
+    setHealthArmor,
+    setTotalHealth,
+    setTotalArmor,
+    setAllMonsters,
+    setBattleNumber,
+    setMonster
+  } from "../../actions/gameActions";
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
 
@@ -29,11 +38,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Landing = (props) => {
+    const { battleNumber } = useSelector(state => state.player);
+    const dispatch = useDispatch();
+
     function loadMonsters() {
         API.getMonsters()
-            .then(res =>
-                console.log("get monsters", res.data)
-            )
+            .then(res => {
+                // Update the global state here
+                dispatch(setAllMonsters(res.data)) 
+                let monster = res.data.filter(monster => monster.order === battleNumber)[0];
+                // database is wrong
+                console.log(res.data)
+                // We set the initial monster
+                dispatch(setMonster(monster.health, monster.armor, monster.alive, monster.order, monster.totalHealth, monster.totalArmor))
+            })
             .catch(err => console.log(err));
     };
     function loadMonster(id) {
@@ -45,12 +63,19 @@ const Landing = (props) => {
     };
     function loadPlayer() {
         API.getPlayer()
-            .then(res =>
-                console.log("player", res.data)
+            .then(res => {
+                let { health, armor, totalHealth, totalArmor } = res.data[0];
+                // Update the global state here
+                dispatch(setHealthArmor(health, armor, true));
+                dispatch(setBattleNumber(0));
+                dispatch(setTotalHealth(totalHealth));
+                dispatch(setTotalArmor(totalArmor));
+            }
             )
             .catch(err => console.log(err));
     };
     useEffect(() => {
+        // find some better way to update?
         loadMonsters();
         loadPlayer();
         // loadMonster(fire);

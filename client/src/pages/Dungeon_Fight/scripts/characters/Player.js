@@ -9,17 +9,17 @@ var playerCards = [...cards.slice(0, 5), ...cards.slice(10, 15), ...cards.slice(
 const spellsObj = {
     heal: () => {
         console.log("healing")
-        this.status["heal"] += 1;
+        // this.status["heal"] += 1;
         return ""
     },
     harden: () => {
         console.log("hardening")
-        this.status["harden"] += 1;
+        // this.status["harden"] += 1;
         return ""
     },
     sharpen: () => {
         console.log("sharpening")
-        this.status["sharpen"] += 1;
+        // this.status["sharpen"] += 1;
         return ""
     },
     jackpot: () => {
@@ -28,7 +28,7 @@ const spellsObj = {
     },
     toughen: () => {
         console.log("toughening")
-        this.status["toughen"] += 1;
+        // this.status["toughen"] += 1;
         return ""
     },
     cut: () => {
@@ -41,7 +41,7 @@ const spellsObj = {
     },
     retaliate: () => {
         console.log("hi")
-        this.status["retaliate"] += 1;
+        // this.status["retaliate"] += 1;
         return ""
     },
     desolate: () => {
@@ -59,8 +59,8 @@ const spellsObj = {
 class Player extends Character {
     // These are the initial values that a player starts with
     // Turn this into an object
-    constructor(name="Choop", health=50, armor=25, totalHealth=50, totalArmor=25, cards=playerCards, spells=spellsObj, status, 
-        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[],
+    constructor({_id="", name="Choop", health=50, armor=25, totalHealth=50, totalArmor=25, cards=playerCards}, status, 
+        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj,
         attacking, defending, idle, alive, round) {
         super(name, health, armor, totalHealth, totalArmor, status,
             attacking, defending, idle, alive, round)
