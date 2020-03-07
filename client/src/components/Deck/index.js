@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Draw from "../Draw/index";
 import Discard from "../Discard/index";
 import PlayerHand from "../PlayerHand/index";
@@ -8,19 +9,49 @@ import { Grid, Button } from "@material-ui/core";
 
 
 import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
+import Monster from "../../pages/Dungeon_Fight/scripts/characters/Monster";
 import background from "../../images/bg-leather.png";
 import spells from "./spell.json"
+import { setMonster, setMonsterHealthArmor } from "../../actions/gameActions";
 // import '../../images/spells'
 
 export default function Deck() {
-    const Choop = new Player("Choop");
-
+    const playerGState = useSelector(state => state.player);
+    const monsterGState = useSelector(state => state.monster);
+    const monstersGState = useSelector(state => state.monsters);
+    const cardsGState = useSelector(state => state.cards);
+    const dispatch = useDispatch();
+    // const monsterHealthArmor = dispatch(setMonsterHealthArmor)
+    // // console.log(monstersGState[0].filter(monster => monster.order === playerGState.battleNumber))
+    // // console.log(monstersGState)
+    // let doop = monstersGState[0].filter(monster => monster.order === playerGState.battleNumber)[0]
+    // console.log(doop)
+    const Doop = new Monster(monsterGState);
+    const Choop = new Player(playerGState, cardsGState);
     const [playerState, setPlayerState] = useState({
         Choop,
         spell: ""
     })
+    console.log(Doop)
+    console.log(Choop)
 
     const castAction = () => {
+        
+        //! Selected cards, hand, draw deck, discard deck, and spell
+        //! const [cardState, setCardState] = useState({
+            //     cards: [],
+            //     discardDeck: [],
+            //     drawDeck: [],
+            //     hand: [],
+            //     selectedCards: [],
+            //     spell: ""
+        // })
+
+
+
+
+
+
         // clear disabled on draw button
         const drawButton = document.getElementById("draw-button")
         drawButton.classList.remove("Mui-disabled")
@@ -34,7 +65,13 @@ export default function Deck() {
 
         // set the attack to a variable
         // empty selected cards and move to discard
-        const playerAttact = playerState.Choop.play();
+        const playerAttack = playerState.Choop.play();
+        Doop.defend(playerAttack)
+        dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
+
+//     healthArmorUpdate(player1, Choop);
+//     healthArmorUpdate(monster1, Doop);
+
 
         // remove spell from state
         setPlayerState({ ...playerState, spell: "" })

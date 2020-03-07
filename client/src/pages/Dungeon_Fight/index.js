@@ -45,59 +45,14 @@ const useStyles = makeStyles(theme => ({
 const DungeonFight = props => {
   // Health and armor state player GLOBAL STORE VALUE
   const playerState = useSelector(state => state.player);
-  const monsterState = useSelector(state => state.monster);
-  const cardsState = useSelector(state => state.cards);
-  const dispatch = useDispatch();
-  const monsterImageObj = monsterState.monster
-
-  //! Selected cards, hand, draw deck, discard deck, and spell
-  //! const [cardState, setCardState] = useState({
-  //     cards: [],
-  //     discardDeck: [],
-  //     drawDeck: [],
-  //     hand: [],
-  //     selectedCards: [],
-  //     spell: ""
-  // })
   // Player Animations
-  const [playerAnimationState, setPlayerAnimationState] = useState({
-    type: "idle",
-    character: "player"
-  });
-  // Monster Animations
-  const [monsterAnimationState, setMonsterAnimationState] = useState({
-    type: "idle",
-    character: "enemy"
-  });
-
   //! Round effects damage that the spell jackpot does and what the monster intention will be
   //! const [roundState, setRoundState] = useState({
   //   round: 1,
   //   monsterIntention: ""
   // });
 
-  const [state, setState] = React.useState({
-    bottom: false
-  });
-
-  const toggleDrawer = (side, open) => event => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [side]: open });
-  };
-
   const classes = useStyles();
-  var round = 1;
-  // Pointers
-  // Add this into an init function
-  // Creat this if it doesn't exist or load if it does
-  const Choop = new Player(playerState);
-  const Doop = new Monster(monsterState);
   // componentDidMount(init())
     return (
         <>
@@ -125,7 +80,7 @@ const DungeonFight = props => {
                         </CharacterCard>
                     </Grid>
                     <Grid item xs={2}>
-                        <h1>{Choop.determineSpell}</h1>
+                        {/* <h1>{Choop.determineSpell}</h1> */}
                     </Grid>
                     <Grid item xs={4}>
                         {/* Figure this out */}

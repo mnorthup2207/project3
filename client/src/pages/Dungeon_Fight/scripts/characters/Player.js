@@ -59,9 +59,9 @@ const spellsObj = {
 class Player extends Character {
     // These are the initial values that a player starts with
     // Turn this into an object
-    constructor({_id="", name="Choop", health=50, armor=25, totalHealth=50, totalArmor=25, cards=playerCards}, status, 
+    constructor({ alive, health=50, armor=25, totalHealth=50, totalArmor=25, battleNumber=0}, cards=playerCards, name="Choop", status=[],
         discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj,
-        attacking, defending, idle, alive, round) {
+        attacking, defending, idle, round) {
         super(name, health, armor, totalHealth, totalArmor, status,
             attacking, defending, idle, alive, round)
         // Current cards the player has
@@ -71,6 +71,7 @@ class Player extends Character {
         this.hand = hand;
         this.selectedCards = selectedCards;
         // Number of cards a player draws
+        this.battleNumber = battleNumber;
         this.numDraw = numDraw;
         // Spells and status corresponding to the player
         this.spells = spells;

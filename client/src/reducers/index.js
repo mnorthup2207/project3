@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import allMonstersReducer from "./allMonstersReducer";
 import authReducer from "./authReducer";
-import cardsReducer from "./cardsReducer";
 import errorReducer from "./errorReducer";
 import monsterReducer from "./monsterReducer";
 import monsterAnimationReducer from "./monsterAnimationReducer";
@@ -13,7 +12,6 @@ import playerSpriteReducer from "./playerSpriteReducer";
 export default combineReducers({
     monsters: allMonstersReducer,
     auth: authReducer,
-    cards: cardsReducer,
     errors: errorReducer,
     monster: monsterReducer,
     monsterAnimation: monsterAnimationReducer,

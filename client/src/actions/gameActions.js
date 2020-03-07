@@ -7,12 +7,42 @@ import { SET_PLAYER_HEALTH_ARMOR,
     SET_PLAYER_SPRITE,
     SET_ALL_MONSTERS,
     SET_MONSTER,
+    SET_MONSTER_HEALTH_ARMOR,
     SET_MONSTER_ANIMATION,
     SET_MONSTER_SPRITE,
-    SET_CARDS, 
+    SET_PLAYER, 
+    SET_CARDS,
     SET_BATTLE_NUMBER, 
     RESET_BATTLE_NUMBER} from "./types";
 
+//! Use this action on landing
+export const setPlayer = (player) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_PLAYER, 
+        payload: player
+    }
+} 
+//! Use this action on the loot page
+export const setCards = (cards) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_PLAYER, 
+        payload: {cards}
+    }
+} 
+export const setPlayerAnimation = (animation) => {
+    return {
+        type: SET_PLAYER_ANIMATION,
+        payload: { animation }
+    }
+}
+export const setPlayerSprite = (character, type) => {
+    return {
+        type: SET_PLAYER_SPRITE,
+        payload: { character, type }
+    }
+}
 // HEALTH ARMOR ACTIONS PLAYER
 export const setHealthArmor = (health, armor, alive) => {
     // PLAYER should be the name of the class, value should be the updated health object
@@ -45,41 +75,28 @@ export const resetBattleNumber = () => {
     return { type: RESET_BATTLE_NUMBER }
 }
 // HEALTH ARMOR ACTIONS MONSTER
-export const setMonster = (health, armor, alive, battleNumber, totalHealth, totalArmor) => {
+export const setMonsterHealthArmor = (health, armor, alive) => {
+    // battleNumber should be the name of the class, value should be the updated health object
+    return {
+        type: SET_MONSTER_HEALTH_ARMOR, 
+        payload: { health, armor, alive }
+    }
+};
+export const setMonster = ({health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}) => {
     // battleNumber should be the name of the class, value should be the updated health object
     return {
         type: SET_MONSTER, 
-        payload: {health, armor, alive, battleNumber, totalHealth, totalArmor}
+        payload: {health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}
     }
 };
 // SET ALL MONSTERS
 export const setAllMonsters = (monsters) => {
     return { type: SET_ALL_MONSTERS, monsters }
 }
-//! Use this action on the loot page
-export const setCards = (playerCards) => {
-    return {
-        //! This should do an axios update ran on the loot page
-        type: SET_CARDS, 
-        payload: { playerCards }
-    }
-} 
-export const setPlayerAnimation = (animation) => {
-    return {
-        type: SET_PLAYER_ANIMATION,
-        payload: { animation }
-    }
-}
 export const setMonsterAnimation = (animation) => {
     return {
         type: SET_MONSTER_ANIMATION,
         payload: { animation }
-    }
-}
-export const setPlayerSprite = (character, type) => {
-    return {
-        type: SET_PLAYER_SPRITE,
-        payload: { character, type }
     }
 }
 export const setMonsterSprite = (character, type) => {

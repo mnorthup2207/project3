@@ -1,13 +1,13 @@
 import Character from "./Character"
 
 class Monster extends Character {
-    constructor({_id, name, health, armor, totalHealth, totalArmor, damage,
-        sequence, attacking, defending, idle, alive, round, status}) {
-        super(name, health, armor, totalHealth, totalArmor, status,
+    constructor({ name, health, armor, totalHealth, totalArmor, damage,
+        sequence, order, alive}, attacking, defending, idle, round, ) {
+        super(name, health, armor, totalHealth, totalArmor,
             attacking, defending, idle, alive, round)
         this.damage = damage;
         this.sequence = sequence;
-        this._id = _id;
+        this.order = order;
     }
     attack() {
         // the damage is regular damage

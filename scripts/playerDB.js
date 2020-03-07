@@ -13,7 +13,9 @@ const PlayerSeed = [{
     armor: 25,
     totalHealth: 50,
     totalArmor: 25,
-    cards: ["r1", "r2", "r3", "r4", "r5", "p1", "p2", "p3", "p4", "p5", "s1", "s2", "s3", "s4", "s5",]
+    cards: ["r1", "r2", "r3", "r4", "r5", "p1", "p2", "p3", "p4", "p5", "s1", "s2", "s3", "s4", "s5",],
+    battleNumber: 0,
+    alive: true,
 }];
 
 db.Player

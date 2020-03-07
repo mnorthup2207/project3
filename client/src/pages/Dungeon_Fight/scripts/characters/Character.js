@@ -8,7 +8,7 @@ var statusObj = {
 }
 
 class Character {
-    constructor(name, health, armor, totalHealth, totalArmor, status=statusObj, 
+    constructor( name, health, armor, totalHealth, totalArmor, status=statusObj, 
         round=1, attacking=false, defending=false, idle=true, alive=true) {
         this.health = health;
         this.armor = armor;
