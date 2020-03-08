@@ -1,8 +1,50 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+import { Grid, Button } from "@material-ui/core";
+import intentions from "./intention.json";
+var spellStyle = {
+    padding: "25px",
+    marginBottom: "25px"
+}
 
 export default function Intention(props) {
-
+    const sequence = useSelector(state => state.monster.sequence);
+    const round = useSelector(state => state.stats.round);
+    
+    const determineIntention = (round) => {
+        let intention = "";
+        console.log("Determining intention")
+        console.log(round, sequence.length);
+        if (sequence.length > round - 1 ) {
+            intention = sequence[ round - 1 ];
+        } else {
+            intention = sequence[ (round - 1) % sequence.length ]
+        }
+        console.log(intentions, intention)
+        const icon = intentions[intention].image
+        console.log(icon)
+        return(
+            <Grid
+                container
+                item
+                direction="column"
+            >
+                <span><img src={icon} alt={intention} height={50} width={50}/></span>
+            </Grid>
+        ) 
+    }
     return (
-        <h1>{props.intention}</h1>
+        (props.intention === "monster") ?
+            (<Button
+            id="action-button"
+            color="primary"
+            variant="contained"
+            size="large"
+            style={spellStyle}
+            // onClick={castAction} Thinking of making an animation
+            >
+                {determineIntention(round)}
+            </Button>) :
+            (null)
     );
 }

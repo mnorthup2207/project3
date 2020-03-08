@@ -1,11 +1,15 @@
-import { SET_MONSTER } from "../actions/types";
+import { SET_MONSTER, SET_MONSTER_HEALTH_ARMOR } from "../actions/types";
 
 const initialState = {
+    name: "yellow_minotaur",
     health: 25,
     armor: 10,
     totalHealth: 25,
     totalArmor: 10,
+    damage: [5, 15],
     alive: true,
+    sequence: ["attack"],
+    order: 0,
     monster: {
         character: "enemy",
         type: "one"
@@ -61,13 +65,23 @@ export default function monsterReducer(state = initialState, action) {
     switch (action.type) {
         case SET_MONSTER:
             return {
-                ...state,
                 health: action.payload.health,
                 armor: action.payload.armor,
                 alive: action.payload.alive,
                 totalArmor: action.payload.totalArmor,
                 totalHealth: action.payload.totalHealth,
-                monster
+                monster: action.payload.monster,
+                name: action.payload.name,
+                damage: action.payload.damage,
+                sequence: action.payload.sequence,
+                order: action.payload.order            
+            };
+        case SET_MONSTER_HEALTH_ARMOR:
+            return {
+                ...state,
+                health: action.payload.health,
+                armor: action.payload.armor,
+                alive: action.payload.alive
             };
         default:
             return state;

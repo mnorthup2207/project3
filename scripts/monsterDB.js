@@ -17,10 +17,14 @@ const monsterSeed = [
         totalHealth: 40,
         totalArmor: 20,
         damage: [23, 35],
-        sequence: ["attack"],
+        sequence: ["attack", "attack", "taunt"],
         alive: true,
         round: 1,
-        order: 4
+        order: 4,
+        animation: {
+            character: "boss",
+            type: "two"
+        }
     },
     {
         name: "ice",
@@ -29,10 +33,14 @@ const monsterSeed = [
         totalHealth: 80,
         totalArmor: 30,
         damage: [15, 25],
-        sequence: ["attack", "defend"],
+        sequence: ["attack", "block", "taunt"],
         alive: true,
         round: 1,
-        order: 3
+        order: 3,
+        animation: {
+            character: "boss",
+            type: "three"
+        }
     },
     {
         name: "earth",
@@ -41,10 +49,14 @@ const monsterSeed = [
         totalHealth: 40,
         totalArmor: 40,
         damage: [15, 22],
-        sequence: ["defend", "attack"],
+        sequence: ["block", "taunt", "attack"],
         alive: true,
         round: 1,
-        order: 5
+        order: 5,
+        animation: {
+            character: "boss",
+            type: "one"
+        }
     },
     {
         name: "minotaur_yellow",
@@ -53,22 +65,30 @@ const monsterSeed = [
         totalHealth: 25,
         totalArmor: 10,
         damage: [5, 15],
-        sequence: ["attack", "defend"],
+        sequence: ["attack", "block", "taunt"],
         alive: true,
         round: 1,
-        order: 0
+        order: 0,
+        animation: {
+            character: "enemy",
+            type: "one"
+        }
     },
     {
-        name: "minotaur_yellow", 
+        name: "minotaur_purple", 
         health: 35,
         armor: 10,
         totalHealth: 35,
         totalArmor: 10,
         damage: [8, 18],
-        sequence: ["attack"],
+        sequence: ["attack", "block"],
         alive: true,
         round: 1,
-        order: 1
+        order: 1,
+        animation: {
+            character: "enemy",
+            type: "two"
+        }
     },
     {
         name: "minotaur_green",
@@ -77,10 +97,14 @@ const monsterSeed = [
         totalHealth: 45,
         totalArmor: 15,
         damage: [10, 20],
-        sequence: ["attack", "attack", "defend"],
+        sequence: ["attack", "attack", "block"],
         alive: true,
         round: 1,
-        order: 2
+        order: 2,
+        animation: {
+            character: "enemy",
+            type: "three"
+        }
     },
 ];
 

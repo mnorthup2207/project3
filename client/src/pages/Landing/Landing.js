@@ -8,11 +8,8 @@ import API from "../../utils/API";
 // REDUX
 import { useSelector, useDispatch, connect } from "react-redux";
 import {
-    setHealthArmor,
-    setTotalHealth,
-    setTotalArmor,
+    setPlayer,
     setAllMonsters,
-    setBattleNumber,
     setMonster
   } from "../../actions/gameActions";
 ////Sprites////
@@ -50,7 +47,7 @@ const Landing = (props) => {
                 // database is wrong
                 console.log(res.data)
                 // We set the initial monster
-                dispatch(setMonster(monster.health, monster.armor, monster.alive, monster.order, monster.totalHealth, monster.totalArmor))
+                dispatch(setMonster(monster))
             })
             .catch(err => console.log(err));
     };
@@ -64,18 +61,19 @@ const Landing = (props) => {
     function loadPlayer() {
         API.getPlayer()
             .then(res => {
-                let { health, armor, totalHealth, totalArmor } = res.data[0];
+                let player = res.data[0];
+
                 // Update the global state here
-                dispatch(setHealthArmor(health, armor, true));
-                dispatch(setBattleNumber(0));
-                dispatch(setTotalHealth(totalHealth));
-                dispatch(setTotalArmor(totalArmor));
+                dispatch(setPlayer(player));
             }
             )
             .catch(err => console.log(err));
     };
     useEffect(() => {
         // find some better way to update?
+        if ( battleNumber > 0 ) {
+            return
+        }
         loadMonsters();
         loadPlayer();
         // loadMonster(fire);

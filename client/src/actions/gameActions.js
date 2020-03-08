@@ -1,18 +1,55 @@
 import axios from "axios";
 
-import { SET_PLAYER_HEALTH_ARMOR, 
-    SET_PLAYER_TOTAL_HEALTH, 
-    SET_PLAYER_TOTAL_ARMOR,
-    SET_PLAYER_ANIMATION,
-    SET_PLAYER_SPRITE,
+import { 
+    RESET_BATTLE_NUMBER,
+    RESET_STATS_ROUND,
     SET_ALL_MONSTERS,
+    SET_BATTLE_NUMBER, 
+    SET_CARDS,
     SET_MONSTER,
     SET_MONSTER_ANIMATION,
+    SET_MONSTER_HEALTH_ARMOR,
     SET_MONSTER_SPRITE,
-    SET_CARDS, 
-    SET_BATTLE_NUMBER, 
-    RESET_BATTLE_NUMBER} from "./types";
+    SET_PLAYER, 
+    SET_PLAYER_ANIMATION,
+    SET_PLAYER_HEALTH_ARMOR, 
+    SET_PLAYER_SPRITE,
+    SET_PLAYER_TOTAL_ARMOR,
+    SET_PLAYER_TOTAL_HEALTH, 
+    SET_STATS_PLAYER_DAMAGE,
+    SET_STATS_MONSTER_DAMAGE,
+    SET_STATS_TOTAL_DAMAGE,
+    SET_STATS_ROUND
+} from "./types";
 
+//! Use this action on landing
+export const setPlayer = (player) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_PLAYER, 
+        payload: player
+    }
+} 
+//! Use this action on the loot page
+export const setCards = (cards) => {
+    return {
+        //! This should do an axios update ran on the loot page
+        type: SET_PLAYER, 
+        payload: {cards}
+    }
+} 
+export const setPlayerAnimation = (animation) => {
+    return {
+        type: SET_PLAYER_ANIMATION,
+        payload: { animation }
+    }
+}
+export const setPlayerSprite = (character, type) => {
+    return {
+        type: SET_PLAYER_SPRITE,
+        payload: { character, type }
+    }
+}
 // HEALTH ARMOR ACTIONS PLAYER
 export const setHealthArmor = (health, armor, alive) => {
     // PLAYER should be the name of the class, value should be the updated health object
@@ -45,41 +82,28 @@ export const resetBattleNumber = () => {
     return { type: RESET_BATTLE_NUMBER }
 }
 // HEALTH ARMOR ACTIONS MONSTER
-export const setMonster = (health, armor, alive, battleNumber, totalHealth, totalArmor) => {
+export const setMonsterHealthArmor = (health, armor, alive) => {
+    // battleNumber should be the name of the class, value should be the updated health object
+    return {
+        type: SET_MONSTER_HEALTH_ARMOR, 
+        payload: { health, armor, alive }
+    }
+};
+export const setMonster = ({health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}) => {
     // battleNumber should be the name of the class, value should be the updated health object
     return {
         type: SET_MONSTER, 
-        payload: {health, armor, alive, battleNumber, totalHealth, totalArmor}
+        payload: {health, armor, alive, order, totalHealth, totalArmor, monster, name, damage, sequence}
     }
 };
 // SET ALL MONSTERS
 export const setAllMonsters = (monsters) => {
     return { type: SET_ALL_MONSTERS, monsters }
 }
-//! Use this action on the loot page
-export const setCards = (playerCards) => {
-    return {
-        //! This should do an axios update ran on the loot page
-        type: SET_CARDS, 
-        payload: { playerCards }
-    }
-} 
-export const setPlayerAnimation = (animation) => {
-    return {
-        type: SET_PLAYER_ANIMATION,
-        payload: { animation }
-    }
-}
 export const setMonsterAnimation = (animation) => {
     return {
         type: SET_MONSTER_ANIMATION,
         payload: { animation }
-    }
-}
-export const setPlayerSprite = (character, type) => {
-    return {
-        type: SET_PLAYER_SPRITE,
-        payload: { character, type }
     }
 }
 export const setMonsterSprite = (character, type) => {
@@ -88,52 +112,35 @@ export const setMonsterSprite = (character, type) => {
         payload: { character, type }
     }
 }
-// //! Hand, discard deck, draw deck, cards?
-// export const drawHand = (player) => {
-//     return {
-//         type: DRAW_HAND,
-//         payload: player
-//     }
-// }
-// discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
-// drawHand
-// play
-// selectCard
-
-
-
-
-
-
-// // Routes for put, post, and get
-//     // I think we first run a get
-//     // Then we update all the new information and pass all the previous information that isn't getting change into the put
-// export const postCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .post("/api/character/:id/", )
-//     dispatch()
-// } 
-// export const getCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .get("/api/character/:id/", )
-//     dispatch()
-// } 
-// export const putCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .get("/api/character/:id/", )
-//     dispatch()
-// } 
-
-
-
-
-
-
-
-
-
-
-
+// Stats
+export const resetStatsRound = () => {
+    return {
+        type: RESET_STATS_ROUND
+    }
+}
+export const setStatsPlayerDamage = (damage) => {
+    return {
+        type: SET_STATS_PLAYER_DAMAGE,
+        payload: { damage }
+    }
+}
+export const setStatsMonsterDamage = (damage) => {
+    return {
+        type: SET_STATS_MONSTER_DAMAGE,
+        payload: { damage }
+    }
+}
+export const setStatsTotalDamage = (pdamage, mdamage) => {
+    return {
+        type: SET_STATS_TOTAL_DAMAGE,
+        payload: {pdamage, mdamage}
+    }
+}
+export const setStatsRound = () => {
+    return {
+        type: SET_STATS_ROUND
+    }
+}
 
 // import { healthArmorUpdate, showAttackSpell, playerAction, playerDrawHand, 
 //     determineMonsterAction, monsterAction, newRound} from "./visual"

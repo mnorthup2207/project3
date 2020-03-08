@@ -23,9 +23,17 @@ const PlayerSchema = new Schema({
         required: true,
     },
     cards: {
-        type: String,
+        type: Array,
         required: true,
     },
+    battleNumber: {
+        type: Number,
+        required: true,
+    },
+    alive: {
+        type: Boolean,
+        required: true,
+    }
 });
 
 module.exports = Player = mongoose.model("player", PlayerSchema);

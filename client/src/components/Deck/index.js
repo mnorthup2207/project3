@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Draw from "../Draw/index";
 import Discard from "../Discard/index";
 import PlayerHand from "../PlayerHand/index";
@@ -8,17 +9,63 @@ import { Grid, Button } from "@material-ui/core";
 
 
 import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
+import Monster from "../../pages/Dungeon_Fight/scripts/characters/Monster";
 import background from "../../images/bg-leather.png";
 import spells from "./spell.json"
+import { 
+    setHealthArmor, 
+    setMonsterHealthArmor,
+    setPlayerAnimation,
+    setMonsterAnimation,
+    setStatsRound
+} from "../../actions/gameActions";
 // import '../../images/spells'
 
 export default function Deck() {
-    const Choop = new Player("Choop");
-
+    const playerGState = useSelector(state => state.player);
+    const monsterGState = useSelector(state => state.monster);
+    const monstersGState = useSelector(state => state.monsters);
+    const cardsGState = useSelector(state => state.cards);
+    const statsGState = useSelector(state => state.stats);
+    const { round, totalRounds } = statsGState;
+    console.log(round)
+    const dispatch = useDispatch();
+    // const monsterHealthArmor = dispatch(setMonsterHealthArmor)
+    // // console.log(monstersGState[0].filter(monster => monster.order === playerGState.battleNumber))
+    // // console.log(monstersGState)
+    // let doop = monstersGState[0].filter(monster => monster.order === playerGState.battleNumber)[0]
+    // console.log(doop)
+    const Doop = new Monster(monsterGState);
+    const Choop = new Player(playerGState, cardsGState);
     const [playerState, setPlayerState] = useState({
         Choop,
         spell: ""
     })
+    console.log(Doop)
+    console.log(Choop)
+
+    const waitAnimation = (animation, nextFunc) => {
+        let timer = 1000;
+        switch (animation) {
+            case "blink":
+            case "idle":
+                timer = 1800;
+                break;
+            case "death":
+                timer = 1500;
+                break;
+            case "throw":
+            case "hurt":
+            case "kick":
+                timer = 1200;
+                break;
+            default:
+                timer = 1000;
+                break;
+        }
+        console.log(timer)
+        setTimeout(nextFunc, timer);
+    }
 
     const castAction = () => {
         // clear disabled on draw button
@@ -31,19 +78,25 @@ export default function Deck() {
             card.classList.remove("clicked")
 
         })
-
         // set the attack to a variable
         // empty selected cards and move to discard
-        const playerAttact = playerState.Choop.play();
-
-        // remove spell from state
+////////       
+        let animation = "throw";
+        dispatch(setPlayerAnimation(animation));
+        const playerAttack = playerState.Choop.play();
+        Doop.defend(playerAttack);
+        dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
+        dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
         setPlayerState({ ...playerState, spell: "" })
+        //! Setting up the animations
+        waitAnimation(animation, () => {
+            console.log(playerAttack)
+            // Change this to generate a modal to go to the next page
+            animation = "idle";
+            dispatch(setPlayerAnimation(animation));
+            monsterAction()
+        })
     }
-
-    // const spellImg = {
-    //     height: "50px"
-    // }
-
     const getSpellIMG = (theSpell) => {
         const icon = spells[theSpell].image
         console.log(icon)
@@ -57,6 +110,38 @@ export default function Deck() {
             </Grid>
         ) 
     }
+    const determineMonsterAction = () => {
+        console.log(Doop.sequence)
+        console.log(round);
+        if ( Doop.sequence.length > round - 1) {
+            console.log(Doop.sequence)
+            console.log(Doop.sequence[round - 1])
+            return Doop.sequence[round - 1];
+        }
+        return Doop.sequence[(round - 1) % Doop.sequence.length]
+    }
+    
+    const monsterAction = () => {
+        if (Doop.alive) {
+            // Animation
+            let animation = "attack";
+            dispatch(setMonsterAnimation(animation));
+            // Action
+            let action = determineMonsterAction();
+            console.log(action, Doop, Doop[action]);
+            let doopAttack = Doop[action]();
+            console.log(doopAttack)
+            Choop.defend(doopAttack);
+            dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
+            dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
+            dispatch(setStatsRound());
+            waitAnimation(animation, () => {
+                animation = "idle";
+                Choop.round = round;
+            })
+        }
+    }
+
 
     var selectionStyle = {
         backgroundImage: `url(${background})`,

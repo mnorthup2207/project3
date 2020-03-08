@@ -29,16 +29,20 @@ const useStyles = makeStyles({
 
 export default function CharacterCard(props) {
     const classes = useStyles();
+    console.log(props)
     const { character, type } = useSelector(state => state[props.character + "Sprite"])
+    const playerAnimation = useSelector(state => state.playerAnimation);
+    const monsterAnimation = useSelector(state => state.monsterAnimation);
     // const display = (props.character === "player") ?: 100, armor: 50, totalArmor: 150 })
     return (
         <div className={classes.root} >
             {/* Pass in the intention for the monster, and maybe the name in the font that logan is working on */}
-            <Intention intention={props.intention} />
+            <Intention intention={props.character} />
             <div id='divSprite'>
                 <Sprite
                     character={character}
                     type={type}
+                    animation={playerAnimation}
                 />
             </div>
             {/* Use the state in place of the player.armor */}
