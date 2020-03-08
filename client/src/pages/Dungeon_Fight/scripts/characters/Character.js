@@ -54,6 +54,7 @@ Character.prototype.isAlive = function(resultHealth) {
         this.alive = false
     } else {
         console.log("Is alive")
+        this.alive = true;
     }
 }
 

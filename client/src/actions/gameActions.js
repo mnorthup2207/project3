@@ -1,19 +1,26 @@
 import axios from "axios";
 
-import { SET_PLAYER_HEALTH_ARMOR, 
-    SET_PLAYER_TOTAL_HEALTH, 
-    SET_PLAYER_TOTAL_ARMOR,
-    SET_PLAYER_ANIMATION,
-    SET_PLAYER_SPRITE,
+import { 
+    RESET_BATTLE_NUMBER,
+    RESET_STATS_ROUND,
     SET_ALL_MONSTERS,
+    SET_BATTLE_NUMBER, 
+    SET_CARDS,
     SET_MONSTER,
-    SET_MONSTER_HEALTH_ARMOR,
     SET_MONSTER_ANIMATION,
+    SET_MONSTER_HEALTH_ARMOR,
     SET_MONSTER_SPRITE,
     SET_PLAYER, 
-    SET_CARDS,
-    SET_BATTLE_NUMBER, 
-    RESET_BATTLE_NUMBER} from "./types";
+    SET_PLAYER_ANIMATION,
+    SET_PLAYER_HEALTH_ARMOR, 
+    SET_PLAYER_SPRITE,
+    SET_PLAYER_TOTAL_ARMOR,
+    SET_PLAYER_TOTAL_HEALTH, 
+    SET_STATS_PLAYER_DAMAGE,
+    SET_STATS_MONSTER_DAMAGE,
+    SET_STATS_TOTAL_DAMAGE,
+    SET_STATS_ROUND
+} from "./types";
 
 //! Use this action on landing
 export const setPlayer = (player) => {
@@ -105,52 +112,35 @@ export const setMonsterSprite = (character, type) => {
         payload: { character, type }
     }
 }
-// //! Hand, discard deck, draw deck, cards?
-// export const drawHand = (player) => {
-//     return {
-//         type: DRAW_HAND,
-//         payload: player
-//     }
-// }
-// discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj, cards=playerCards,
-// drawHand
-// play
-// selectCard
-
-
-
-
-
-
-// // Routes for put, post, and get
-//     // I think we first run a get
-//     // Then we update all the new information and pass all the previous information that isn't getting change into the put
-// export const postCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .post("/api/character/:id/", )
-//     dispatch()
-// } 
-// export const getCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .get("/api/character/:id/", )
-//     dispatch()
-// } 
-// export const putCharacter = (character) => dispatch => {
-//     // axios 
-//     //     .get("/api/character/:id/", )
-//     dispatch()
-// } 
-
-
-
-
-
-
-
-
-
-
-
+// Stats
+export const resetStatsRound = () => {
+    return {
+        type: RESET_STATS_ROUND
+    }
+}
+export const setStatsPlayerDamage = (damage) => {
+    return {
+        type: SET_STATS_PLAYER_DAMAGE,
+        payload: { damage }
+    }
+}
+export const setStatsMonsterDamage = (damage) => {
+    return {
+        type: SET_STATS_MONSTER_DAMAGE,
+        payload: { damage }
+    }
+}
+export const setStatsTotalDamage = (pdamage, mdamage) => {
+    return {
+        type: SET_STATS_TOTAL_DAMAGE,
+        payload: {pdamage, mdamage}
+    }
+}
+export const setStatsRound = () => {
+    return {
+        type: SET_STATS_ROUND
+    }
+}
 
 // import { healthArmorUpdate, showAttackSpell, playerAction, playerDrawHand, 
 //     determineMonsterAction, monsterAction, newRound} from "./visual"

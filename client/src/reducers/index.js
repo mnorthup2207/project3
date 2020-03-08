@@ -8,6 +8,7 @@ import monsterSpriteReducer from "./monsterSpriteReducer";
 import playerReducer from "./playerReducer";
 import playerAnimationReducer from "./playerAnimationReducer";
 import playerSpriteReducer from "./playerSpriteReducer";
+import statsReducer from "./statsReducer";
 
 export default combineReducers({
     monsters: allMonstersReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
     monsterSprite: monsterSpriteReducer,
     player: playerReducer,
     playerAnimation: playerAnimationReducer,
-    playerSprite: playerSpriteReducer
+    playerSprite: playerSpriteReducer,
+    stats: statsReducer
 });

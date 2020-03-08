@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 
 ////Sprites////
 import Sprite from "../../sprites/getSprite";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+import { setMonster, setMonsterAnimation, setMonsterSprite } from "../../actions/gameActions";
 
 ////Material UI////
 import Container from '@material-ui/core/Container';
@@ -27,8 +28,18 @@ const useStyles = makeStyles(theme => ({
 const currentMapBoss = ["one", "two", "three"];
 
 const MapPage = (props) => {
+    const monsters = useSelector(state => state.monsters[0]);
     const { character, type } = useSelector(state => state.monsterSprite);
+    const battleNumber = useSelector(state => state.player.battleNumber);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        console.log(monsters)
+        let newMonster = monsters.filter(monster => monster.order === battleNumber)[0]
+        console.log(newMonster);
+        dispatch(setMonster(newMonster));
+        dispatch(setMonsterSprite(newMonster.animation.character, newMonster.animation.type))
+    }, [battleNumber])
     const classes = useStyles();
     return (
         <>

@@ -2,7 +2,10 @@
     "attack": {
         "image": "./spells/swords.png"
     },
-    "defend": {
+    "block": {
+        "image": "./spells/shield.png"
+    },
+    "taunt": {
         "image": "./spells/shield.png"
     }
 }

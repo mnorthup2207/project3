@@ -1,12 +1,12 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
 ////Material UI////
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import background from '../../images/bg-card.png'
-
+import background from '../../images/bg-card.png';
+import { setStatsPlayerDamage } from "../../actions/gameActions";
 
 ////Sprite////
 import Sprite from "../../sprites/getSprite";
@@ -19,6 +19,7 @@ import './styles.css';
 
 export default function PlayerHand({ set, player }) {
 
+    const dispatch = useDispatch();
 
     var cardStyle = {
         backgroundImage: `url(${background})`,
@@ -30,7 +31,7 @@ export default function PlayerHand({ set, player }) {
 
     const select = e => {
         const cardId = e.currentTarget.id
-
+        dispatch(setStatsPlayerDamage(0))
         console.log(cardId);
         let spell = "";
         let cards = player.Choop.selectedCards
@@ -49,6 +50,9 @@ export default function PlayerHand({ set, player }) {
 
         if (cards.length === 3) {
             spell = player.Choop.determineSpell()
+            let damage = player.Choop.attack(spell)[0]
+            dispatch(setStatsPlayerDamage(damage))
+            // Update the global variable for attack damage
             console.log(spell);
         }
         set({ ...player , spell});

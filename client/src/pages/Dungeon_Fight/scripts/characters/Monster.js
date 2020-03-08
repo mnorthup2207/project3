@@ -15,15 +15,12 @@ class Monster extends Character {
         let high = parseInt(this.damage[1])
         return [low + Math.round((high - low) * Math.random()), []]
     }
-    spell(type) {
-        switch (type) {
-            case "armor":
-                return console.log("Defend magic armor")
-            case "charmor":
-                return console.log("Defend magic charmor")
-            default:
-                return console.log("default")
+    block() {
+        this.armor += Math.round(this.totalArmor / 10)
+        return [0, []]
         }
+    taunt() {
+        console.log("This is an insult!");
     }
 }
 

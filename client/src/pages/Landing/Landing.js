@@ -10,7 +10,6 @@ import { useSelector, useDispatch, connect } from "react-redux";
 import {
     setPlayer,
     setAllMonsters,
-    setBattleNumber,
     setMonster
   } from "../../actions/gameActions";
 ////Sprites////
@@ -72,6 +71,9 @@ const Landing = (props) => {
     };
     useEffect(() => {
         // find some better way to update?
+        if ( battleNumber > 0 ) {
+            return
+        }
         loadMonsters();
         loadPlayer();
         // loadMonster(fire);
