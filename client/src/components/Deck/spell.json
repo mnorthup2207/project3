@@ -1,0 +1,32 @@
+{
+    "heal": {
+        "image": "./spells/heal.png"
+    },
+    "harden": {
+        "image": "./spells/harden.png"
+    },
+    "sharpen": {
+        "image": "./spells/sharpen.png"
+    },
+    "jackpot": {
+        "image": "./spells/jackpot.png"
+    },
+    "toughen": {
+        "image": "./spells/toughen.png"
+    },
+    "cut": {
+        "image": "./spells/cut.png"
+    },
+    "tank": {
+        "image": "./spells/tank.png"
+    },
+    "retaliate": {
+        "image": "./spells/retaliate-2.png"
+    },
+    "desolate": {
+        "image": "./spells/desolate.png"
+    },
+    "slice": {
+        "image": "./spells/slice.png"
+    }
+}

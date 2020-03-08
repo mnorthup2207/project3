@@ -1,0 +1,11 @@
+{
+    "attack": {
+        "image": "./spells/swords.png"
+    },
+    "block": {
+        "image": "./spells/shield.png"
+    },
+    "taunt": {
+        "image": "./spells/shield.png"
+    }
+}

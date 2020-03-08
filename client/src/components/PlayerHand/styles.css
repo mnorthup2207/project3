@@ -1,0 +1,24 @@
+#player-card {
+    cursor: pointer;
+}
+
+.clicked {
+    box-shadow: 0 0 35px rgba(35, 173, 278, 1) !important;
+    border-color: rgba(35, 173, 278, 1);
+    border-radius: 1rem;
+    border-width: medium;
+    transition: width 2s, height 4s;
+    width: 60px;
+    height: 80px;
+
+
+}
+
+#player-card:hover {
+    box-shadow: 0 0 6px rgba(35, 173, 278, 1);
+}
+
+#card-sprite {
+    height: 150px;
+    width: 150px;
+}

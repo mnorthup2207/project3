@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
+import API from "../../utils/API";
 
+// REDUX
+import { useSelector, useDispatch, connect } from "react-redux";
+import {
+    setPlayer,
+    setAllMonsters,
+    setMonster
+  } from "../../actions/gameActions";
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
 
@@ -28,6 +35,50 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Landing = (props) => {
+    const { battleNumber } = useSelector(state => state.player);
+    const dispatch = useDispatch();
+
+    function loadMonsters() {
+        API.getMonsters()
+            .then(res => {
+                // Update the global state here
+                dispatch(setAllMonsters(res.data)) 
+                let monster = res.data.filter(monster => monster.order === battleNumber)[0];
+                // database is wrong
+                console.log(res.data)
+                // We set the initial monster
+                dispatch(setMonster(monster))
+            })
+            .catch(err => console.log(err));
+    };
+    function loadMonster(id) {
+        API.getMonster(id)
+            .then(res =>
+                console.log("get monster", res.data)
+            )
+            .catch(err => console.log(err));
+    };
+    function loadPlayer() {
+        API.getPlayer()
+            .then(res => {
+                let player = res.data[0];
+
+                // Update the global state here
+                dispatch(setPlayer(player));
+            }
+            )
+            .catch(err => console.log(err));
+    };
+    useEffect(() => {
+        // find some better way to update?
+        if ( battleNumber > 0 ) {
+            return
+        }
+        loadMonsters();
+        loadPlayer();
+        // loadMonster(fire);
+    }, [])
+
     const onLogoutClick = e => {
         e.preventDefault();
         props.logoutUser();
@@ -36,25 +87,25 @@ const Landing = (props) => {
     const { user } = props.auth;
     return (
         <>
-            <img id="landingImage" src={landingImage} alt="landing image" /> 
+            <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" />
             <Container id="masterContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
-                    <Grid container direction="row" justify="space-between" alignItems="center">
+                    <Grid container direction="row" justify="space-between" alignItems="flex-end">
                         <h4>
                             <b>Welcome Back,</b> {user.name.split(" ")[0]}
                         </h4>
                         <Button
                             variant="contained"
                             onClick={onLogoutClick}
-                            variant="outlined" 
+                            variant="outlined"
                             color="secondary"
                         >
                             Logout
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid container direction="row" spacing={2} className={classes.root}>
-                    <Grid 
+                <Grid id="landingDiv" container direction="row" spacing={2} className={classes.root}>
+                    <Grid
                         container
                         item
                         xs={3}
@@ -65,17 +116,7 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
-                                style={{margin: 20}}
-                            >
-                                <h1>Map</h1>
-                                <i className="material-icons" style={{ marginLeft: 10 }}>my_location</i>
-                            </Button>
-                        </Link>
-                        <Link to="/fight">
-                            <Button 
-                                color="primary"
-                                size="large"
-                                style={{margin: 20}}
+                                style={{ margin: 20 }}
                             >
                                 <h1>Fight</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>sports_kabaddi</i>
@@ -85,26 +126,27 @@ const Landing = (props) => {
                             <Button
                                 color="primary"
                                 size="large"
-                                style={{margin: 20}}
+                                style={{ margin: 20 }}
                             >
                                 <h1>Creators</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>people</i>
                             </Button>
                         </Link>
                     </Grid>
-                    <Grid 
+                    <Grid
                         container
                         item
                         xs={9}
                         direction="column"
                         justify="flex-start"
-                        alignItems="flex-start">
-                        <Sprite 
-                            character="display"
-                            type="main"
-                        />
+                        alignItems="flex-end">
+                        <div id="sprite-div">
+                            <Sprite
+                                character="display"
+                                type="main"
+                            />
+                        </div>
                     </Grid>
-                        {/* <Sprite character={sprites.player.main} /> */}
                 </Grid>
             </Container>
         </>

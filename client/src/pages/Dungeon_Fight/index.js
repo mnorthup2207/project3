@@ -1,12 +1,29 @@
 // // Environment: Turn this into the connector between the two characters
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 ////Material UI////
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 import Container from "@material-ui/core/Container";
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from "@material-ui/core/Drawer";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+// Redux
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { 
+    setHealthArmor, 
+    setBattleNumber, 
+    setMonsterAnimation, 
+    setMonsterSprite 
+} from "../../actions/gameActions";
+// Our imports
 import CharacterCard from "../../components/Character_Card";
 import Deck from "../../components/Deck";
 import B1 from "../../images/bg-paper.png";
@@ -15,26 +32,12 @@ import B3 from "../../images/bg-scissors.png";
 import "./style.css";
 import scripts from "./scripts";
 
-
 // Destructuring the scripts export
-const {
-    Monster,
-    Player,
-    healthArmorUpdate,
-    showAttackSpell,
-    playerAction,
-    playerDrawHand,
-    determineMonsterAction,
-    monsterAction,
-    newRound
-} = scripts;
+const { Monster, Player } = scripts;
 
+// Background
 const BGArray = [B1, B2, B3];
 const AltArray = ["paper background", "rock background", "scissor background"];
-
-//! Git rid of this
-const getRandomInt = () => Math.floor(Math.random() * Math.floor(3));
-const picChange = getRandomInt();
 
 // Functions
 const useStyles = makeStyles(theme => ({
@@ -47,39 +50,42 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary
     }
 }));
-// const init = () => {
-
-//   // healthArmorUpdate(player1, Choop);
-//   // healthArmorUpdate(monster1, Doop);
-
-//   // drawDeck.firstElementChild.innerText = Choop.cards.length;
-//   // discardDeck.innerText = 0;
-// };
+// End of fight
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const DungeonFight = props => {
-    const [state, setState] = React.useState({
-        bottom: false
-    });
+    const stats = useSelector(state => state.stats);
+    const playerState = useSelector(state => state.player);
+    const monsterState = useSelector(state => state.monster);
+    const battleNumber = useSelector(state => state.player.battleNumber)
+    const dispatch = useDispatch();
 
-    const toggleDrawer = (side, open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
+    const [open, setOpen] = React.useState(false);
+    
+    useEffect(() => {
+        if (!(playerState.alive && monsterState.alive)) {
+            dispatch(setBattleNumber(battleNumber + 1))
+            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive))
+            setOpen(true);
         }
+    }, [playerState.alive, monsterState.alive])
 
-        setState({ ...state, [side]: open });
+    
+    const handleDialogClose = () => {
+        setOpen(false);
     };
 
     const classes = useStyles();
-    var round = 1;
-    // Pointers
-    // Add this into an init function
-    // Creat this if it doesn't exist or load if it does
-    const Choop = new Player("Choop");
-    const Doop = new Monster("Doop");
     // componentDidMount(init())
     return (
         <>
-            <img id="picChange" src={BGArray[picChange]} alt={AltArray[picChange]} />
+            <img
+                id="picChange"
+                src={BGArray[playerState.battleNumber]}
+                alt={AltArray[playerState.battleNumber]}
+            />
             <Container id="fightContainer" maxWidth="lg">
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
@@ -94,28 +100,113 @@ const DungeonFight = props => {
                     </Grid>
                 </Grid>
                 {/* Row 1 */}
-                <Grid container direction="row" justify="space-between" alignItems="center" className={classes.root}>
+                <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="center"
+                    className={classes.root}
+                >
                     <Grid item xs={4}>
-                        <CharacterCard character={Choop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                        <CharacterCard
+                            character="player"
+                            // characterState={playerState}
+                            animation={"idle"}
+                        ></CharacterCard>
                     </Grid>
                     <Grid item xs={2}>
-                        <h1>{Choop.determineSpell}</h1>
+                        {stats.playerTurnDamage ? stats.playerTurnDamage : ""}
                     </Grid>
                     <Grid item xs={4}>
-                        <CharacterCard character={Doop} type={AltArray[picChange].split(" ")[0]}></CharacterCard>
+                        {/* Figure this out */}
+                        <CharacterCard
+                            character="monster"
+                            intention={"ADD ME"}
+                        ></CharacterCard>
                     </Grid>
                 </Grid>
                 {/* Row 2 */}
-                <Button className="toggle-drawer" onClick={toggleDrawer('bottom', true)}>Open Bottom</Button>
-                <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                    <Deck />
-                </Drawer>
             </Container>
+            <Grid
+                container
+                item
+                alignItems="flex-end"
+                id="deck-floor"
+                justify="center"
+            >
+                <Deck />
+            </Grid>
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleDialogClose}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle id="alert-dialog-slide-title">
+                    {(playerState.alive) ? ("Victory") : ("Game Over")}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        {(playerState.alive) ? 
+                            ("You have slain the mighty monster. Time for some swag, loot, and all things shiny!") :
+                            ("You were killed...")}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Link to={(playerState.alive) ? ("/loot") : ("/gameover")}>
+                        <Button
+                            color="secondary"
+                            size="large"
+                            style={{ margin: 20 }}
+                        >
+                            Proceed
+                        </Button>
+                    </Link>
+                </DialogActions>
+            </Dialog>
         </>
     );
 };
 
 export default DungeonFight;
+
+//
+
+// // Use this when passing in health, armor, totalHealth, and totalArmor
+// const mapStateToProps = (playerHealthArmorState, cardState, playerAliveState, monsterAliveState) => ({
+//   health: playerHealthArmorState.health,
+//   armor: playerHealthArmorState.armor,
+//   // totalHealth: playerHealthArmor.totalHealth,
+//   // totalArmor: playerHealthArmor.totalArmor
+//   cards: cardState.cards,
+//   playerAlive: playerAliveState.alive,
+//   playerCharacter: playerAliveState.character,
+//   monsterAlive: monsterAliveState.alive,
+//   monsterCharacter: monsterAliveState.character
+// });
+// export default connect(
+//   // mapStateToProps,
+//   { setHealthArmor, setPlayerCards, setCharacterAlive }
+// )(DungeonFight);
+// export default DungeonFight
+
+// Login.propTypes = {
+//   loginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
+
+// const mapStateToProps = userState => ({
+//   auth: userState.auth,
+//   errors: userState.errors
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
 
 // function Dungeon_Fight(props) {
 //   // Buttons and corresponding events

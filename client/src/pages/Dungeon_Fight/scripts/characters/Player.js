@@ -9,18 +9,18 @@ var playerCards = [...cards.slice(0, 5), ...cards.slice(10, 15), ...cards.slice(
 const spellsObj = {
     heal: () => {
         console.log("healing")
-        this.status["heal"] += 1;
-        return ""
+        // this.status["heal"] += 1;
+        return "heal"
     },
     harden: () => {
         console.log("hardening")
-        this.status["harden"] += 1;
-        return ""
+        // this.status["harden"] += 1;
+        return "harden"
     },
     sharpen: () => {
         console.log("sharpening")
-        this.status["sharpen"] += 1;
-        return ""
+        // this.status["sharpen"] += 1;
+        return "sharpen"
     },
     jackpot: () => {
         console.log("Hit the jackpot")
@@ -28,8 +28,8 @@ const spellsObj = {
     },
     toughen: () => {
         console.log("toughening")
-        this.status["toughen"] += 1;
-        return ""
+        // this.status["toughen"] += 1;
+        return "toughen"
     },
     cut: () => {
         console.log("paper cut")
@@ -41,8 +41,8 @@ const spellsObj = {
     },
     retaliate: () => {
         console.log("hi")
-        this.status["retaliate"] += 1;
-        return ""
+        // this.status["retaliate"] += 1;
+        return "retaliate"
     },
     desolate: () => {
         console.log("hi")
@@ -58,9 +58,10 @@ const spellsObj = {
 // Need to add player methods
 class Player extends Character {
     // These are the initial values that a player starts with
-    constructor(name, health=50, armor=20, totalHealth=50, totalArmor=50, spells=spellsObj, status,
-        cards=playerCards, discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[],
-        attacking, defending, idle, alive, round) {
+    // Turn this into an object
+    constructor({ alive, health=50, armor=25, totalHealth=50, totalArmor=25, battleNumber=0}, cards=playerCards, name="Choop", status=[],
+        discardDeck=[], drawDeck=[], hand=[], numDraw=5, selectedCards=[], spells=spellsObj,
+        attacking, defending, idle, round, harden = 0, sharpen=0, toughen=0) {
         super(name, health, armor, totalHealth, totalArmor, status,
             attacking, defending, idle, alive, round)
         // Current cards the player has
@@ -70,13 +71,18 @@ class Player extends Character {
         this.hand = hand;
         this.selectedCards = selectedCards;
         // Number of cards a player draws
+        this.battleNumber = battleNumber;
         this.numDraw = numDraw;
         // Spells and status corresponding to the player
         this.spells = spells;
         this.status = status;
+        this.harden = harden;
+        this.sharpen = sharpen;
+        this.toughen = toughen;
 
     }
     attack(type, powerUps) {
+        // Refactor
         // gonna have to change this for powerups
         let attackArr = this.selectedCards.map(card => parseInt(card[1]));
         let resultDamage = attackArr.reduce((a, b) => a + b);
@@ -94,24 +100,50 @@ class Player extends Character {
             case "slice":
                 resultDamage *= 2;
                 break;
-            case "tank" :
-                this.armor = Math.min(this.totalArmor, resultDamage * 2)
-                break;
             case "jackpot":
-                resultDamage += 5 * this.round;
+                resultDamage += 3 * this.round;
                 break;
+            case "retaliate":
+                this.resultDamage += this.totalHealth - this.health;
             default:
                 break;
         }
+        // Sharpen
+        resultDamage += this.sharpen;
 
-        
         result = [resultDamage, resultType];
         console.log("Result of attack")
         console.log([result]);
         return result
         }
     castSpell() {
-        return this.spells[this.determineSpell()]();
+        // gonna have to change this for powerups
+        console.log("Casting the spell");
+        let attackArr = this.selectedCards.map(card => parseInt(card[1]));
+        let resultDamage = attackArr.reduce((a, b) => a + b);
+        let spell = this.determineSpell()
+        switch (spell) {
+            case "heal":
+                this.health = Math.min(this.health + resultDamage, this.totalHealth)
+                break;
+            case "harden":
+                this.harden += 2
+                break;
+            case "sharpen":
+                this.sharpen += 2
+                break;
+            case "toughen":
+                this.toughen += 2
+                break;
+            case "tank":
+                this.armor = Math.min(this.totalArmor, this.armor + resultDamage * 2)
+                break;
+            default:
+                break;
+        }
+        this.armor = Math.min(this.totalArmor, this.armor + this.harden)
+        this.health = Math.min(this.totalHealth, this.health + this.toughen)
+        return this.spells[spell]();
     }
     determineSpell() {
         let spell = this.selectedCards.map(card => card[0]).sort().join("");

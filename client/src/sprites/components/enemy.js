@@ -2,51 +2,53 @@ import React, { Component } from "react"
 import Spritesheet from 'react-responsive-spritesheet';
 
 class Enemy extends Component {
-    constructor() {
-        super();
+    //state
+    constructor(props) {
+        super(props);
         this.state = {
-            type: 'idle',
-            nextAction: ''
+            animation: props.animation,
+            nextAnimation: 'idle'
         };
     }
 
-    changeAnimation(action, p = this.props.character) {
-        this.setState({ ...this.state, nextAction: action })
+    //dispatch (nextAnimation)
+    changeAnimation(x) {
+        this.setState({ ...this.state, nextAnimation: x })
     }
 
-    action(p = this.props.character, type = this.state.type) {
+    action(p = this.props.character, type = this.state.animation) {
         return p[type]
     }
 
     render() {
-        return <div className='sprite-enemy'>
-            <Spritesheet
-                image={this.action().image}
-                widthFrame={this.action().widthFrame}
-                heightFrame={this.action().heightFrame}
-                steps={this.action().frames}
-                fps={10}
-                autoplay={true}
-                loop={true}
-                getInstance={spritesheet => {
-                    this.spritesheeInstance = spritesheet;
-                }}
-                onInit={() => {
-                    this.spritesheeInstance.setEndAt(this.action().frames)
-                }}
-                onClick={() => { this.changeAnimation("attack") }}
-                onLoopComplete={() => {
-                    if (this.state.nextAction) {
-                        console.log("changing to", this.state.nextAction)
-                        this.setState({ type: this.state.nextAction, nextAction: '' })
-                    }
-                    if (this.action().oneLoop) {
-                        console.log("yay")
-                        this.changeAnimation("idle")
-                    }
-                }}
-            />
-        </div>
+        return <Spritesheet
+            className={this.props.className}
+            image={this.action().image}
+            widthFrame={this.action().widthFrame}
+            heightFrame={this.action().heightFrame}
+            steps={this.action().frames}
+            fps={10}
+            autoplay={true}
+            loop={true}
+            getInstance={spritesheet => {
+                this.spritesheeInstance = spritesheet;
+            }}
+            onInit={() => {
+                this.spritesheeInstance.setEndAt(this.action().frames)
+            }}
+            //call dispatch (nextAnimation)
+            onClick={() => { this.changeAnimation("attack") }}
+            onLoopComplete={() => {
+                // dispatch (animation and nextAnimation)
+                if (this.state.nextAnimation) {
+                    this.setState({ animation: this.state.nextAnimation, nextAnimation: '' })
+                }
+                //calling dispatch (nextAnimation)
+                if (this.action().oneLoop) {
+                    this.changeAnimation("idle")
+                }
+            }}
+        />
     }
 }
 

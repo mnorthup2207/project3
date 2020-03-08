@@ -22,5 +22,7 @@
         "react"
     ],
     "rules": {
+        "indent" : "off",
+        "String": "off"
     }
 }
