@@ -147,13 +147,13 @@ const DungeonFight = props => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        {(playerState.alive) ?
-                            ("You have slain the mighty monster. Time for some swag, loot, and all things shiny!") :
+                        {(playerState.alive) ?(playerState.battleNumber >= monsterState.length ? ("You have defeated all Enemies, Congratulations!") :
+                            ("You have slain the mighty monster. Time for some swag, loot, and all things shiny!")) :
                             ("You were killed...")}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Link to={(playerState.alive) ? ("/loot") : ("/gameover")}>
+                    <Link to={(playerState.alive) ? (playerState.battleNumber >= monsterState.length ? ("/victory") : ("/loot")) : ("/gameover")}>
                         <Button
                             color="secondary"
                             size="large"

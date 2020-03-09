@@ -30,6 +30,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 ///pages/components///
 import "./style.css"
+import zIndex from "@material-ui/core/styles/zIndex";
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -104,6 +105,13 @@ const Landing = (props) => {
     };
     const classes = useStyles();
     const { user } = props.auth;
+
+    const deadStyle = {
+        marginTop: -70,
+        marginLeft: -25,
+        zIndex: 75
+    }
+
     return (
         <>
             <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" />
@@ -177,7 +185,7 @@ const Landing = (props) => {
                 >
                     {defeatedEnemies.map(defeated => {
                         return (
-                            <img src={defeated} alt="enemy" key={defeated} style={{marginTop: -50}}/>
+                            <img src={defeated} alt="enemy" key={defeated} style={deadStyle}/>
                         )
                     })}
                 </Grid>
