@@ -27,24 +27,23 @@ export default function Deck() {
     const playerGState = useSelector(state => state.player);
     const monsterGState = useSelector(state => state.monster);
     const monstersGState = useSelector(state => state.monsters);
-    const cardsGState = useSelector(state => state.cards);
     const statsGState = useSelector(state => state.stats);
     const { round, totalRounds } = statsGState;
-    console.log(round)
+    // console.log(round)
     const dispatch = useDispatch();
     // const monsterHealthArmor = dispatch(setMonsterHealthArmor)
-    // // console.log(monstersGState[0].filter(monster => monster.order === playerGState.battleNumber))
-    // // console.log(monstersGState)
+    // console.log(monstersGState[0].filter(monster => monster.order === playerGState.battleNumber))
+    // console.log(monstersGState)
     // let doop = monstersGState[0].filter(monster => monster.order === playerGState.battleNumber)[0]
     // console.log(doop)
     const Doop = new Monster(monsterGState);
-    const Choop = new Player(playerGState, cardsGState);
+    const Choop = new Player(playerGState, playerGState.cards);
     const [playerState, setPlayerState] = useState({
         Choop,
         spell: ""
     })
-    console.log(Doop)
-    console.log(Choop)
+    // console.log(Doop)
+    // console.log(Choop)
 
     const waitAnimation = (animation, nextFunc) => {
         let timer = 1000;
@@ -65,7 +64,7 @@ export default function Deck() {
                 timer = 1000;
                 break;
         }
-        console.log(timer)
+        // console.log(timer)
         setTimeout(nextFunc, timer);
     }
 
@@ -92,7 +91,7 @@ export default function Deck() {
         setPlayerState({ ...playerState, spell: "" })
         //! Setting up the animations
         waitAnimation(animation, () => {
-            console.log(playerAttack)
+            // console.log(playerAttack)
             // Change this to generate a modal to go to the next page
             animation = "idle";
             dispatch(setPlayerAnimation(animation));
@@ -101,8 +100,8 @@ export default function Deck() {
     }
     const getSpellIMG = (theSpell) => {
         const icon = spells[theSpell].image
-        console.log(icon)
-        return (
+        // console.log(icon)
+        return(
             <Grid
                 container
                 item
@@ -113,11 +112,11 @@ export default function Deck() {
         )
     }
     const determineMonsterAction = () => {
-        console.log(Doop.sequence)
-        console.log(round);
-        if (Doop.sequence.length > round - 1) {
-            console.log(Doop.sequence)
-            console.log(Doop.sequence[round - 1])
+        // console.log(Doop.sequence)
+        // console.log(round);
+        if ( Doop.sequence.length > round - 1) {
+            // console.log(Doop.sequence)
+            // console.log(Doop.sequence[round - 1])
             return Doop.sequence[round - 1];
         }
         return Doop.sequence[(round - 1) % Doop.sequence.length]
@@ -130,10 +129,11 @@ export default function Deck() {
             dispatch(setMonsterAnimation(animation));
             // Action
             let action = determineMonsterAction();
-            console.log(action, Doop, Doop[action]);
+            // console.log(action, Doop, Doop[action]);
             let doopAttack = Doop[action]();
-            console.log(doopAttack)
+            // console.log(doopAttack)
             Choop.defend(doopAttack);
+            
             dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
             dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
             dispatch(setStatsRound());
