@@ -3,6 +3,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import "./style.css";
 import { withStyles } from '@material-ui/core/styles';
 import { useSelector } from "react-redux";
+import { red, indigo } from '@material-ui/core/colors'
 
 
 const ArmorLinearProgress = withStyles({
@@ -10,10 +11,10 @@ const ArmorLinearProgress = withStyles({
     height: "1rem"
   },
   colorPrimary: {
-    backgroundColor: '#a3b1ff',
+    backgroundColor: indigo[100],
   },
   barColorPrimary: {
-    backgroundColor: '#3d5afe',
+    backgroundColor: indigo[500],
   },
 
 })(LinearProgress);
@@ -22,10 +23,10 @@ const HealthLinearProgress = withStyles({
     height: "1rem",
   },
   colorPrimary: {
-    backgroundColor: '#f6685e',
+    backgroundColor: red[50],
   },
   barColorPrimary: {
-    backgroundColor: '#f44336',
+    backgroundColor: red[500],
   },
 
 })(LinearProgress);
