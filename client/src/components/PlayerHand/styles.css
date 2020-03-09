@@ -10,8 +10,6 @@
     transition: width 2s, height 4s;
     width: 60px;
     height: 80px;
-
-
 }
 
 #player-card:hover {
@@ -21,4 +19,17 @@
 #card-sprite {
     height: 150px;
     width: 150px;
+    text-align: center;
+    padding: 0%;
+}
+
+h3 {
+    text-align: center;
+    color: #7e57c2;
+    font-size: 30px;
+    margin: 5px 0 0 0;
+}
+
+#card-content {
+    padding: 0%;
 }

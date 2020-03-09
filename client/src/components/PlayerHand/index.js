@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import background from '../../images/bg-card.png';
 import { setStatsPlayerDamage } from "../../actions/gameActions";
+import Sprite from "../../sprites/getSprite"
 
 import './styles.css';
 
@@ -23,7 +24,7 @@ export default function PlayerHand({ set, player }) {
         height: "200px",
         width: "145px",
         marginLeft: "15px",
-        marginRight: "15px"
+        marginRight: "15px",
     }
 
     const select = e => {
@@ -39,7 +40,7 @@ export default function PlayerHand({ set, player }) {
         }
 
         const cardEl = document.getElementById(cardId)
-        if (cardEl.classList.contains("clicked")){
+        if (cardEl.classList.contains("clicked")) {
             cardEl.classList.remove("clicked")
         } else {
             cardEl.classList.add("clicked")
@@ -52,25 +53,59 @@ export default function PlayerHand({ set, player }) {
             // Update the global variable for attack damage
             // console.log(spell);
         }
-        set({ ...player , spell});
+        set({ ...player, spell });
     }
+
+    const getCardSprites = (card) => {
+        const RPS = card[0]
+        const number = parseInt(card[1])
+        let type;
+        let character
+
+        switch (RPS) {
+            case 'r':
+                character = 'rock'
+                break
+            case 'p':
+                character = 'paper'
+                break
+            case 's':
+                character = 'scissor'
+                break
+            default:
+                throw console.error("The RPS for cards is not working")
+        }
+
+        if (number <= 3) {
+            type = "one"
+        } else if (4 <= number <= 6) {
+            type = "two"
+        } else if (7 <= number) {
+            type = "three"
+        }
+
+        return <>
+            <h3>{number}</h3>
+            <div id="card-sprite">
+                <Sprite character={character} type={type} />
+            </div>
+        </>
+    }
+
 
     return (
         <Grid
             container
             item
             justify="space-between"
-            style={{width: 875}}
+            style={{ width: 875 }}
         >
             {player.Choop.hand.map(card => {
                 return (
                     <Card id={card} onClick={select} style={cardStyle}>
-                        <CardContent>
+                        <CardContent id="card-content">
                             <Typography color="textSecondary">
-                                <div id="card-sprite">
-                                    {/* <Sprite character="scissor" type="one" /> */}
-                                </div>
-                                {card}
+                                {getCardSprites(card)}
                             </Typography>
                         </CardContent>
                     </Card>
