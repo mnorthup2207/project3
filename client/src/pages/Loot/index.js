@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateTotalHealth, updateTotalArmor, setCards } from "../../actions/gameActions";
+import { updateTotalHealth, updateTotalArmor, setCards, setHealthArmor } from "../../actions/gameActions";
 
 import "./style.css"
 import treaseurePic from "../../images/bg-loot.png";
@@ -117,6 +117,7 @@ const Loot = () => {
                             <Button
                                 color="primary"
                                 size="large"
+                                onClick={() => dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive))}
                             >
                                 <h1>Home</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>house</i>

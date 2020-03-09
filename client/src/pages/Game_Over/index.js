@@ -18,11 +18,9 @@ import { resetBattleNumber } from "../../actions/gameActions";
 const GameOver = () => {
     const { character, type } = useSelector(state => state.monsterSprite);
     const playerState = useSelector(state => state.player);
+    const monsterState = useSelector(state => state.monster);
     const stats = useSelector(state => state.stats);
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(resetBattleNumber());
-    }, [])
     console.log(playerState);
     console.log(stats);
     
@@ -37,6 +35,7 @@ const GameOver = () => {
                             <Button
                                 color="primary"
                                 size="large"
+                                onClick={dispatch(resetBattleNumber)}
                             >
                                 <h1>Home</h1>
                                 <i className="material-icons" style={{ marginLeft: 10 }}>house</i>
@@ -55,10 +54,10 @@ const GameOver = () => {
                     </Grid>
                     <Grid item xs>
                         <h1 id="choopStats">Choop Stats</h1>
-                        <h3>Monsters Defeated: {playerState.battleNumber}</h3>
-                        <h3>Spells Cast: {stats.totalRounds}</h3>
+                        <h3>Monsters Defeated: {playerState.battleNumber - 1}</h3>
+                        <h3>Spells Cast: {stats.totalRounds - 1}</h3>
                         <h3>Damage Dealt: {stats.playerTotalDamage}</h3>
-                        <h3>Health Remaining: {playerState.health}</h3>
+                        <h3>Health Remaining: {monsterState.health}</h3>
                     </Grid>
                 </Grid>
             </Container>

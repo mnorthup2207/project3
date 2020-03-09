@@ -66,7 +66,6 @@ const DungeonFight = props => {
     useEffect(() => {
         if (!(playerState.alive && monsterState.alive)) {
             dispatch(setBattleNumber(battleNumber + 1));
-            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive));
             dispatch(resetStatsRound());
             setOpen(true);
         }
