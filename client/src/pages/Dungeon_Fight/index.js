@@ -87,12 +87,13 @@ const DungeonFight = props => {
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
                         <Link to="/home">
-                            <h2>Home</h2>
-                        </Link>
-                    </Grid>
-                    <Grid item xs>
-                        <Link to="/map">
-                            <h2>Map</h2>
+                            <Button
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Home</h1>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>house</i>
+                            </Button>
                         </Link>
                     </Grid>
                 </Grid>
