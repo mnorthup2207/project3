@@ -17,7 +17,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
+import { 
+    resetStatsRound,
     setHealthArmor,
     setBattleNumber,
     setMonsterAnimation,
@@ -64,8 +65,9 @@ const DungeonFight = props => {
 
     useEffect(() => {
         if (!(playerState.alive && monsterState.alive)) {
-            dispatch(setBattleNumber(battleNumber + 1))
-            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive))
+            dispatch(setBattleNumber(battleNumber + 1));
+            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive));
+            dispatch(resetStatsRound());
             setOpen(true);
         }
     }, [playerState.alive, monsterState.alive])
@@ -88,12 +90,13 @@ const DungeonFight = props => {
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
                         <Link to="/home">
-                            <h2>Home</h2>
-                        </Link>
-                    </Grid>
-                    <Grid item xs>
-                        <Link to="/map">
-                            <h2>Map</h2>
+                            <Button
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Home</h1>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>house</i>
+                            </Button>
                         </Link>
                     </Grid>
                 </Grid>
