@@ -130,10 +130,9 @@ export const setStatsMonsterDamage = (damage) => {
         payload: { damage }
     }
 }
-export const setStatsTotalDamage = (pdamage, mdamage) => {
+export const setStatsTotalDamage = () => {
     return {
         type: SET_STATS_TOTAL_DAMAGE,
-        payload: {pdamage, mdamage}
     }
 }
 export const setStatsRound = () => {

@@ -19,7 +19,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { 
     setHealthArmor, 
-    setBattleNumber
+    setBattleNumber,
+    resetStatsRound
 } from "../../actions/gameActions";
 // Our imports
 import CharacterCard from "../../components/Character_Card";
@@ -61,8 +62,9 @@ const DungeonFight = props => {
     
     useEffect(() => {
         if (!(playerState.alive && monsterState.alive)) {
-            dispatch(setBattleNumber(battleNumber + 1))
-            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive))
+            dispatch(setBattleNumber(battleNumber + 1));
+            dispatch(setHealthArmor(playerState.health, playerState.totalArmor, playerState.alive));
+            dispatch(resetStatsRound());
             setOpen(true);
         }
     }, [playerState.alive, monsterState.alive])

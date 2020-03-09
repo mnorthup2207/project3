@@ -31,8 +31,8 @@ export default function playerSpriteReducer(state = initialState, action) {
         case SET_STATS_TOTAL_DAMAGE:
             return {
                 ...state,
-                playerTurnDamage: state.playerTurnDamage + action.payload.pdamage,
-                monsterTurnDamage: state.monsterTurnDamage + action.payload.mdamage
+                playerTotalDamage: state.playerTurnDamage + state.playerTotalDamage,
+                monsterTotalDamage: state.monsterTurnDamage + state.monsterTotalDamage
             };
         case SET_STATS_ROUND:
             return {
@@ -43,7 +43,7 @@ export default function playerSpriteReducer(state = initialState, action) {
         case RESET_STATS_ROUND:
             return {
                 ...state,
-                round: 0
+                round: 1
             }
         default:
             return state;

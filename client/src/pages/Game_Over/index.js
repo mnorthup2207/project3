@@ -21,6 +21,7 @@ const GameOver = () => {
     const stats = useSelector(state => state.stats);
     const dispatch = useDispatch();
 
+    
     dispatch(resetBattleNumber());
     console.log(playerState);
     console.log(stats);
