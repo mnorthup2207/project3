@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./style.css";
@@ -20,9 +20,9 @@ const GameOver = () => {
     const playerState = useSelector(state => state.player);
     const stats = useSelector(state => state.stats);
     const dispatch = useDispatch();
-
-    
-    dispatch(resetBattleNumber());
+    useEffect(() => {
+        dispatch(resetBattleNumber());
+    }, [])
     console.log(playerState);
     console.log(stats);
     

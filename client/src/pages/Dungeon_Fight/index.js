@@ -18,9 +18,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { 
-    setHealthArmor, 
+    resetStatsRound,
+    setHealthArmor,
     setBattleNumber,
-    resetStatsRound
+    setMonsterAnimation,
+    setMonsterSprite
 } from "../../actions/gameActions";
 // Our imports
 import CharacterCard from "../../components/Character_Card";
@@ -59,7 +61,7 @@ const DungeonFight = props => {
     const dispatch = useDispatch();
 
     const [open, setOpen] = React.useState(false);
-    
+
     useEffect(() => {
         if (!(playerState.alive && monsterState.alive)) {
             dispatch(setBattleNumber(battleNumber + 1));
@@ -69,7 +71,7 @@ const DungeonFight = props => {
         }
     }, [playerState.alive, monsterState.alive])
 
-    
+
     const handleDialogClose = () => {
         setOpen(false);
     };
@@ -87,12 +89,13 @@ const DungeonFight = props => {
                 <Grid container spacing={3} className={classes.root}>
                     <Grid item xs>
                         <Link to="/home">
-                            <h2>Home</h2>
-                        </Link>
-                    </Grid>
-                    <Grid item xs>
-                        <Link to="/map">
-                            <h2>Map</h2>
+                            <Button
+                                color="primary"
+                                size="large"
+                            >
+                                <h1>Home</h1>
+                                <i className="material-icons" style={{ marginLeft: 10 }}>house</i>
+                            </Button>
                         </Link>
                     </Grid>
                 </Grid>
@@ -101,7 +104,7 @@ const DungeonFight = props => {
                     container
                     direction="row"
                     justify="space-between"
-                    alignItems="center"
+                    alignItems="flex-end"
                     className={classes.root}
                 >
                     <Grid item xs={4}>
@@ -114,7 +117,7 @@ const DungeonFight = props => {
                     <Grid item xs={2}>
                         {stats.playerTurnDamage ? stats.playerTurnDamage : ""}
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} direction="column" justify="flex-end" alignItems="center">
                         {/* Figure this out */}
                         <CharacterCard
                             character="monster"
@@ -146,7 +149,7 @@ const DungeonFight = props => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        {(playerState.alive) ? 
+                        {(playerState.alive) ?
                             ("You have slain the mighty monster. Time for some swag, loot, and all things shiny!") :
                             ("You were killed...")}
                     </DialogContentText>
