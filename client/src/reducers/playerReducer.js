@@ -1,10 +1,10 @@
 import { SET_PLAYER_HEALTH_ARMOR, 
-    SET_PLAYER_TOTAL_HEALTH, 
-    SET_PLAYER_TOTAL_ARMOR , 
     SET_BATTLE_NUMBER,
     RESET_BATTLE_NUMBER,
     SET_CARDS,
     SET_PLAYER,
+    UPDATE_PLAYER_HEALTH,
+    UPDATE_PLAYER_ARMOR,
 } from "../actions/types";
 
 const initialState = {
@@ -42,15 +42,15 @@ export default function playerReducer(state = initialState, action) {
                 armor: action.payload.armor,
                 alive: action.payload.alive
             };
-        case SET_PLAYER_TOTAL_ARMOR:
-            return {
+        case UPDATE_PLAYER_HEALTH:
+            return{
                 ...state,
-                totalArmor: action.payload.value
+                totalHealth: state.totalHealth + action.payload.value
             };
-        case SET_PLAYER_TOTAL_HEALTH:
-            return {
+        case UPDATE_PLAYER_ARMOR:
+            return{
                 ...state,
-                totalHealth: action.payload.value
+                totalArmor: state.totalArmor + action.payload.value
             };
         case SET_BATTLE_NUMBER:
             return {

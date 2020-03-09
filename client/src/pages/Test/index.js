@@ -23,8 +23,24 @@ const makeSprite = () => {
                 <Grid item xs={4}>
                     <div id='boom'>
                         <Sprite
-                            character="boss"
+                            character="enemy"
+                            type="one"
+                        />
+                    </div>
+                </Grid>
+                <Grid item xs={4}>
+                    <div id='boom'>
+                        <Sprite
+                            character="enemy"
                             type="two"
+                        />
+                    </div>
+                </Grid>
+                <Grid item xs={4}>
+                    <div id='boom'>
+                        <Sprite
+                            character="enemy"
+                            type="three"
                         />
                     </div>
                 </Grid>

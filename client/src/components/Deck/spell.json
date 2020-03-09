@@ -1,32 +1,42 @@
 {
+    "jackpot": {
+        "image": "./spells/jackpot.png",
+        "description": "A stat Multiplier that increases every time used"
+    },
     "heal": {
-        "image": "./spells/heal.png"
+        "image": "./spells/heal.png",
+        "description": "Heal Yourself 50 HP"
     },
     "harden": {
-        "image": "./spells/harden.png"
+        "image": "./spells/harden.png",
+        "description": "Increase your Armor by 50 HP"
     },
     "sharpen": {
-        "image": "./spells/sharpen.png"
-    },
-    "jackpot": {
-        "image": "./spells/jackpot.png"
-    },
-    "toughen": {
-        "image": "./spells/toughen.png"
-    },
-    "cut": {
-        "image": "./spells/cut.png"
+        "image": "./spells/sharpen.png",
+        "description": "Increase your Damage by 50 points"
     },
     "tank": {
-        "image": "./spells/tank.png"
+        "image": "./spells/tank.png",
+        "description": "Take Half Damage"
+    },
+    "toughen": {
+        "image": "./spells/toughen.png",
+        "description": "Gain half of the damage taken as Health"
     },
     "retaliate": {
-        "image": "./spells/retaliate-2.png"
-    },
-    "desolate": {
-        "image": "./spells/desolate.png"
+        "image": "./spells/retaliate-2.png",
+        "description": "Send Back Half of the Damage taken"
     },
     "slice": {
-        "image": "./spells/slice.png"
+        "image": "./spells/slice.png",
+        "description": "Double Damage This Round"
+    },
+    "cut": {
+        "image": "./spells/cut.png",
+        "description": "Deal Direct Damage to Enemy’s Health (Ignores Armor)"
+    },
+    "desolate": {
+        "image": "./spells/desolate.png",
+        "description": "Deal Double Damage to Armor (No Damage to Health)"
     }
 }

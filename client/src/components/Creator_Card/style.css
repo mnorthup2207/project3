@@ -1,0 +1,11 @@
+#boom2 {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 5%;
+    margin-top: -30%;
+}
+@media screen and (max-width: 900px) {
+    #boom2 {
+      margin-left: -34%;
+    }
+  }

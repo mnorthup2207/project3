@@ -166,3 +166,71 @@ const DungeonFight = props => {
 };
 
 export default DungeonFight;
+<<<<<<< HEAD
+=======
+
+//
+
+// // Use this when passing in health, armor, totalHealth, and totalArmor
+// const mapStateToProps = (playerHealthArmorState, cardState, playerAliveState, monsterAliveState) => ({
+//   health: playerHealthArmorState.health,
+//   armor: playerHealthArmorState.armor,
+//   // totalHealth: playerHealthArmor.totalHealth,
+//   // totalArmor: playerHealthArmor.totalArmor
+//   cards: cardState.cards,
+//   playerAlive: playerAliveState.alive,
+//   playerCharacter: playerAliveState.character,
+//   monsterAlive: monsterAliveState.alive,
+//   monsterCharacter: monsterAliveState.character
+// });
+// export default connect(
+//   // mapStateToProps,
+//   { setHealthArmor, setPlayerCards, setCharacterAlive }
+// )(DungeonFight);
+// export default DungeonFight
+
+// Login.propTypes = {
+//   loginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
+
+// const mapStateToProps = userState => ({
+//   auth: userState.auth,
+//   errors: userState.errors
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
+
+// function Dungeon_Fight(props) {
+//   // Buttons and corresponding events
+//   const drawBtn = document.getElementById("draw");
+//   drawBtn.addEventListener("click", playerDrawHand);
+//   const drawDeck = document.querySelector("[name = drawDeck]");
+//   drawDeck.addEventListener("click", playerDrawHand);
+
+//   const playBtn = document.getElementById("play");
+//   playBtn.addEventListener("click", playerAction);
+//   const spell = document.querySelector(".spell");
+//   spell.addEventListener("click", playerAction);
+
+//   // Hand pointers
+//   const discardDeck = document.querySelector("[name = discardDeck]")
+//     .firstElementChild;
+//   const handWrapper = document.querySelector(".handWrapper");
+
+//   // Entire wrapper
+//   const container = document.querySelector(".container");
+
+//   // Character pointers
+//   const player1 = document.getElementById("player1");
+//   const monster1 = document.getElementById("monster1");
+//   const monsterIntention = document.getElementById("monster1Intention");
+//   // Initialize the game board
+
+//   return <h1>Dungeon_Fight</h1>;
+// }
+>>>>>>> 04c9ed30ee12d76104220e2acaf1416315ad4bff
