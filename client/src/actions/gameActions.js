@@ -19,7 +19,9 @@ import {
     SET_STATS_PLAYER_DAMAGE,
     SET_STATS_MONSTER_DAMAGE,
     SET_STATS_TOTAL_DAMAGE,
-    SET_STATS_ROUND
+    SET_STATS_ROUND,
+    UPDATE_PLAYER_HEALTH,
+    UPDATE_PLAYER_ARMOR
 } from "./types";
 
 //! Use this action on landing
@@ -58,17 +60,19 @@ export const setHealthArmor = (health, armor, alive) => {
         payload: {health, armor, alive}
     }
 };
-export const setTotalHealth = (value) => {
+// updating armor from lootpage
+export const updateTotalHealth = value => {
     // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_PLAYER_TOTAL_HEALTH, 
+        type: UPDATE_PLAYER_HEALTH, 
         payload: {value}
     }
 };
-export const setTotalArmor = (value) => {
+// update armor from lootpage
+export const updateTotalArmor = value => {
     // PLAYER should be the name of the class, value should be the updated health object
     return {
-        type: SET_PLAYER_TOTAL_ARMOR, 
+        type: UPDATE_PLAYER_ARMOR, 
         payload: {value}
     }
 };

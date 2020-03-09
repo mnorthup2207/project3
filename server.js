@@ -22,7 +22,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
     .connect(
-        db,
+        process.env.MONGODB_URI || db,
         { useNewUrlParser: true }
     )
     .then(() => console.log("MongoDB successfully connected"))
@@ -34,8 +34,11 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 // Routes
-// app.use("/api/users", users);
 app.use(routes);
 
 const port = process.env.PORT || 5000;
