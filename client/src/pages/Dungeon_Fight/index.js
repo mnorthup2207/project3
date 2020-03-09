@@ -27,11 +27,12 @@ import Deck from "../../components/Deck";
 import B1 from "../../images/bg-paper.png";
 import B2 from "../../images/bg-rock.png";
 import B3 from "../../images/bg-scissors.png";
+import BBoss from "../../images/bg-boss.png"
 import "./style.css";
 import scripts from "./scripts";
 
 // Background
-const BGArray = [B1, B2, B3];
+const BGArray = [B1, B2, B3, BBoss, BBoss, BBoss];
 const AltArray = ["paper background", "rock background", "scissor background"];
 
 // Functions
