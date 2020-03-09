@@ -2,41 +2,41 @@
     "player": {
         "main": {
             "idle": {
-                "image": "./sheets/players/main/idle.png",
+                "image": "./sheet/players/main/idle.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18
             },
             "throw": {
-                "image": "./sheets/players/main/throw.png",
+                "image": "./sheet/players/main/throw.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/players/main/hurt.png",
+                "image": "./sheet/players/main/hurt.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "blink": {
-                "image": "./sheets/players/main/blink.png",
+                "image": "./sheet/players/main/blink.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18,
                 "oneLoop": true
             },
             "kick": {
-                "image": "./sheets/players/main/kick.png",
+                "image": "./sheet/players/main/kick.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/players/main/death.png",
+                "image": "./sheet/players/main/death.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 15,
@@ -45,41 +45,41 @@
         },
         "king": {
             "idle": {
-                "image": "./sheets/players/king/idle.png",
+                "image": "./sheet/players/king/idle.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18
             },
             "throw": {
-                "image": "./sheets/players/king/throw.png",
+                "image": "./sheet/players/king/throw.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/players/king/hurt.png",
+                "image": "./sheet/players/king/hurt.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "blink": {
-                "image": "./sheets/players/king/blink.png",
+                "image": "./sheet/players/king/blink.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18,
                 "oneLoop": true
             },
             "kick": {
-                "image": "./sheets/players/king/kick.png",
+                "image": "./sheet/players/king/kick.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/players/king/death.png",
+                "image": "./sheet/players/king/death.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 15,
@@ -88,41 +88,41 @@
         },
         "pirate": {
             "idle": {
-                "image": "./sheets/players/pirate/idle.png",
+                "image": "./sheet/players/pirate/idle.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18
             },
             "throw": {
-                "image": "./sheets/players/pirate/throw.png",
+                "image": "./sheet/players/pirate/throw.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/players/pirate/hurt.png",
+                "image": "./sheet/players/pirate/hurt.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "blink": {
-                "image": "./sheets/players/pirate/blink.png",
+                "image": "./sheet/players/pirate/blink.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 18,
                 "oneLoop": true
             },
             "kick": {
-                "image": "./sheets/players/pirate/kick.png",
+                "image": "./sheet/players/pirate/kick.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 12,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/players/pirate/death.png",
+                "image": "./sheet/players/pirate/death.png",
                 "widthFrame": 900,
                 "heightFrame": 900,
                 "frames": 15,
@@ -133,13 +133,13 @@
     "rock": {
         "one": {
             "idle": {
-                "image": "./sheets/rock/1/idle.png",
+                "image": "./sheet/rock/1/idle.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/rock/1/attack.png",
+                "image": "./sheet/rock/1/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -147,7 +147,7 @@
 
             },
             "jump": {
-                "image": "./sheets/rock/1/jump.png",
+                "image": "./sheet/rock/1/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -157,13 +157,13 @@
         },
         "two": {
             "idle": {
-                "image": "./sheets/rock/2/idle.png",
+                "image": "./sheet/rock/2/idle.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/rock/2/attack.png",
+                "image": "./sheet/rock/2/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -171,7 +171,7 @@
 
             },
             "jump": {
-                "image": "./sheets/rock/2/jump.png",
+                "image": "./sheet/rock/2/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -181,7 +181,7 @@
         },
         "three": {
             "idle": {
-                "image": "./sheets/rock/3/idle.png",
+                "image": "./sheet/rock/3/idle.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -189,7 +189,7 @@
 
             },
             "attack": {
-                "image": "./sheets/rock/3/attack.png",
+                "image": "./sheet/rock/3/attack.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -197,7 +197,7 @@
 
             },
             "jump": {
-                "image": "./sheets/rock/3/jump.png",
+                "image": "./sheet/rock/3/jump.png",
                 "widthFrame": 800,
                 "heightFrame": 450,
                 "frames": 10,
@@ -209,13 +209,13 @@
     "paper": {
         "one": {
             "idle": {
-                "image": "./sheets/paper/1/idle.png",
+                "image": "./sheet/paper/1/idle.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/paper/1/attack.png",
+                "image": "./sheet/paper/1/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
@@ -223,7 +223,7 @@
 
             },
             "jump": {
-                "image": "./sheets/paper/1/jump.png",
+                "image": "./sheet/paper/1/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
@@ -233,20 +233,20 @@
         },
         "two": {
             "idle": {
-                "image": "./sheets/paper/2/idle.png",
+                "image": "./sheet/paper/2/idle.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/paper/2/attack.png",
+                "image": "./sheet/paper/2/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
                 "oneLoop": true
             },
             "jump": {
-                "image": "./sheets/paper/2/jump.png",
+                "image": "./sheet/paper/2/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
@@ -255,13 +255,13 @@
         },
         "three": {
             "idle": {
-                "image": "./sheets/paper/3/idle.png",
+                "image": "./sheet/paper/3/idle.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/paper/3/attack.png",
+                "image": "./sheet/paper/3/attack.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
@@ -269,7 +269,7 @@
 
             },
             "jump": {
-                "image": "./sheets/paper/3/jump.png",
+                "image": "./sheet/paper/3/jump.png",
                 "widthFrame": 2100,
                 "heightFrame": 900,
                 "frames": 10,
@@ -281,13 +281,13 @@
     "scissor": {
         "one": {
             "idle": {
-                "image": "./sheets/scissor/1/idle.png",
+                "image": "./sheet/scissor/1/idle.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/scissor/1/attack.png",
+                "image": "./sheet/scissor/1/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -295,7 +295,7 @@
 
             },
             "jump": {
-                "image": "./sheets/scissor/1/jump.png",
+                "image": "./sheet/scissor/1/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -305,13 +305,13 @@
         },
         "two": {
             "idle": {
-                "image": "./sheets/scissor/2/idle.png",
+                "image": "./sheet/scissor/2/idle.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/scissor/2/attack.png",
+                "image": "./sheet/scissor/2/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -319,7 +319,7 @@
 
             },
             "jump": {
-                "image": "./sheets/scissor/2/jump.png",
+                "image": "./sheet/scissor/2/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -329,13 +329,13 @@
         },
         "three": {
             "idle": {
-                "image": "./sheets/scissor/3/idle.png",
+                "image": "./sheet/scissor/3/idle.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/scissor/3/attack.png",
+                "image": "./sheet/scissor/3/attack.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -343,7 +343,7 @@
 
             },
             "jump": {
-                "image": "./sheets/scissor/3/jump.png",
+                "image": "./sheet/scissor/3/jump.png",
                 "widthFrame": 1400,
                 "heightFrame": 750,
                 "frames": 10,
@@ -355,13 +355,13 @@
     "boss": {
         "one": {
             "idle": {
-                "image": "./sheets/boss/1/idle.png",
+                "image": "./sheet/boss/1/idle.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/boss/1/attack.png",
+                "image": "./sheet/boss/1/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -369,7 +369,7 @@
 
             },
             "jump": {
-                "image": "./sheets/boss/1/jump.png",
+                "image": "./sheet/boss/1/jump.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -377,14 +377,14 @@
 
             },
             "death": {
-                "image": "./sheets/boss/1/death.png",
+                "image": "./sheet/boss/1/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "fly": {
-                "image": "./sheets/boss/1/fly.png",
+                "image": "./sheet/boss/1/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -392,7 +392,7 @@
 
             },
             "hurt": {
-                "image": "./sheets/boss/1/hurt.png",
+                "image": "./sheet/boss/1/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -400,7 +400,7 @@
 
             },
             "walk": {
-                "image": "./sheets/boss/1/walk.png",
+                "image": "./sheet/boss/1/walk.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10
@@ -408,48 +408,48 @@
         },
         "two": {
             "idle": {
-                "image": "./sheets/boss/2/idle.png",
+                "image": "./sheet/boss/2/idle.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/boss/2/attack.png",
+                "image": "./sheet/boss/2/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "jump": {
-                "image": "./sheets/boss/2/jump.png",
+                "image": "./sheet/boss/2/jump.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/boss/2/death.png",
+                "image": "./sheet/boss/2/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "fly": {
-                "image": "./sheets/boss/2/fly.png",
+                "image": "./sheet/boss/2/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/boss/2/hurt.png",
+                "image": "./sheet/boss/2/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "walk": {
-                "image": "./sheets/boss/2/walk.png",
+                "image": "./sheet/boss/2/walk.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10
@@ -457,48 +457,48 @@
         },
         "three": {
             "idle": {
-                "image": "./sheets/boss/3/idle.png",
+                "image": "./sheet/boss/3/idle.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/boss/3/attack.png",
+                "image": "./sheet/boss/3/attack.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "jump": {
-                "image": "./sheets/boss/3/jump.png",
+                "image": "./sheet/boss/3/jump.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/boss/3/death.png",
+                "image": "./sheet/boss/3/death.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "fly": {
-                "image": "./sheets/boss/3/fly.png",
+                "image": "./sheet/boss/3/fly.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/boss/3/hurt.png",
+                "image": "./sheet/boss/3/hurt.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "walk": {
-                "image": "./sheets/boss/3/walk.png",
+                "image": "./sheet/boss/3/walk.png",
                 "widthFrame": 2400,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -509,34 +509,34 @@
     "enemy": {
         "one": {
             "idle": {
-                "image": "./sheets/enemy/1/idle.png",
+                "image": "./sheet/enemy/1/idle.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/enemy/1/attack.png",
+                "image": "./sheet/enemy/1/attack.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/enemy/1/hurt.png",
+                "image": "./sheet/enemy/1/hurt.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/enemy/1/death.png",
+                "image": "./sheet/enemy/1/death.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "jump": {
-                "image": "./sheets/enemy/1/jump.png",
+                "image": "./sheet/enemy/1/jump.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -545,34 +545,34 @@
         },
         "two": {
             "idle": {
-                "image": "./sheets/enemy/2/idle.png",
+                "image": "./sheet/enemy/2/idle.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/enemy/2/attack.png",
+                "image": "./sheet/enemy/2/attack.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/enemy/2/hurt.png",
+                "image": "./sheet/enemy/2/hurt.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/enemy/2/death.png",
+                "image": "./sheet/enemy/2/death.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "jump": {
-                "image": "./sheets/enemy/2/jump.png",
+                "image": "./sheet/enemy/2/jump.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
@@ -581,34 +581,34 @@
         },
         "three": {
             "idle": {
-                "image": "./sheets/enemy/3/idle.png",
+                "image": "./sheet/enemy/3/idle.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10
             },
             "attack": {
-                "image": "./sheets/enemy/3/attack.png",
+                "image": "./sheet/enemy/3/attack.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "hurt": {
-                "image": "./sheets/enemy/3/hurt.png",
+                "image": "./sheet/enemy/3/hurt.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "oneLoop": true
             },
             "death": {
-                "image": "./sheets/enemy/3/death.png",
+                "image": "./sheet/enemy/3/death.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
                 "death": true
             },
             "jump": {
-                "image": "./sheets/enemy/3/jump.png",
+                "image": "./sheet/enemy/3/jump.png",
                 "widthFrame": 1800,
                 "heightFrame": 1000,
                 "frames": 10,
