@@ -1,31 +1,31 @@
 {
     "jackpot": {
         "image": "./spells/jackpot.png",
-        "description": "A stat Multiplier that increases every time used"
+        "description": "Adds the Round Number times 3 as bonus damage"
     },
     "heal": {
         "image": "./spells/heal.png",
-        "description": "Heal Yourself 50 HP"
+        "description": "Heals you equal to the damage you do this round"
     },
     "harden": {
         "image": "./spells/harden.png",
-        "description": "Increase your Armor by 50 HP"
+        "description": "Increase armor by 2 each round"
     },
     "sharpen": {
         "image": "./spells/sharpen.png",
-        "description": "Increase your Damage by 50 points"
+        "description": "Increase damage by 2 each round"
     },
     "tank": {
         "image": "./spells/tank.png",
-        "description": "Take Half Damage"
+        "description": "Increase armor by 2 times the damage you do"
     },
     "toughen": {
         "image": "./spells/toughen.png",
-        "description": "Gain half of the damage taken as Health"
+        "description": "Increase health by 2 each round"
     },
     "retaliate": {
         "image": "./spells/retaliate-2.png",
-        "description": "Send Back Half of the Damage taken"
+        "description": "Deal bonus damage equal to missing health"
     },
     "slice": {
         "image": "./spells/slice.png",
