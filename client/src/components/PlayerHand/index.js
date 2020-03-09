@@ -85,7 +85,7 @@ export default function PlayerHand({ set, player }) {
         }
 
         return <>
-            <h3>{number}</h3>
+            <h3 id='cardNumber'>{number}</h3>
             <div id="card-sprite">
                 <Sprite character={character} type={type} />
             </div>
