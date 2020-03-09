@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from "@material-ui/core";
 import Intention from "./components/Intention";
 import HealthArmorBars from "./components/HealthArmorBars";
 //Sprites////
@@ -36,16 +37,22 @@ export default function CharacterCard(props) {
     // const display = (props.character === "player") ?: 100, armor: 50, totalArmor: 150 })
     return (
         <div className={classes.root} >
-            {/* Pass in the intention for the monster, and maybe the name in the font that logan is working on */}
-            <Intention intention={props.character} />
-            <div id='divSprite'>
-                <Sprite
-                    character={character}
-                    type={type}
-                    animation={playerAnimation}
-                />
-            </div>
-            {/* Use the state in place of the player.armor */}
+            <Grid
+                container
+                direction="column"
+                justify="flex-end"
+                alignItems="center"
+            >
+                {/* Pass in the intention for the monster, and maybe the name in the font that logan is working on */}
+                <Intention intention={props.character} />
+                <div id='divSprite'>
+                    <Sprite
+                        character={character}
+                        type={type}
+                    />
+                </div>
+                {/* Use the state in place of the player.armor */}
+            </Grid>
             <HealthArmorBars character={props.character} />
         </div>
     );

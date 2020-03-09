@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Spritesheet from 'react-responsive-spritesheet';
 
+
 class Hero extends Component {
     constructor(props) {
         super(props);
