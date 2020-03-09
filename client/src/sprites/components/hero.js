@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 import Spritesheet from 'react-responsive-spritesheet';
+import { useSelector } from 'react-redux'
+
+// const currentState = useSelector(state => state["playerAnimation"])
 
 class Hero extends Component {
     constructor(props) {
@@ -12,6 +15,12 @@ class Hero extends Component {
 
     changeAnimation(action) {
         this.setState({ ...this.state, nextAnimation: action })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.animation !== this.props.animation) {
+            this.changeAnimation(prevProps.animation)
+        }
     }
 
     action(p = this.props.character, type = this.state.animation) {
