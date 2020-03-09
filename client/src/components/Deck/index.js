@@ -7,13 +7,15 @@ import PlayerHand from "../PlayerHand/index";
 ////Material UI////
 import { Grid, Button } from "@material-ui/core";
 import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
 import Monster from "../../pages/Dungeon_Fight/scripts/characters/Monster";
 import background from "../../images/bg-leather.png";
 import spells from "./spell.json"
-import { 
-    setHealthArmor, 
+import {
+    setHealthArmor,
     setMonsterHealthArmor,
     setPlayerAnimation,
     setMonsterAnimation,
@@ -80,7 +82,7 @@ export default function Deck() {
         })
         // set the attack to a variable
         // empty selected cards and move to discard
-////////       
+        ////////       
         let animation = "throw";
         dispatch(setPlayerAnimation(animation));
         const playerAttack = playerState.Choop.play();
@@ -106,9 +108,9 @@ export default function Deck() {
                 item
                 direction="column"
             >
-                <span><img src={icon} alt={theSpell} height={50} width={50}/></span>
+                <span><img src={icon} alt={theSpell} height={50} width={50} /></span>
             </Grid>
-        ) 
+        )
     }
     const determineMonsterAction = () => {
         // console.log(Doop.sequence)
@@ -120,7 +122,7 @@ export default function Deck() {
         }
         return Doop.sequence[(round - 1) % Doop.sequence.length]
     }
-    
+
     const monsterAction = () => {
         if (Doop.alive) {
             // Animation
@@ -142,6 +144,16 @@ export default function Deck() {
             })
         }
     }
+
+    const SpellTooltip = withStyles(theme => ({
+        tooltip: {
+            backgroundColor: '#f5f5f9',
+            color: 'rgba(0, 0, 0, 0.87)',
+            maxWidth: 200,
+            fontSize: theme.typography.pxToRem(12),
+            border: '1px solid #dadde9',
+        },
+    }))(Tooltip);
 
 
     var selectionStyle = {
@@ -173,18 +185,22 @@ export default function Deck() {
             </div>
             <div style={{ padding: 25 }}>
                 {playerState.spell ?
-                    <Tooltip title="Hi Matt! This is for you!">
-                    <Button
-                        id="action-button"
-                        color="primary"
-                        variant="contained"
-                        size="large"
-                        style={spellStyle}
-                        onClick={castAction}
-                    >
-                        {getSpellIMG(playerState.spell)}
-                    </Button>
-                    </Tooltip> : null}
+                    <SpellTooltip title={
+                        <React.Fragment>
+                            <Typography>{playerState.spell.toUpperCase()}</Typography>
+                            <p>{spells[playerState.spell].description}</p>
+                        </React.Fragment>}>
+                        <Button
+                            id="action-button"
+                            color="primary"
+                            variant="contained"
+                            size="large"
+                            style={spellStyle}
+                            onClick={castAction}
+                        >
+                            {getSpellIMG(playerState.spell)}
+                        </Button>
+                    </SpellTooltip> : null}
                 <Draw
                     set={setPlayerState}
                     player={playerState}

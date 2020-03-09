@@ -16,6 +16,11 @@ import { useSelector } from "react-redux";
 
 const GameOver = () => {
     const { character, type } = useSelector(state => state.monsterSprite);
+    const playerState = useSelector(state => state.player);
+    const stats = useSelector(state => state.stats);
+    console.log(playerState);
+    console.log(stats);
+    
     return (
         <>
             <img id="overImage" src={overPic} alt="Game Over" />
@@ -45,10 +50,10 @@ const GameOver = () => {
                     </Grid>
                     <Grid item xs>
                         <h1 id="choopStats">Choop Stats</h1>
-                        <h3>Monsters Defeated: (here)</h3>
-                        <h3>Spells Cast: (here)</h3>
-                        <h3>Damage Dealt: (here)</h3>
-                        <h3>Health Remaining: (here)</h3>
+                        <h3>Monsters Defeated: {playerState.battleNumber}</h3>
+                        <h3>Spells Cast: {stats.totalRounds}</h3>
+                        <h3>Damage Dealt: {stats.playerTotalDamage}</h3>
+                        <h3>Health Remaining: {playerState.health}</h3>
                     </Grid>
                 </Grid>
             </Container>
