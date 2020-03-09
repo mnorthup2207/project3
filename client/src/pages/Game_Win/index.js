@@ -10,11 +10,12 @@ import Sprite from "../../sprites/getSprite.js";
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-// import { makeStyles } from '@material-ui/core/styles';
 
 
 const GameOver = () => {
     const { character, type } = useSelector(state => state.playerSprite);
+    const playerState = useSelector(state => state.player);
+    const stats = useSelector(state => state.stats);
     return (
         <>
             <img id="victoryImage" src={victoryPic} alt="Victory" />
@@ -48,10 +49,10 @@ const GameOver = () => {
                     </Grid>
                     <Grid item xs>
                         <h1 id="choopStats">Choop Stats</h1>
-                        <h3>Monsters Defeated: (here)</h3>
-                        <h3>Spells Cast: (here)</h3>
-                        <h3>Damage Dealt: (here)</h3>
-                        <h3>Health Remaining: (here)</h3>
+                        <h3>Monsters Defeated: {playerState.battleNumber}</h3>
+                        <h3>Spells Cast: {stats.totalRounds}</h3>
+                        <h3>Damage Dealt: {stats.playerTotalDamage}</h3>
+                        <h3>Health Remaining: {playerState.health}</h3>
                     </Grid>
                 </Grid>
             </Container>
