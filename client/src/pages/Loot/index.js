@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updateTotalHealth, updateTotalArmor } from "../../actions/gameActions";
 
 import "./style.css"
 import treaseurePic from "../../images/bg-loot.png";
+import background from "../../images/bg-card.png"
 
 ////Material UI////
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -32,6 +37,10 @@ const useStyles = makeStyles(theme => ({
 
 const Loot = () => {
     const classes = useStyles();
+
+    const playerState = useSelector(state => state.player)
+    const dispatch = useDispatch();
+
     const [upgradeDefense, setUpgradeDefense] = useState({
         totalHealth: 0,
         totalArmor: 0,
@@ -42,17 +51,36 @@ const Loot = () => {
         setExpanded(isExpanded ? panel : false);
     };
     const healthHandleChange = () => {
-        setUpgradeDefense({...upgradeDefense, totalHealth: totalHealth + 1})
-        console.log("health", totalHealth);
-        
+        setUpgradeDefense({ ...upgradeDefense, totalHealth: totalHealth + 5 })
+        dispatch(updateTotalHealth(5));
+        console.log("state-health", totalHealth);
     }
+    
     const armorHandleChange = () => {
-        setUpgradeDefense({...upgradeDefense, totalArmor: totalArmor + 1})
+        setUpgradeDefense({ ...upgradeDefense, totalArmor: totalArmor + 5 })
+        dispatch(updateTotalArmor(5));
         console.log("armor", totalArmor);
     }
-    const handleReset = () => {
-        setUpgradeDefense({totalArmor: 0, totalHealth: 0})
+
+    const select = e => {
+        const cardId = e.currentTarget.id
+        // dispatch(setStatsPlayerDamage(0))
+        const cardEl = document.getElementById(cardId)
+        if (cardEl.classList.contains("clicked")) {
+            cardEl.classList.remove("clicked")
+        } else {
+            cardEl.classList.add("clicked")
+        }
     }
+
+    var cardStyle = {
+        backgroundImage: `url(${background})`,
+        height: "75px",
+        width: "50px",
+        marginLeft: "5px",
+        marginRight: "5px"
+    }
+
     return (
         <>
             <img id="treasureImage" src={treaseurePic} alt="map" />
@@ -83,37 +111,24 @@ const Loot = () => {
                                     <strong id="expansionContainer"><h2>Upgrade Cards</h2></strong>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    <Typography>
-                                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-                                        maximus est, id dignissim quam.
-                                    </Typography>
-                                    <p>adfgsffgfsdfsfsd
-                                        sdfsfsdfsdfs
-                                        sdfsfsdfsdfssdfsdf
-                                        sdfsfsdfsdfssdfsdffsdf
-                                        sdfsfsdfsdfssdfsdffsdfsdf
-                                        sdfsfsdfsdfssdfsdffsdffsd
-                                        fsd
-
-                                    </p>
-                                    <p>adfgsffgfsdfsfsd
-                                        sdfsfsdfsdfs
-                                        sdfsfsdfsdfssdfsdf
-                                        sdfsfsdfsdfssdfsdffsdf
-                                        sdfsfsdfsdfssdfsdffsdfsdf
-                                        sdfsfsdfsdfssdfsdffsdffsd
-                                        fsd
-
-                                    </p>
-                                    <p>adfgsffgfsdfsfsd
-                                        sdfsfsdfsdfs
-                                        sdfsfsdfsdfssdfsdf
-                                        sdfsfsdfsdfssdfsdffsdf
-                                        sdfsfsdfsdfssdfsdffsdfsdf
-                                        sdfsfsdfsdfssdfsdffsdffsd
-                                        fsd
-
-                                    </p>
+                                    <Grid 
+                                        container
+                                        item
+                                        justify="space-between"
+                                        direction="row"
+                                    >
+                                        {playerState.cards.map(card => {
+                                            return (
+                                                <Card id={card} onClick={select} style={cardStyle}>
+                                                    <CardContent>
+                                                        <Typography color="textSecondary">
+                                                            {card}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </Card>
+                                            )
+                                        })}
+                                    </Grid>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -123,8 +138,8 @@ const Loot = () => {
                                     id="panel2bh-header"
                                 >
                                     <h2 id="expansionContainer2"><strong>Upgrade Defense</strong></h2>
-                                    <h3 id="expansionContainer2"><strong>Health: {totalHealth}</strong></h3>
-                                    <h3 id="expansionContainer2"><strong>Armor: {totalArmor}</strong></h3>
+                                    <h3 id="expansionContainer2"><strong>Health: {playerState.totalHealth}</strong></h3>
+                                    <h3 id="expansionContainer2"><strong>Armor: {playerState.totalArmor}</strong></h3>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                     {totalHealth > 4 || totalArmor > 0 ? (<Button
@@ -162,13 +177,6 @@ const Loot = () => {
                                         Upgrade Armor
                                     </Button>
                                     )}
-                                    <Button 
-                                    onClick={() => handleReset()}
-                                    color="primary"
-                                    size="large"
-                                    variant="contained"
-                                    id="expansionButton2"
-                                    >Reset</Button>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </div>
