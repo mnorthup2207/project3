@@ -78,7 +78,7 @@ export default function PlayerHand({ set, player }) {
 
         if (number <= 3) {
             type = "one"
-        } else if (4 <= number <= 6) {
+        } else if (4 <= number && number <= 6) {
             type = "two"
         } else if (7 <= number) {
             type = "three"
