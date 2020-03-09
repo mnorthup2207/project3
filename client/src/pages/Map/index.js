@@ -40,6 +40,7 @@ const MapPage = (props) => {
         dispatch(setMonsterSprite(newMonster.animation.character, newMonster.animation.type))
     }, [battleNumber])
     
+    
     return (
         <>
             <img id="mapPic" src={mapPic1} alt="map" />
