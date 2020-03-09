@@ -102,7 +102,7 @@ export default function PlayerHand({ set, player }) {
         >
             {player.Choop.hand.map(card => {
                 return (
-                    <Card id={card} onClick={select} style={cardStyle}>
+                    <Card key={card} id={card} onClick={select} style={cardStyle}>
                         <CardContent id="card-content">
                             <Typography color="textSecondary">
                                 {getCardSprites(card)}
