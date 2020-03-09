@@ -35,7 +35,3 @@ Make sure you have the newest node.js, ReactJS, Redux, and Material UI installed
 - Login Moody | [GitHub Link](https://github.com/lbmoody)
 - Matt Jeffords | [GitHub Link](https://github.com/Choop-A-Loop)
 - McCabe Northup | [GitHub Link](https://github.com/mnorthup2207)
-
-
-
-
