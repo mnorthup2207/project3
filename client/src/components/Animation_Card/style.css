@@ -1,4 +1,6 @@
-#spriteDiv{
-    height: 100px;
-    width: 100px;
+#creatorContainer {
+    color: white;
+}
+#creatorContainer a {
+    color: white;
 }
