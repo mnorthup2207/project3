@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 
 export default function CharacterCard(props) {
     const classes = useStyles();
-    console.log(props)
+    // console.log(props)
     const { character, type } = useSelector(state => state[props.character + "Sprite"])
     const playerAnimation = useSelector(state => state.playerAnimation);
     const monsterAnimation = useSelector(state => state.monsterAnimation);

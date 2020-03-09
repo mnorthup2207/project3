@@ -8,48 +8,48 @@ var playerCards = [...cards.slice(0, 5), ...cards.slice(10, 15), ...cards.slice(
 // Object of spells to initialize with Player
 const spellsObj = {
     heal: () => {
-        console.log("healing")
+        // console.log("healing")
         // this.status["heal"] += 1;
         return "heal"
     },
     harden: () => {
-        console.log("hardening")
+        // console.log("hardening")
         // this.status["harden"] += 1;
         return "harden"
     },
     sharpen: () => {
-        console.log("sharpening")
+        // console.log("sharpening")
         // this.status["sharpen"] += 1;
         return "sharpen"
     },
     jackpot: () => {
-        console.log("Hit the jackpot")
+        // console.log("Hit the jackpot")
         return "jackpot"
     },
     toughen: () => {
-        console.log("toughening")
+        // console.log("toughening")
         // this.status["toughen"] += 1;
         return "toughen"
     },
     cut: () => {
-        console.log("paper cut")
+        // console.log("paper cut")
         return "cut"
     },
     tank: () => {
-        console.log("tanking")
+        // console.log("tanking")
         return "tank"
     },
     retaliate: () => {
-        console.log("hi")
+        // console.log("hi")
         // this.status["retaliate"] += 1;
         return "retaliate"
     },
     desolate: () => {
-        console.log("hi")
+        // console.log("hi")
         return "desolate"
     },
     slice: () => {
-        console.log("hi")
+        // console.log("hi")
         return "slice"
     }
 }
@@ -105,6 +105,7 @@ class Player extends Character {
                 break;
             case "retaliate":
                 this.resultDamage += this.totalHealth - this.health;
+                break;
             default:
                 break;
         }
@@ -112,16 +113,18 @@ class Player extends Character {
         resultDamage += this.sharpen;
 
         result = [resultDamage, resultType];
-        console.log("Result of attack")
-        console.log([result]);
+        // console.log("Result of attack")
+        // console.log([result]);
         return result
         }
     castSpell() {
         // gonna have to change this for powerups
-        console.log("Casting the spell");
+        // console.log("Casting the spell");
         let attackArr = this.selectedCards.map(card => parseInt(card[1]));
         let resultDamage = attackArr.reduce((a, b) => a + b);
         let spell = this.determineSpell()
+        console.log("Inside castSpell")
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
         switch (spell) {
             case "heal":
                 this.health = Math.min(this.health + resultDamage, this.totalHealth)
@@ -141,13 +144,17 @@ class Player extends Character {
             default:
                 break;
         }
-        this.armor = Math.min(this.totalArmor, this.armor + this.harden)
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
+
         this.health = Math.min(this.totalHealth, this.health + this.toughen)
+        this.armor = Math.min(this.totalArmor, this.armor + this.harden)
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
+
         return this.spells[spell]();
     }
     determineSpell() {
         let spell = this.selectedCards.map(card => card[0]).sort().join("");
-        console.log(`Spell ${spell}`);
+        // console.log(`Spell ${spell}`);
         switch (spell) {
             case "ppp":
                 return "heal"
@@ -174,26 +181,26 @@ class Player extends Character {
         }
     }
     drawHand() {
-        console.log("Drawing hand")
+        // console.log("Drawing hand")
         let length = this.drawDeck.length
         if ( length >= this.numDraw ) {
             this.hand = this.drawDeck.splice(0, this.numDraw);
         } else {
-            console.log(`Drawing ${length} from draw deck `)
+            // console.log(`Drawing ${length} from draw deck `)
             this.hand = this.drawDeck.splice(0, length);
-            console.log('Reshuffling')
+            // console.log('Reshuffling')
             this.shuffleCards();
-            console.log(`Drawing ${this.numDraw - length} from shuffled draw deck `)
+            // console.log(`Drawing ${this.numDraw - length} from shuffled draw deck `)
             this.hand = [...this.hand, ...this.drawDeck.splice(0, this.numDraw - length)];
 
         }
-        console.log(this.hand)
-        console.log("Remaining drawDeck")
-        console.log(this.drawDeck)
+        // console.log(this.hand)
+        // console.log("Remaining drawDeck")
+        // console.log(this.drawDeck)
     }
     play() {
-        console.log("Playing hand")
-        console.log(this.selectedCards);
+        // console.log("Playing hand")
+        // console.log(this.selectedCards);
         let type = this.castSpell();
         // opponent
         let attack = this.attack(type);
@@ -202,8 +209,8 @@ class Player extends Character {
 
         this.discardDeck = [...this.hand.splice(0, this.hand.length), ...this.discardDeck];
         this.selectedCards = [];
-        console.log("Discarding hand")
-        console.log(this.discardDeck)
+        // console.log("Discarding hand")
+        // console.log(this.discardDeck)
         return attack
     }
     // STATE
@@ -225,7 +232,7 @@ class Player extends Character {
             (shuffleLength = this.discardDeck.length);
         let i = 0;
         shuffledCards = new Array(shuffleLength);
-        console.log("Length of new shuffle " + shuffleLength)
+        // console.log("Length of new shuffle " + shuffleLength)
         while (i < shuffleLength) {
             let randomIndex = Math.floor(Math.random() * shuffleLength);
             if (shuffledCards[randomIndex] === undefined) {

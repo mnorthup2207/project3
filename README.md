@@ -30,7 +30,7 @@ Make sure you have the newest node.js, ReactJS, Redux, and Material UI installed
 * [Mongoose](https://mongoosejs.com/) - MongoDB object modeling for node.js
 * [Material UI](https://material-ui.com/) - CSS Framework within REACT
 
-## Major Contributors for Elementis
+## Major Contributors for Ro-Sham-Bo
 - Dan Brown | [GitHub Link](https://github.com/13uilding)
 - Login Moody | [GitHub Link](https://github.com/lbmoody)
 - Matt Jeffords | [GitHub Link](https://github.com/Choop-A-Loop)

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateTotalHealth, updateTotalArmor } from "../../actions/gameActions";
+import { updateTotalHealth, updateTotalArmor, setCards } from "../../actions/gameActions";
 
 import "./style.css"
 import treaseurePic from "../../images/bg-loot.png";
@@ -41,12 +41,16 @@ const Loot = () => {
     const playerState = useSelector(state => state.player)
     const dispatch = useDispatch();
 
+    const [selectedCards, setSelectedCards] = useState([]);
+    const [upgradedCards, setUpgradeCards] = useState(false);
+
     const [upgradeDefense, setUpgradeDefense] = useState({
         totalHealth: 0,
         totalArmor: 0,
     });
     const { totalHealth, totalArmor } = upgradeDefense;
     const [expanded, setExpanded] = React.useState(false);
+    
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -61,17 +65,37 @@ const Loot = () => {
         dispatch(updateTotalArmor(5));
         console.log("armor", totalArmor);
     }
-
+    const upgradeCardsHandleChange = () => {
+        console.log("Death to console logs")
+        let upgradingCards = playerState.cards.map(card => { 
+            for ( let i = 0; i < selectedCards.length; i++ ) {
+                if ( selectedCards[i] === card ) {
+                    let newNum = parseInt(card[1]) + 1;
+                    return card[0] + newNum + "u"
+                }
+            }
+            return card
+        })
+        dispatch(setCards(upgradingCards));
+        setUpgradeCards(true);
+    }
     const select = e => {
         const cardId = e.currentTarget.id
         // dispatch(setStatsPlayerDamage(0))
         const cardEl = document.getElementById(cardId)
         if (cardEl.classList.contains("clicked")) {
             cardEl.classList.remove("clicked")
+            setSelectedCards(selectedCards.filter(card => card !== cardId));
         } else {
             cardEl.classList.add("clicked")
+            setSelectedCards([cardId, ...selectedCards]);
         }
     }
+
+    // For testing purposes
+    useEffect(() => {
+        console.log(selectedCards)        
+    })
 
     var cardStyle = {
         backgroundImage: `url(${background})`,
@@ -119,7 +143,7 @@ const Loot = () => {
                                     >
                                         {playerState.cards.map(card => {
                                             return (
-                                                <Card id={card} onClick={select} style={cardStyle}>
+                                                <Card key={card} id={card} onClick={select} style={cardStyle}>
                                                     <CardContent>
                                                         <Typography color="textSecondary">
                                                             {card}
@@ -128,6 +152,32 @@ const Loot = () => {
                                                 </Card>
                                             )
                                         })}
+                                    </Grid>
+                                    <Grid 
+                                        container
+                                        item
+                                        justify="center"
+                                        direction="row"
+                                    >
+                                        {(selectedCards.length === 3 && !upgradedCards) ? (
+                                        <Button
+                                            onClick={() => upgradeCardsHandleChange()}
+                                            color="primary"
+                                            size="large"
+                                            variant="contained"
+                                            id="expansionButton">
+                                            Upgrade Cards
+                                        </Button>) : (<Button
+                                            onClick={() => upgradeCardsHandleChange()}
+                                            color="primary"
+                                            size="large"
+                                            variant="contained"
+                                            disabled
+                                            id="expansionButton">
+                                            Upgrade Cards
+                                        </Button>
+                                        
+                                    )}
                                     </Grid>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>

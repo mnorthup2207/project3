@@ -33,9 +33,10 @@ const MapPage = (props) => {
     console.log(battleNumber);
     const story = storyLine[battleNumber]
     useEffect(() => {
-        console.log(monsters)
+        // console.log(monsters)
         let newMonster = monsters.filter(monster => monster.order === battleNumber)[0]
-        console.log(newMonster);
+        // if newMonster
+        // console.log(newMonster);
         dispatch(setMonster(newMonster));
         dispatch(setMonsterSprite(newMonster.animation.character, newMonster.animation.type))
     }, [battleNumber])
