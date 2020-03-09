@@ -9,7 +9,8 @@ import Sprite from "../../sprites/getSprite.js";
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { resetBattleNumber } from "../../actions/gameActions";
 // import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -18,6 +19,9 @@ const GameOver = () => {
     const { character, type } = useSelector(state => state.monsterSprite);
     const playerState = useSelector(state => state.player);
     const stats = useSelector(state => state.stats);
+    const dispatch = useDispatch();
+
+    dispatch(resetBattleNumber());
     console.log(playerState);
     console.log(stats);
     
