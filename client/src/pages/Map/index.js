@@ -59,7 +59,7 @@ const MapPage = (props) => {
                     </Grid>
                 </Grid>
                 <Grid container
-                    id="shift"
+                    id="shift2"
                     justify="flex-start"
                     alignItems="center"
                     >
