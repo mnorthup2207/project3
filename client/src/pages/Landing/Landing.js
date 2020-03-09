@@ -4,6 +4,13 @@ import PropTypes from "prop-types";
 import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
 import API from "../../utils/API";
+import roshambo from "../../images/roshambo.5x.png";
+import e1 from "../../images/enemy1-dead.png";
+import e2 from "../../images/enemy2-dead.png";
+import e3 from "../../images/enemy3-dead.png";
+import b1 from "../../images/boss1-dead.png";
+import b2 from "../../images/boss2-dead.png";
+import b3 from "../../images/boss3-dead.png";
 
 // REDUX
 import { useSelector, useDispatch, connect } from "react-redux";
@@ -23,6 +30,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 ///pages/components///
 import "./style.css"
+import zIndex from "@material-ui/core/styles/zIndex";
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -34,9 +42,21 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const titleStyle = {
+    height: 60,
+    marginTop: 10
+}
+
 const Landing = (props) => {
+
+    
     const { battleNumber } = useSelector(state => state.player);
     const dispatch = useDispatch();
+    
+    const enemies = [e1, e2, e3, b1, b2, b3];
+    const defeatedEnemies = enemies.filter(enemy => enemies.indexOf(enemy) < battleNumber);
+    
+    console.log("defeatedEnemies", defeatedEnemies);
 
     function loadMonsters() {
         API.getMonsters()
@@ -85,6 +105,13 @@ const Landing = (props) => {
     };
     const classes = useStyles();
     const { user } = props.auth;
+
+    const deadStyle = {
+        marginTop: -70,
+        marginLeft: -25,
+        zIndex: 75
+    }
+
     return (
         <>
             <img id="landingImage" src={landingImage} alt="Ro-Sham-Bo" />
@@ -94,6 +121,7 @@ const Landing = (props) => {
                         <h4>
                             <b>Welcome Back,</b> {user.name.split(" ")[0]}
                         </h4>
+                        <img src={roshambo} alt="roshambo" style={titleStyle} />
                         <Button
                             variant="contained"
                             onClick={onLogoutClick}
@@ -147,6 +175,19 @@ const Landing = (props) => {
                             />
                         </div>
                     </Grid>
+                </Grid>
+                <Grid
+                    container
+                    item
+                    direction="row"
+                    alignItems="flex-start"
+                    justify="flex-start"
+                >
+                    {defeatedEnemies.map(defeated => {
+                        return (
+                            <img src={defeated} alt="enemy" key={defeated} style={deadStyle}/>
+                        )
+                    })}
                 </Grid>
             </Container>
         </>
