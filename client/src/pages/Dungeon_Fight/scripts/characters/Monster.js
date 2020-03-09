@@ -21,6 +21,7 @@ class Monster extends Character {
         }
     taunt() {
         console.log("This is an insult!");
+        return [0, []]
     }
 }
 
