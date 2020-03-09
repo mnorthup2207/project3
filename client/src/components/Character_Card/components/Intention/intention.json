@@ -6,6 +6,6 @@
         "image": "./spells/shield.png"
     },
     "taunt": {
-        "image": "./spells/shield.png"
+        "image": "./spells/taunt.png"
     }
 }
