@@ -12,8 +12,6 @@ import {
     SET_PLAYER_ANIMATION,
     SET_PLAYER_HEALTH_ARMOR, 
     SET_PLAYER_SPRITE,
-    SET_PLAYER_TOTAL_ARMOR,
-    SET_PLAYER_TOTAL_HEALTH, 
     SET_STATS_PLAYER_DAMAGE,
     SET_STATS_MONSTER_DAMAGE,
     SET_STATS_TOTAL_DAMAGE,
@@ -34,7 +32,7 @@ export const setPlayer = (player) => {
 export const setCards = (cards) => {
     return {
         //! This should do an axios update ran on the loot page
-        type: SET_PLAYER, 
+        type: SET_CARDS, 
         payload: {cards}
     }
 } 

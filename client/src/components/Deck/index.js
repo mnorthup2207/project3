@@ -132,6 +132,7 @@ export default function Deck() {
             let doopAttack = Doop[action]();
             // console.log(doopAttack)
             Choop.defend(doopAttack);
+            
             dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
             dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
             dispatch(setStatsRound());

@@ -123,6 +123,8 @@ class Player extends Character {
         let attackArr = this.selectedCards.map(card => parseInt(card[1]));
         let resultDamage = attackArr.reduce((a, b) => a + b);
         let spell = this.determineSpell()
+        console.log("Inside castSpell")
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
         switch (spell) {
             case "heal":
                 this.health = Math.min(this.health + resultDamage, this.totalHealth)
@@ -142,8 +144,12 @@ class Player extends Character {
             default:
                 break;
         }
-        this.armor = Math.min(this.totalArmor, this.armor + this.harden)
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
+
         this.health = Math.min(this.totalHealth, this.health + this.toughen)
+        this.armor = Math.min(this.totalArmor, this.armor + this.harden)
+        console.log(`Health: ${this.health} | Armor: ${this.armor}`)
+
         return this.spells[spell]();
     }
     determineSpell() {
