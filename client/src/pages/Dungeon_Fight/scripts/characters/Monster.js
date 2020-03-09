@@ -17,10 +17,11 @@ class Monster extends Character {
     }
     block() {
         this.armor += Math.round(this.totalArmor / 10)
-        return [0, []]
+        return [0, []];
         }
     taunt() {
         console.log("This is an insult!");
+        return [0, []];
     }
 }
 
