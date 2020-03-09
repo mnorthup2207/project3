@@ -19,7 +19,10 @@ import {
     setMonsterHealthArmor,
     setPlayerAnimation,
     setMonsterAnimation,
-    setStatsRound
+    setStatsRound,
+    setStatsPlayerDamage,
+    setStatsTotalDamage,
+    setStatsMonsterDamage
 } from "../../actions/gameActions";
 // import '../../images/spells'
 
@@ -61,7 +64,7 @@ export default function Deck() {
                 timer = 1200;
                 break;
             default:
-                timer = 1000;
+                timer = 10;
                 break;
         }
         // console.log(timer)
@@ -89,6 +92,9 @@ export default function Deck() {
         dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
         dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
         setPlayerState({ ...playerState, spell: "" })
+        // Stats dispatch
+        dispatch(setStatsPlayerDamage(playerAttack[0]));
+        // Wait animation
         //! Setting up the animations
         waitAnimation(animation, () => {
             // console.log(playerAttack)
@@ -136,10 +142,18 @@ export default function Deck() {
             
             dispatch(setHealthArmor(Choop.health, Choop.armor, Choop.alive));
             dispatch(setMonsterHealthArmor(Doop.health, Doop.armor, Doop.alive));
+            // Stats dispatch
             dispatch(setStatsRound());
+            dispatch(setStatsMonsterDamage(doopAttack[0]));
+            // Wait animation
             waitAnimation(animation, () => {
                 animation = "idle";
                 Choop.round = round;
+                dispatch(setStatsTotalDamage())
+                waitAnimation("wait to update stats", () => {
+                    dispatch(setStatsPlayerDamage(0));
+                    dispatch(setStatsMonsterDamage(0));
+                });
             })
         }
     }
