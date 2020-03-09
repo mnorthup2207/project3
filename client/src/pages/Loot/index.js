@@ -42,12 +42,12 @@ const Loot = () => {
         setExpanded(isExpanded ? panel : false);
     };
     const healthHandleChange = () => {
-        setUpgradeDefense({...upgradeDefense, totalHealth: totalHealth + 1})
+        setUpgradeDefense({...upgradeDefense, totalHealth: totalHealth + 5})
         console.log("health", totalHealth);
         
     }
     const armorHandleChange = () => {
-        setUpgradeDefense({...upgradeDefense, totalArmor: totalArmor + 1})
+        setUpgradeDefense({...upgradeDefense, totalArmor: totalArmor + 5})
         console.log("armor", totalArmor);
     }
     const handleReset = () => {

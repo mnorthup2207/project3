@@ -6,7 +6,7 @@ import PlayerHand from "../PlayerHand/index";
 
 ////Material UI////
 import { Grid, Button } from "@material-ui/core";
-
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Player from "../../pages/Dungeon_Fight/scripts/characters/Player";
 import Monster from "../../pages/Dungeon_Fight/scripts/characters/Monster";
@@ -172,6 +172,7 @@ export default function Deck() {
             </div>
             <div style={{ padding: 25 }}>
                 {playerState.spell ?
+                    <Tooltip title="Hi Matt! This is for you!">
                     <Button
                         id="action-button"
                         color="primary"
@@ -181,7 +182,8 @@ export default function Deck() {
                         onClick={castAction}
                     >
                         {getSpellIMG(playerState.spell)}
-                    </Button> : null}
+                    </Button>
+                    </Tooltip> : null}
                 <Draw
                     set={setPlayerState}
                     player={playerState}
@@ -193,3 +195,4 @@ export default function Deck() {
         </Grid>
     );
 };
+
