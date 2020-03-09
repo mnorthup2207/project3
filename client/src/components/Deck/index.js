@@ -27,7 +27,6 @@ export default function Deck() {
     const playerGState = useSelector(state => state.player);
     const monsterGState = useSelector(state => state.monster);
     const monstersGState = useSelector(state => state.monsters);
-    const cardsGState = useSelector(state => state.cards);
     const statsGState = useSelector(state => state.stats);
     const { round, totalRounds } = statsGState;
     // console.log(round)
@@ -38,7 +37,7 @@ export default function Deck() {
     // let doop = monstersGState[0].filter(monster => monster.order === playerGState.battleNumber)[0]
     // console.log(doop)
     const Doop = new Monster(monsterGState);
-    const Choop = new Player(playerGState, cardsGState);
+    const Choop = new Player(playerGState, playerGState.cards);
     const [playerState, setPlayerState] = useState({
         Choop,
         spell: ""
