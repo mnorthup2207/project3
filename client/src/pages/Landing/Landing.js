@@ -17,7 +17,8 @@ import { useSelector, useDispatch, connect } from "react-redux";
 import {
     setPlayer,
     setAllMonsters,
-    setMonster
+    setMonster,
+    setHealthArmor
   } from "../../actions/gameActions";
 ////Sprites////
 import Sprite from "../../sprites/getSprite.js";
@@ -85,6 +86,11 @@ const Landing = (props) => {
 
                 // Update the global state here
                 dispatch(setPlayer(player));
+
+                // setTimeout(() => {
+                //     dispatch(setHealthArmor(10, 18, true));
+                // }, 1000)
+
             }
             )
             // .catch(err => console.log(err));
