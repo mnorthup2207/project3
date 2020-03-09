@@ -1,4 +1,4 @@
-![Ro-Sham-Bo](./client/src/roshambo.5x.png)
+![Ro-Sham-Bo](./client/src/images/roshambo.5X.png)
 
 **Ro-Sham-Bo is a Player vs. Computer game expanded off of the schoolyard Rock-Paper-Scissors game. In Ro-Sham-Bo, we follow our friend Choop as he battles three enemies and eventually three more bosses. Play your own Choop adventures at [Choop Link](https://infinite-earth-38608.herokuapp.com/) **
 
