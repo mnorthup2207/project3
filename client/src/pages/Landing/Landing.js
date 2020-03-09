@@ -45,18 +45,18 @@ const Landing = (props) => {
                 dispatch(setAllMonsters(res.data)) 
                 let monster = res.data.filter(monster => monster.order === battleNumber)[0];
                 // database is wrong
-                console.log(res.data)
+                // console.log(res.data)
                 // We set the initial monster
                 dispatch(setMonster(monster))
             })
-            .catch(err => console.log(err));
+            // .catch(err => console.log(err));
     };
     function loadMonster(id) {
         API.getMonster(id)
             .then(res =>
                 console.log("get monster", res.data)
             )
-            .catch(err => console.log(err));
+            // .catch(err => console.log(err));
     };
     function loadPlayer() {
         API.getPlayer()
@@ -67,7 +67,7 @@ const Landing = (props) => {
                 dispatch(setPlayer(player));
             }
             )
-            .catch(err => console.log(err));
+            // .catch(err => console.log(err));
     };
     useEffect(() => {
         // find some better way to update?

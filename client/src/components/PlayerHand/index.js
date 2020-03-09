@@ -8,9 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import background from '../../images/bg-card.png';
 import { setStatsPlayerDamage } from "../../actions/gameActions";
 
-////Sprite////
-import Sprite from "../../sprites/getSprite";
-
 import './styles.css';
 
 // Each Card will have a different type = Rock, Paper or Scissors
@@ -32,7 +29,7 @@ export default function PlayerHand({ set, player }) {
     const select = e => {
         const cardId = e.currentTarget.id
         dispatch(setStatsPlayerDamage(0))
-        console.log(cardId);
+        // console.log(cardId);
         let spell = "";
         let cards = player.Choop.selectedCards
         if (cards.includes(cardId)) {
@@ -53,7 +50,7 @@ export default function PlayerHand({ set, player }) {
             let damage = player.Choop.attack(spell)[0]
             dispatch(setStatsPlayerDamage(damage))
             // Update the global variable for attack damage
-            console.log(spell);
+            // console.log(spell);
         }
         set({ ...player , spell});
     }

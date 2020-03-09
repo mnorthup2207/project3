@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 
 export default function CharacterCard(props) {
     const classes = useStyles();
-    console.log(props)
+    // console.log(props)
     const { character, type } = useSelector(state => state[props.character + "Sprite"])
     const playerAnimation = useSelector(state => state.playerAnimation);
     const monsterAnimation = useSelector(state => state.monsterAnimation);
@@ -42,7 +42,7 @@ export default function CharacterCard(props) {
                 <Sprite
                     character={character}
                     type={type}
-                    animation={playerAnimation}
+                    animation={(props.character === "player") ? playerAnimation : monsterAnimation}
                 />
             </div>
             {/* Use the state in place of the player.armor */}
