@@ -71,10 +71,7 @@ const Loot = () => {
             for ( let i = 0; i < selectedCards.length; i++ ) {
                 if ( selectedCards[i] === card ) {
                     let newNum = parseInt(card[1]) + 1;
-                    let newCard = card[0] + newNum + "u";
-                    if ( card[card.length - 1] === "u") {
-                        newCard += "u"
-                    }
+                    let newCard = card[0] + newNum + card.slice(2) + "+";
                     return newCard
                 }
             }
