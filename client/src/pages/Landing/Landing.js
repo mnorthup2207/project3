@@ -5,12 +5,12 @@ import { logoutUser } from "../../actions/authActions";
 import landingImage from "../../images/bg-auth.png"
 import API from "../../utils/API";
 import roshambo from "../../images/roshambo.5x.png";
-import e1 from "../../images/enemy1-dead.png";
-import e2 from "../../images/enemy2-dead.png";
-import e3 from "../../images/enemy3-dead.png";
-import b1 from "../../images/boss1-dead.png";
-import b2 from "../../images/boss2-dead.png";
-import b3 from "../../images/boss3-dead.png";
+import e1 from "../../images/enemy1-head.png";
+import e2 from "../../images/enemy2-head.png";
+import e3 from "../../images/enemy3-head.png";
+import b1 from "../../images/boss1-head.png";
+import b2 from "../../images/boss2-head.png";
+import b3 from "../../images/boss3-head.png";
 
 // REDUX
 import { useSelector, useDispatch, connect } from "react-redux";
@@ -46,6 +46,14 @@ const useStyles = makeStyles(theme => ({
 const titleStyle = {
     height: 60,
     marginTop: 10
+}
+
+const deadStyle = {
+    height: 160,
+    marginTop: -290,
+    marginLeft: 50,
+    marginRight: -60,
+    zIndex: 1
 }
 
 const Landing = (props) => {
@@ -111,12 +119,6 @@ const Landing = (props) => {
     };
     const classes = useStyles();
     const { user } = props.auth;
-
-    const deadStyle = {
-        marginTop: -70,
-        marginLeft: -25,
-        zIndex: 75
-    }
 
     return (
         <>
@@ -188,6 +190,7 @@ const Landing = (props) => {
                     direction="row"
                     alignItems="flex-start"
                     justify="flex-start"
+                    style={{marginLeft: 100}}
                 >
                     {defeatedEnemies.map(defeated => {
                         return (
