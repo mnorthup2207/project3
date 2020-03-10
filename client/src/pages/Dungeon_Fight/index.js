@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary
     }
 }));
+
 // End of fight
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -72,10 +73,28 @@ const DungeonFight = props => {
         }
     }, [playerState.alive, monsterState.alive])
 
-
     const handleDialogClose = () => {
         setOpen(false);
     };
+
+    const textColor = () => {
+        let num = stats.playerTurnDamage
+        console.log("This Stuff", num)
+        num = num / 50
+        console.log("This Stuff", num)
+        num = 1 - num
+        console.log("This Stuff", num)
+        num = num * 100
+        console.log("This Stuff", num)
+        const x = 'hsl(0, 100%, '+num+'%)'
+        return x
+    }
+
+    const damageStyles = {
+        color: textColor(),
+        fontSize: '24px',
+        textAlign: 'center'
+    }
 
     const classes = useStyles();
     // componentDidMount(init())
@@ -116,7 +135,9 @@ const DungeonFight = props => {
                         ></CharacterCard>
                     </Grid>
                     <Grid item xs={2}>
-                        {stats.playerTurnDamage ? stats.playerTurnDamage : ""}
+                        {stats.playerTurnDamage ? 
+                        <h3 id='damageNumber' style={damageStyles}>{stats.playerTurnDamage}</h3>  
+                        : ""}
                     </Grid>
                     <Grid item xs={4} direction="column" justify="flex-end" alignItems="center">
                         {/* Figure this out */}
