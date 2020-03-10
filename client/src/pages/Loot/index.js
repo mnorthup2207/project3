@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTotalHealth, updateTotalArmor, setCards, setHealthArmor } from "../../actions/gameActions";
@@ -57,16 +57,16 @@ const Loot = () => {
     const healthHandleChange = () => {
         setUpgradeDefense({ ...upgradeDefense, totalHealth: totalHealth + 5 })
         dispatch(updateTotalHealth(5));
-        console.log("state-health", totalHealth);
+        // console.log("state-health", totalHealth);
     }
     
     const armorHandleChange = () => {
         setUpgradeDefense({ ...upgradeDefense, totalArmor: totalArmor + 5 })
         dispatch(updateTotalArmor(5));
-        console.log("armor", totalArmor);
+        // console.log("armor", totalArmor);
     }
     const upgradeCardsHandleChange = () => {
-        console.log("Death to console logs")
+        // console.log("Death to console logs")
         let upgradingCards = playerState.cards.map(card => { 
             for ( let i = 0; i < selectedCards.length; i++ ) {
                 if ( selectedCards[i] === card ) {
@@ -94,9 +94,9 @@ const Loot = () => {
     }
 
     // For testing purposes
-    useEffect(() => {
-        console.log(selectedCards)        
-    })
+    // useEffect(() => {
+    //     console.log(selectedCards)        
+    // })
 
     var cardStyle = {
         backgroundImage: `url(${background})`,

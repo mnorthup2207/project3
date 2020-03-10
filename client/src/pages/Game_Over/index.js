@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./style.css";
@@ -21,8 +21,8 @@ const GameOver = () => {
     const monsterState = useSelector(state => state.monster);
     const stats = useSelector(state => state.stats);
     const dispatch = useDispatch();
-    console.log(playerState);
-    console.log(stats);
+    // console.log(playerState);
+    // console.log(stats);
     
     return (
         <>

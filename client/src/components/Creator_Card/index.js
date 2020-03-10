@@ -5,7 +5,7 @@ import "./style.css"
 
 
 const CreatorCard = (props) => {
-    console.log(props);
+    // console.log(props);
     const { name, GitHub, FavoriteSpell, handle, character, type } = props
     return (
         <Grid container id="creatorContainer" spacing={3}>

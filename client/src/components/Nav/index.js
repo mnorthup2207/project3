@@ -1,16 +1,3 @@
-// import React from 'react';
-// import Grid from '@material-ui/core/Grid';
-// import './style.css';
-
-
-// const Nav = () => {
-//     return (
-        
-//     )
-// }
-
-// export default Nav;
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
