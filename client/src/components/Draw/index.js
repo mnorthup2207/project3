@@ -4,7 +4,7 @@ import { Grid, Button, Hidden } from "@material-ui/core";
 export default function Draw(props) {
 
     const {set, player, spell} = props;
-    console.log(player)
+    // console.log(player)
 
     const draw = () => {
         const drawButton = document.getElementById("draw-button")

@@ -25,7 +25,7 @@ class Character {
     }
 }
 Character.prototype.defend = function([damage, type]) {
-    console.log("defending");
+    // console.log("defending");
     let resultHealth;
     if ( type.length !== 0 ) {
         // Replace this with ef elses late when an attack can have multiple attack types
@@ -50,10 +50,10 @@ Character.prototype.defend = function([damage, type]) {
 }
 Character.prototype.isAlive = function(resultHealth) {
     if (resultHealth <= 0) {
-        console.log("Is dead")
+        // console.log("Is dead")
         this.alive = false
     } else {
-        console.log("Is alive")
+        // console.log("Is alive")
         this.alive = true;
     }
 }

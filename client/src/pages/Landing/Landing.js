@@ -65,7 +65,7 @@ const Landing = (props) => {
     const enemies = [e1, e2, e3, b1, b2, b3];
     const defeatedEnemies = enemies.filter(enemy => enemies.indexOf(enemy) < battleNumber);
     
-    console.log("defeatedEnemies", defeatedEnemies);
+    // console.log("defeatedEnemies", defeatedEnemies);
 
     function loadMonsters() {
         API.getMonsters()
@@ -85,7 +85,7 @@ const Landing = (props) => {
             .then(res =>
                 console.log("get monster", res.data)
             )
-            // .catch(err => console.log(err));
+            .catch(err => console.log(err));
     };
     function loadPlayer() {
         API.getPlayer()

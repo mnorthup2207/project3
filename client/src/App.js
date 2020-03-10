@@ -84,11 +84,6 @@ class App extends Component {
                     </div>
                 </Router>
             </Provider>
-            // <div>
-            //     <Sprite
-            //         props={sprites.main}
-            //     />
-            // </div>
         );
     }
 }

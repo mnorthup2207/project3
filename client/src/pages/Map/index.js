@@ -30,7 +30,7 @@ const MapPage = (props) => {
     const { character, type } = useSelector(state => state.monsterSprite);
     const battleNumber = useSelector(state => state.player.battleNumber);
     const dispatch = useDispatch();
-    console.log(battleNumber);
+    // console.log(battleNumber);
     const story = storyLine[battleNumber]
     useEffect(() => {
         // console.log(monsters)
