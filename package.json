@@ -9,7 +9,7 @@
         "body-parser": "^1.18.3",
         "concurrently": "^4.0.1",
         "dotenv": "^8.2.0",
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "if-env": "^1.0.4",
         "is-empty": "^1.2.0",
         "jsonwebtoken": "^8.3.0",
